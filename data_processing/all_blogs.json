@@ -1,877 +1,1799 @@
 [
     {
-        "title": "# 8 year anniversary \n",
-        "date": "Date: Sep 20, 2018\n",
-        "mood": "Mood: Frustrated,Happy\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "8 year anniversary",
+        "date": "2018-09-20 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Work is shitty at the moment, getting that feeling of incompetence again. Just want to be some sort of rock star programmer that can make anything happen.... stressful dealing with incidents too, maybe because i take it to heart? Makes me wanna quit this job.... need to take deep long look at why i'm staying at TfL....\n"
     },
     {
-        "title": "# After Work Drinks\n",
-        "date": "Date: Sep 28, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure,Work\n",
+        "title": "After Work Drinks",
+        "date": "2018-09-28 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Work"
+        ],
         "contents": "another end to the work week . finished it with drinks with colleagues at the bar. Interesting to mingle with everyone out of work. Nye poured drinks all over big boss. hilarious XD. I was observing how everyone seems to be in their own little cliques... things dont change out of school really. There are the still the cool kids. or at work its the considered to be those doing the most interesting and important things. I suppose I get a bit jelous when i feel like i'm not in those circles... Do I just have to work harder?\n"
     },
     {
-        "title": "# After Work Drinks\n",
-        "date": "Date: Sep 28, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure,Work\n",
-        "contents": "another end to the work week . finished it with drinks with colleagues at the bar. Interesting to mingle with everyone out of work. Nye poured drinks all over big boss. hilarious XD. I was observing how everyone seems to be in their own little cliques... things dont change out of school really. There are the still the cool kids. or at work its the considered to be those doing the most interesting and important things. I suppose I get a bit jelous when i feel like i'm not in those circles... Do I just have to work harder?\n"
-    },
-    {
-        "title": "# Almost end of the month and End of the Holiday  \n",
-        "date": "Date: Oct 29, 2018\n",
-        "mood": "Mood: Happy,Sad\n",
-        "productivity": "Productivity: Holiday\n",
+        "title": "Almost end of the month and End of the Holiday",
+        "date": "2018-10-29 00:00:00",
+        "mood": [
+            "Happy",
+            "Sad"
+        ],
+        "productivity": [
+            "Holiday"
+        ],
         "contents": "I have been slacking with these updates big time! I soppose it is to be expected whilst I'm on a holiday of a life time.\n"
     },
     {
-        "title": "# Back in the Flow\n",
-        "date": "Date: Aug 20, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Life,Programming\n",
+        "title": "Back in the Flow",
+        "date": "2018-08-20 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Life",
+            "Programming"
+        ],
         "contents": "Back in the flow of things, got a few life admin things sorted out. \n"
     },
     {
-        "title": "# Back to routine\n",
-        "date": "Date: Jul 26, 2018\n",
-        "mood": "Mood: Content,Energetic,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Back to routine",
+        "date": "2018-07-26 00:00:00",
+        "mood": [
+            "Content",
+            "Energetic",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Jenny offered to cook today.\n"
     },
     {
-        "title": "# Best Day Of My Life\n",
-        "date": "Date: Dec 29, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Life\n",
+        "title": "Badders",
+        "date": "2019-01-29 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness"
+        ],
+        "contents": "More advanced badders today. Feeling strong"
+    },
+    {
+        "title": "Badminton disaster",
+        "date": "2019-01-31 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Frustrated"
+        ],
+        "productivity": [
+            "Fitness"
+        ],
+        "contents": "My debut badminton game for bexley... what a disaster. lost every single game badly.\n"
+    },
+    {
+        "title": "Best Day Of My Life",
+        "date": "2018-12-29 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Life"
+        ],
         "contents": "I proposed on this day!!!!!!!!"
     },
     {
-        "title": "# Better Results\n",
-        "date": "Date: Aug 08, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Best Man",
+        "date": "2019-01-26 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Life",
+            "Programming"
+        ],
+        "contents": "So today I got asked to be best man for Pang wedding. crazy shit\n"
+    },
+    {
+        "title": "Better Results",
+        "date": "2018-08-08 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "Amazing what a good night sleep makes , still behind on my sleep a bit but much more productive today.\n"
     },
     {
-        "title": "# Big meal for everyone\n",
-        "date": "Date: Sep 29, 2018\n",
-        "mood": "Mood: Content\n",
-        "productivity": "Productivity: Family,Leisure,Life,Programming\n",
+        "title": "Big meal for everyone",
+        "date": "2018-09-29 00:00:00",
+        "mood": [
+            "Content"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Productive morning , well needed haircut. brekkie at maccy Ds and quick shop ready for a big cooking sesh for jennys fam . installed new blinds and the flat is looking comfy asf.\n"
     },
     {
-        "title": "# Bomb Scare\n",
-        "date": "Date: Oct 01, 2018\n",
-        "mood": "Mood: Content,Optimistic\n",
-        "productivity": "Productivity: Fitness,Life\n",
+        "title": "Bomb Scare",
+        "date": "2018-10-01 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Fitness",
+            "Life"
+        ],
         "contents": "Bomb scare at work today. had to evac and leave early. Pretty nuts in hindsight, even though everyone was so blase about it.\n"
     },
     {
-        "title": "# Break through on a silly mistake\n",
-        "date": "Date: Jan 11, 2019\n",
-        "mood": "Mood: Frustrated,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Break through on a silly mistake",
+        "date": "2019-01-11 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Worked out with the issue was last from yesterday. just a little missing character `method` rather than writing `methods` . So annoying\n"
     },
     {
-        "title": "# Busy Saturday\n",
-        "date": "Date: Sep 15, 2018\n",
-        "mood": "Mood: Content,Optimistic,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Busy Saturday",
+        "date": "2018-09-15 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Early start , bit tired still got up. Sqeezed in a bit of coding. Just messing around with Dojo template widgets some more. got sample templated all  working on one page... still seems a bit like black magic...\n"
     },
     {
-        "title": "# catch up and more vue\n",
-        "date": "Date: Jan 17, 2019\n",
-        "mood": "Mood: Motivated,Tired\n",
-        "productivity": "Productivity: Friends,Programming\n",
+        "title": "catch up and more vue",
+        "date": "2019-01-17 00:00:00",
+        "mood": [
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Friends",
+            "Programming"
+        ],
         "contents": "catch up with jordan. always a bit weird , but nice i suppose. good he makes the effort i suppose. the link to esri uk is still a strange one.\n"
     },
     {
-        "title": "# Catch up with Dan\n",
-        "date": "Date: Jul 20, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure\n",
+        "title": "Catch up with Dan",
+        "date": "2018-07-20 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure"
+        ],
         "contents": "Took a random day off work. Chilled out and took it easy in the flat and sqeezed in a gym sesh before driving back down to Portsmouth.\n"
     },
     {
-        "title": "# Celebrations for Jennys new job!\n",
-        "date": "Date: Jul 13, 2018\n",
-        "mood": "Mood: Content,Energetic,Happy\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Celebrations for Jennys new job!",
+        "date": "2018-07-13 00:00:00",
+        "mood": [
+            "Content",
+            "Energetic",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Quiet day at work, out for meal to celebrate the fact she got a new job and still managed to squeeze a small bit of FCC."
     },
     {
-        "title": "# Chilling & Coding\n",
-        "date": "Date: Aug 05, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Chilling & Coding",
+        "date": "2018-08-05 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Spent a good chunk of the day trying to do some challenges in the Intermediate Algorithm Scripting FCC module. struggling a bit, might be cos i've slacking the last couple of days, also alcohol last night probs didnt help...\n"
     },
     {
-        "title": "# Chilling out catching up on sleep\n",
-        "date": "Date: Jul 25, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Chilling out catching up on sleep",
+        "date": "2018-07-25 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Still so hot.\n"
     },
     {
-        "title": "# Coding Life\n",
-        "date": "Date: Aug 28, 2018\n",
-        "mood": "Mood: Content,Optimistic\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Coding Life",
+        "date": "2018-08-28 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "Coding at work and coding at home. this is what I wanted right? But it's got me thinking what this is for? self validation?\n"
     },
     {
-        "title": "# Completed Basic Algorithm Scripting\n",
-        "date": "Date: Jul 17, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Completed Basic Algorithm Scripting",
+        "date": "2018-07-17 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Its another hot ass July day. \n"
     },
     {
-        "title": "# Completed Javascript Algorithms And Data Structures\n",
-        "date": "Date: Aug 22, 2018\n",
-        "mood": "Mood: Content,Dissatisfied,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Completed Javascript Algorithms And Data Structures",
+        "date": "2018-08-22 00:00:00",
+        "mood": [
+            "Content",
+            "Dissatisfied",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Not much coding yesterday, but been a productive week back at work so far. Tony has been smashing through all the user stories in my absence.\n"
     },
     {
-        "title": "# Day 1 of Productivity/Mood Tracking\n",
-        "date": "Date: Jul 05, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "CV write up",
+        "date": "2019-01-22 00:00:00",
+        "mood": [
+            "Motivated"
+        ],
+        "productivity": [
+            "Life"
+        ],
+        "contents": "been a long time since i revisited my CV .\n"
+    },
+    {
+        "title": "Day 1 of Productivity/Mood Tracking",
+        "date": "2018-07-05 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "Start of this journal keeping experiment, lets see how this goes.\n"
     },
     {
-        "title": "# Day before a week off\n",
-        "date": "Date: Aug 13, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Day before a week off",
+        "date": "2018-08-13 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Last day before a week off. Busy last day. Feeling very tired\n"
     },
     {
-        "title": "# Dead Cells\n",
-        "date": "Date: Aug 31, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Dead Cells",
+        "date": "2018-08-31 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Pretty good end to the week and two sprints. Found out that the project is on pause for the next 4 weeks until the PO is back. Feels like a weight lifted off my shoulders for a while , but gives me a chance to learn more Dojo and WAB before the sprints start all over again . Defo need to be more involved in the coding side  of things more this time round.\n"
     },
     {
-        "title": "# Demotivating colleagues\n",
-        "date": "Date: Nov 20, 2018\n",
-        "mood": "Mood: Annoyed,Unmotivated\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Demotivating colleagues",
+        "date": "2018-11-20 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Unmotivated"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "*Sigh*\n"
     },
     {
-        "title": "# Dojo Calculator all working !\n",
-        "date": "Date: Aug 30, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Leisure,Life,Programming\n",
+        "title": "Dojo Calculator all working !",
+        "date": "2018-08-30 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Demoing what  we have done for the two weeks to the buisness at work today. They seemed to be impressed. To be fair the senior dev did most of the heavy lifting regarding the coding... Need to be more involved in the coding but i cant seem to keep up with pace....\n"
     },
     {
-        "title": "# Dojo-Toolkit Classes\n",
-        "date": "Date: Sep 12, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Dojo-Toolkit Classes",
+        "date": "2018-09-12 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Cooked and learnt a bit more about dojo classes"
     },
     {
-        "title": "# Drama and Coding struggles\n",
-        "date": "Date: Aug 07, 2018\n",
-        "mood": "Mood: Frustrated,Tired\n",
-        "productivity": "Productivity: Fitness,Life,Programming\n",
+        "title": "Drama and Coding struggles",
+        "date": "2018-08-07 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Life",
+            "Programming"
+        ],
         "contents": "Not a good start to the day, my questions from the weekend were answered . Should I feel bad about everything. Yes. My actions have consequences.  I apologised to Martin for being a dick which has led me take a deep hard look at myself as person. Its all well and good that I develop my hard skills such as programming, but I need to also spend time with my friends and family too, becasue otherwise, what is this all for? Might need a tag for bonding. so i can see when I am spending quality time with other people.  For example I dont feel I really spent an quality time with Jenny this evening . I was focused and annoyed with with my in ability to get past the pig latin coding challenge on FCC. spent more than 2 hours getting no where....\n"
     },
     {
-        "title": "# Driving thoughts\n",
-        "date": "Date: Sep 17, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Family,Leisure,Programming\n",
+        "title": "Driving thoughts",
+        "date": "2018-09-17 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Dinner with Jenny and her mum and planned for thailand for a little bit then drove back to the flat.\n"
     },
     {
-        "title": "# End of August Bank Holiday :(\n",
-        "date": "Date: Aug 27, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Friends,Programming\n",
+        "title": "End of August Bank Holiday :(",
+        "date": "2018-08-27 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Friends",
+            "Programming"
+        ],
         "contents": "Been slacking a bit with journal, need to stop.\n"
     },
     {
-        "title": "# End of the month..\n",
-        "date": "Date: Sep 30, 2018\n",
-        "mood": "Mood: Dissatisfied,Nervous,Tired\n",
-        "productivity": "Productivity: Leisure,Life,Programming\n",
+        "title": "End of the month..",
+        "date": "2018-09-30 00:00:00",
+        "mood": [
+            "Dissatisfied",
+            "Nervous",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "At the end of another month. Some mixed feelings about this. \n"
     },
     {
-        "title": "# ES Modules Confusion\n",
-        "date": "Date: Oct 12, 2018\n",
-        "mood": "Mood: Confused,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "ES Modules Confusion",
+        "date": "2018-10-12 00:00:00",
+        "mood": [
+            "Confused",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Being slacking with my logs. Was so hung over and tired yesterday from the beers and random coffee at the JN talk. Work was a struggle yesterday, we're a bit behind in out sprint, but still managed to be fairly productive before the end of the week. Wrapping up for my holiday soon!\n"
     },
     {
-        "title": "# Finished Vue net ninja tutorials\n",
-        "date": "Date: Dec 08, 2018\n",
-        "mood": "Mood: Happy,Motivated,Optimistic\n",
-        "productivity": "Productivity: Life,Programming,Self Development\n",
+        "title": "Finished Vue net ninja tutorials",
+        "date": "2018-12-08 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Life",
+            "Programming",
+            "Self Development"
+        ],
         "contents": "Deposit is down - FUCK! shit is getting real\n"
     },
     {
-        "title": "# Flat Shopping in Lakeside\n",
-        "date": "Date: Jul 28, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Life,Programming\n",
+        "title": "Flat Shopping in Lakeside",
+        "date": "2018-07-28 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Life",
+            "Programming"
+        ],
         "contents": "Spent pretty much all day at Lakeside shopping for flat stuff and was soooo LONG! \n"
     },
     {
-        "title": "# Flow\n",
-        "date": "Date: Nov 12, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Flow",
+        "date": "2018-11-12 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Feeling more human this week. work is still annoyingly stressful, but i'm solving issues and fixing things.\n"
     },
     {
-        "title": "# Flying to HK!\n",
-        "date": "Date: Oct 17, 2018\n",
-        "mood": "Mood: Content,Happy,Motivated,Satisfied,Tired\n",
-        "productivity": "Productivity: Fitness,Holiday,Life,Programming\n",
+        "title": "Flying to HK!",
+        "date": "2018-10-17 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Motivated",
+            "Satisfied",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Holiday",
+            "Life",
+            "Programming"
+        ],
         "contents": "On the flight to HK right, sipping on a red wine.\n"
     },
     {
-        "title": "# Friday again!\n",
-        "date": "Date: Oct 05, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Friday again!",
+        "date": "2018-10-05 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Been slacking with my journal keeping this week. Been a busy week work wise . Sprint is in full action and i'm enjoying the work for the most part , cool to be actually be doing real coding at work , unit tests and developery stuff! \n"
     },
     {
-        "title": "# Friday Chill - back in Portmouth\n",
-        "date": "Date: Aug 03, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Friday Chill - back in Portmouth",
+        "date": "2018-08-03 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Drove back to portsmouth after work and getting ready for Goodwood tomorrow"
     },
     {
-        "title": "# Friday Me Time\n",
-        "date": "Date: Aug 10, 2018\n",
-        "mood": "Mood: Content,Happy,Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Friday Me Time",
+        "date": "2018-08-10 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Me time, Jennys out for her leaving do so dedicated this Friday to me. Cooked a nice pork chop dinner and watched Afro Samurai.\n"
     },
     {
-        "title": "# Fucking vector tiles\n",
-        "date": "Date: Sep 07, 2018\n",
-        "mood": "Mood: Annoyed,Optimistic\n",
-        "productivity": "Productivity: Programming,Work\n",
+        "title": "Fucking vector tiles",
+        "date": "2018-09-07 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Programming",
+            "Work"
+        ],
         "contents": "Tryinng to get os zoom stack mbtiles working offline... Spent all day at work on it... Tried tilestream and now moving on to tileserver."
     },
     {
-        "title": "# Fucking vector tiles pt2\n",
-        "date": "Date: Sep 08, 2018\n",
-        "mood": "Mood: Annoyed,Frustrated\n",
-        "productivity": "Productivity: GIS\n",
+        "title": "Fucking vector tiles pt2",
+        "date": "2018-09-08 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Frustrated"
+        ],
+        "productivity": [
+            "GIS"
+        ],
         "contents": "Chilled out at the flat and spent most of the day researching how to server out vector tiles and focused on working on tileserver-gl.\n"
     },
     {
-        "title": "# Fucking vector tiles pt3\n",
-        "date": "Date: Sep 09, 2018\n",
-        "mood": "Mood: Annoyed,Frustrated\n",
-        "productivity": "Productivity: GIS,Leisure\n",
+        "title": "Fucking vector tiles pt3",
+        "date": "2018-09-09 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Frustrated"
+        ],
+        "productivity": [
+            "GIS",
+            "Leisure"
+        ],
         "contents": "More work on vector tiles via tileserver-gl. \n"
     },
     {
-        "title": "# Fucking vector tiles pt4\n",
-        "date": "Date: Sep 10, 2018\n",
-        "mood": "Mood: Frustrated,Optimistic\n",
-        "productivity": "Productivity: Fitness,GIS\n",
+        "title": "Fucking vector tiles pt4",
+        "date": "2018-09-10 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Fitness",
+            "GIS"
+        ],
         "contents": "Back at work and still thinking about vector tiles.... pretty chilled at work and just getting ready for a release, should be ok but still get nervous.\n"
     },
     {
-        "title": "# Full Moon Festival\n",
-        "date": "Date: Sep 24, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Full Moon Festival",
+        "date": "2018-09-24 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "tired again... always tired... \n"
     },
     {
-        "title": "# Functional Programming Breakthrough\n",
-        "date": "Date: Jul 27, 2018\n",
-        "mood": "Mood: Happy,Optimistic\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Functional Programming Breakthrough",
+        "date": "2018-07-27 00:00:00",
+        "mood": [
+            "Happy",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Evening to my self tonight. Feel like i've made a breakthrough on the functional programming module on FCC . It's all making sense and feels like a great coding style.\n"
     },
     {
-        "title": "# General Assembly\n",
-        "date": "Date: Nov 13, 2018\n",
-        "mood": "Mood: Inspired,Motivated\n",
-        "productivity": "Productivity: Self Development\n",
+        "title": "General Assembly",
+        "date": "2018-11-13 00:00:00",
+        "mood": [
+            "Inspired",
+            "Motivated"
+        ],
+        "productivity": [
+            "Self Development"
+        ],
         "contents": "Something a bit different this evening. A UI UX class at the GA.\n"
     },
     {
-        "title": "# Geomob\n",
-        "date": "Date: Sep 06, 2018\n",
-        "mood": "Mood: Content,Optimistic\n",
-        "productivity": "Productivity: Friends,Work\n",
+        "title": "Geomob",
+        "date": "2018-09-06 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Friends",
+            "Work"
+        ],
         "contents": "Slow day at work. \n"
     },
     {
-        "title": "# Goodwood\n",
-        "date": "Date: Aug 04, 2018\n",
-        "mood": "Mood: Annoyed,Content,Happy\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Goodwood",
+        "date": "2018-08-04 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Martins stag do!\n"
     },
     {
-        "title": "# Gravity\n",
-        "date": "Date: Nov 18, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Gravity",
+        "date": "2018-11-18 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Spent the morning trampolining at Gravity with Jennys Nephew and Neice. Love those kids! So fun jumping around but so tiring chasing them too lol.\n"
     },
     {
-        "title": "# Hangover Sunday\n",
-        "date": "Date: Sep 23, 2018\n",
-        "mood": "Mood: Content,Happy,Tired\n",
-        "productivity": "Productivity: Family,Leisure,Programming\n",
+        "title": "Hangover Sunday",
+        "date": "2018-09-23 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "up early, cant sleep after too many beers the night before.\n"
     },
     {
-        "title": "# Happy Days for Jenny!\n",
-        "date": "Date: Jul 12, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Happy Days for Jenny!",
+        "date": "2018-07-12 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Jenny found out she got the job today so happy for her!"
     },
     {
-        "title": "# Happy Friday, relaxing with a movie\n",
-        "date": "Date: Jul 19, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Happy Friday, relaxing with a movie",
+        "date": "2018-07-19 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Another week over . pent the evening relaxing with jenny and watching Life of pi. Great movie !\n"
     },
     {
-        "title": "# Happy Sunday\n",
-        "date": "Date: Nov 11, 2018\n",
-        "mood": "Mood: Happy,Motivated\n",
-        "productivity": "Productivity: Life,Programming\n",
+        "title": "Happy Sunday",
+        "date": "2018-11-11 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated"
+        ],
+        "productivity": [
+            "Life",
+            "Programming"
+        ],
         "contents": "Productive morning - brekkie at poppins. shopping at wilkos and Asda.\n"
     },
     {
-        "title": "# Harry Lunch and Hotpot\n",
-        "date": "Date: Jan 12, 2019\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Friends,Leisure\n",
+        "title": "Harry Lunch and Hotpot",
+        "date": "2019-01-12 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Friends",
+            "Leisure"
+        ],
         "contents": "fun day at harry lunch and hot pot , holiday planning!"
     },
     {
-        "title": "# Hello 2019\n",
-        "date": "Date: Jan 02, 2019\n",
-        "mood": "Mood: Excited,Happy\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Hello 2019",
+        "date": "2019-01-02 00:00:00",
+        "mood": [
+            "Excited",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "So excited about this year. With jenny now has my fiance I feel like i can do anything for some reason.\n"
     },
     {
-        "title": "# HK / Thailand Update\n",
-        "date": "Date: Oct 25, 2018\n",
-        "mood": "Mood: Happy,Motivated\n",
-        "productivity": "Productivity: Holiday\n",
+        "title": "HK / Thailand Update",
+        "date": "2018-10-25 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated"
+        ],
+        "productivity": [
+            "Holiday"
+        ],
         "contents": "Been a crazy couple of days!\n"
     },
     {
-        "title": "# Hot Pot with Friends\n",
-        "date": "Date: Oct 13, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Fitness,Friends,Leisure,Programming\n",
+        "title": "Holiday Stress",
+        "date": "2019-01-28 00:00:00",
+        "mood": [
+            "Stressed"
+        ],
+        "productivity": [
+            "Friends"
+        ],
+        "contents": "trying to book a holiday with a group of friends. Streesssssssssssssss\n"
+    },
+    {
+        "title": "Hot Pot with Friends",
+        "date": "2018-10-13 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Friends",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Finally a gym sesh.\n"
     },
     {
-        "title": "# House Warming At our Flat\n",
-        "date": "Date: Aug 31, 2018\n",
-        "mood": "Mood: Energetic,Happy,Tired\n",
-        "productivity": "Productivity: Friends,Leisure\n",
+        "title": "House Warming At our Flat",
+        "date": "2018-08-31 00:00:00",
+        "mood": [
+            "Energetic",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Friends",
+            "Leisure"
+        ],
         "contents": "Amazinly busy day hosting friends at our flat for the first time.... Pad Thai was a success and it was so nice having friends over.\n"
     },
     {
-        "title": "# Hungover & Fun in the Sun\n",
-        "date": "Date: Jul 21, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Hungover & Fun in the Sun",
+        "date": "2018-07-21 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Drank too much last night... Headache...\n"
     },
     {
-        "title": "# I GOT IT...\n",
-        "date": "Date: Dec 20, 2018\n",
-        "mood": "Mood: Excited,Happy,Optimistic\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "I GOT IT...",
+        "date": "2018-12-20 00:00:00",
+        "mood": [
+            "Excited",
+            "Happy",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "I got the R today.... \n"
     },
     {
-        "title": "# ill But trying to be productive\n",
-        "date": "Date: Dec 14, 2018\n",
-        "mood": "Mood: Motivated,Optimistic,Tired\n",
-        "productivity": "Productivity: Programming,Self Development\n",
+        "title": "ill But trying to be productive",
+        "date": "2018-12-14 00:00:00",
+        "mood": [
+            "Motivated",
+            "Optimistic",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming",
+            "Self Development"
+        ],
         "contents": "Got ill from colleagues...\n"
     },
     {
-        "title": "# Interesting Couple of Days\n",
-        "date": "Date: Nov 25, 2018\n",
-        "mood": "Mood: Excited\n",
-        "productivity": "Productivity: Fitness,Life,Work\n",
+        "title": "Interesting Couple of Days",
+        "date": "2018-11-25 00:00:00",
+        "mood": [
+            "Excited"
+        ],
+        "productivity": [
+            "Fitness",
+            "Life",
+            "Work"
+        ],
         "contents": "Secret project is in full swing. need to do more research though, but its hard to do it in the flat.\n"
     },
     {
-        "title": "# John Nelson\n",
-        "date": "Date: Oct 10, 2018\n",
-        "mood": "Mood: Inspired,Motivated\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Jennys Bday meal!",
+        "date": "2019-02-02 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Friends",
+            "Life"
+        ],
+        "contents": "Sorted out home admin and life stuff\n"
+    },
+    {
+        "title": "John Nelson",
+        "date": "2018-10-10 00:00:00",
+        "mood": [
+            "Inspired",
+            "Motivated"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Inspiring evening hearing John Nelson talk about data visualisation and map making so passionately.\n"
     },
     {
-        "title": "# JS Module Rabbit hole\n",
-        "date": "Date: Oct 08, 2018\n",
-        "mood": "Mood: Content,Optimistic\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "JS Module Rabbit hole",
+        "date": "2018-10-08 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Busy day at work. Lots of code reviews.\n"
     },
     {
-        "title": "# Keep Smiling and be Happy\n",
-        "date": "Date: Nov 08, 2018\n",
-        "mood": "Mood: Motivated,Optimistic,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Keep Smiling and be Happy",
+        "date": "2018-11-08 00:00:00",
+        "mood": [
+            "Motivated",
+            "Optimistic",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Another busy day at work , fixing shit which other people broke, was nervous but beleived in myslef that I could fix it and have made good progress. why do I doubt myself sometimes? I can do it.\n"
     },
     {
-        "title": "# Keeping my head up\n",
-        "date": "Date: Nov 07, 2018\n",
-        "mood": "Mood: Motivated\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Keeping my head up",
+        "date": "2018-11-07 00:00:00",
+        "mood": [
+            "Motivated"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Trying to get back in to the swing of things. discovered the Joe Rogan Experience podcast which has been motivational. he talks about disciple and trying to do your best.\n"
     },
     {
-        "title": "# Last Day at Work  & Holiday Packing\n",
-        "date": "Date: Oct 16, 2018\n",
-        "mood": "Mood: Energetic,Happy,Tired\n",
-        "productivity": "Productivity: Work\n",
+        "title": "Last Day at Work  & Holiday Packing",
+        "date": "2018-10-16 00:00:00",
+        "mood": [
+            "Energetic",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Work"
+        ],
         "contents": "Frantic last day, trying to tie up loose ends before my last day . had dinner in bimibab then straight home packing and holiday prep till midnight. hard to sqeeze in some programming in between all of this!\n"
     },
     {
-        "title": "# Lazy mode\n",
-        "date": "Date: Sep 11, 2018\n",
-        "mood": "Mood: Tired,Unmotivated\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Lazy Day",
+        "date": "2019-02-03 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Life"
+        ],
+        "contents": "lie in and binged on You.\n"
+    },
+    {
+        "title": "Lazy mode",
+        "date": "2018-09-11 00:00:00",
+        "mood": [
+            "Tired",
+            "Unmotivated"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Slow day at work... came back cooked and watch the new Mummy movie. whata load of crap. \n"
     },
     {
-        "title": "# Lethargic....\n",
-        "date": "Date: Sep 25, 2018\n",
-        "mood": "Mood: Tired,Unmotivated\n",
-        "productivity": "Productivity: Fitness,Leisure\n",
+        "title": "Lethargic....",
+        "date": "2018-09-25 00:00:00",
+        "mood": [
+            "Tired",
+            "Unmotivated"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure"
+        ],
         "contents": "Felt like a busy day at work for some reason... forced myself to gym bit hurt my self a bit. couldnt get on to any equipment i needed so wasnt a great sesh.\n"
     },
     {
-        "title": "# Meet up with old colleagues\n",
-        "date": "Date: Jul 24, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Lion Dancing",
+        "date": "2019-02-05 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Fitness",
+            "Friends"
+        ],
+        "contents": "Wrecked from three days of lion dancing. car got a puncture so had to get towed. bad luck! need to get back to coding and build this micro blogger and move off notion"
+    },
+    {
+        "title": "Meet up with old colleagues",
+        "date": "2018-07-24 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Slow day at work again.\n"
     },
     {
-        "title": "# Mela Festival\n",
-        "date": "Date: Jul 22, 2018\n",
-        "mood": "Mood: Content,Energetic,Happy,Optimistic\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Mela Festival",
+        "date": "2018-07-22 00:00:00",
+        "mood": [
+            "Content",
+            "Energetic",
+            "Happy",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Mela Festival at Eastleigh and catch up with the YQ crew. Its been a weekend of catching up with old friends :)\n"
     },
     {
-        "title": "# Merry Christmas\n",
-        "date": "Date: Dec 25, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Family,Holiday,Life\n",
+        "title": "Merry Christmas",
+        "date": "2018-12-25 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Family",
+            "Holiday",
+            "Life"
+        ],
         "contents": "its been the holidays, been playing with vue more and making progress with tfl demos... not on track with my cs50 courses though...\n"
     },
     {
-        "title": "# Merry Post Christmas!\n",
-        "date": "Date: Dec 28, 2018\n",
-        "mood": "Mood: Content,Happy,Motivated\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Merry Post Christmas!",
+        "date": "2018-12-28 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Motivated"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Been a great couple of days,  drinnking too much hanging out with friends and family\n"
     },
     {
-        "title": "# More shopping and researching...\n",
-        "date": "Date: Dec 02, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Family,Life\n",
+        "title": "More shopping and researching...",
+        "date": "2018-12-02 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Life"
+        ],
         "contents": "jennys gone shopping mad. but hey is xmas\n"
     },
     {
-        "title": "# More Vue\n",
-        "date": "Date: Jan 04, 2019\n",
-        "mood": "Mood: Motivated,Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "more stag planning",
+        "date": "2019-02-01 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Friends"
+        ],
+        "contents": "more stag planning, so tired from yesterdays game. made a group chat and deciding last activities.\n"
+    },
+    {
+        "title": "More Vue",
+        "date": "2019-01-04 00:00:00",
+        "mood": [
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "got stuck with Vue last night ,but just need a nights rest and started the exercise over and made more progress.\n"
     },
     {
-        "title": "# Mum and Dad come to visit :) (:\n",
-        "date": "Date: Sep 16, 2018\n",
-        "mood": "Mood: Energetic,Happy\n",
-        "productivity": "Productivity: Family,Leisure,Programming\n",
+        "title": "Mum and Dad come to visit :) (:",
+        "date": "2018-09-16 00:00:00",
+        "mood": [
+            "Energetic",
+            "Happy"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Mum and dad came to visit today. first time they have been to flat for quite some time. They seem impressed with what we have done to the flat.\n"
     },
     {
-        "title": "# Mums Birthday Meal in London\n",
-        "date": "Date: Aug 11, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Family,Leisure,Life\n",
+        "title": "Mums Birthday Meal in London",
+        "date": "2018-08-11 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure",
+            "Life"
+        ],
         "contents": "Today went by in a blink of an eye. Woke up early to get groceries and an nice full english at the Olive tree in Bromley. Proper Peng!\n"
     },
     {
-        "title": "# New Baseline\n",
-        "date": "Date: Jul 31, 2018\n",
-        "mood": "Mood: Content,Energetic,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "New Baseline",
+        "date": "2018-07-31 00:00:00",
+        "mood": [
+            "Content",
+            "Energetic",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Bit tired need to get a bit more sleep.\n"
     },
     {
-        "title": "# Nice way to end a tiring week\n",
-        "date": "Date: Sep 14, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Nice way to end a tiring week",
+        "date": "2018-09-14 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Picking up the pieces from last night. spent all day work helping out the shitty support desk.\n"
     },
     {
-        "title": "# No more fortnite\n",
-        "date": "Date: Aug 29, 2018\n",
-        "mood": "Mood: Dissatisfied,Frustrated\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "No more fortnite",
+        "date": "2018-08-29 00:00:00",
+        "mood": [
+            "Dissatisfied",
+            "Frustrated"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "too obsessed with fornite recently , got a bit of dojo calculator workingby make use of eval(). feel stupid for trying to over complicate how I was gonna build this calculator..."
     },
     {
-        "title": "# No Stress\n",
-        "date": "Date: Sep 03, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Leisure,Life,Programming\n",
+        "title": "No Stress",
+        "date": "2018-09-03 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Did nothing productive over the weekend back in portsmouth . was so chilled and realxing.\n"
     },
     {
-        "title": "# Not enough sleep\n",
-        "date": "Date: Jul 23, 2018\n",
-        "mood": "Mood: Annoyed,Frustrated,Tired\n",
-        "productivity": "Productivity: Programming,Work\n",
+        "title": "Not enough sleep",
+        "date": "2018-07-23 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Frustrated",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming",
+            "Work"
+        ],
         "contents": "Crap night sleep last night. Too fucking hot! its a crazy heat wave at the moment and was 33 degrees today.\n"
     },
     {
-        "title": "# Pangs!\n",
-        "date": "Date: Nov 10, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Friends\n",
+        "title": "Opportunity From nowhere",
+        "date": "2019-01-21 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure",
+            "Life"
+        ],
+        "contents": "Followed up on a random email about a gis project.\n"
+    },
+    {
+        "title": "Pangs!",
+        "date": "2018-11-10 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Friends"
+        ],
         "contents": "Back in portsmouth with Jenny.\n"
     },
     {
-        "title": "# Parent Life Admin\n",
-        "date": "Date: Aug 01, 2018\n",
-        "mood": "Mood: Content\n",
-        "productivity": "Productivity: Life\n",
+        "title": "Parent Life Admin",
+        "date": "2018-08-01 00:00:00",
+        "mood": [
+            "Content"
+        ],
+        "productivity": [
+            "Life"
+        ],
         "contents": "At Crystals place for dinner and spent the evening sorting admin stuff for dad. Had to be done. Watch more episides of Our Girl in the evening so no coding this evening..."
     },
     {
-        "title": "# PnD\n",
-        "date": "Date: Oct 15, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Work\n",
+        "title": "Parents Meet",
+        "date": "2019-01-27 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Happy",
+            "Satisfied"
+        ],
+        "productivity": [
+            "Family"
+        ],
+        "contents": "Jennys dad meets my parents for the first time :)  All went well!\n"
+    },
+    {
+        "title": "PnD",
+        "date": "2018-10-15 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Work"
+        ],
         "contents": "cooking and just prepping for pnd for work tomorrow.\n"
     },
     {
-        "title": "# Portsmouth Catchup\n",
-        "date": "Date: Sep 22, 2018\n",
-        "mood": "Mood: Content,Happy,Tired\n",
-        "productivity": "Productivity: Family,Friends,Leisure,Programming\n",
+        "title": "Portsmouth Catchup",
+        "date": "2018-09-22 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Friends",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Back home in Portsmouth , tried coding for a bit but felt so lethargic so had a nap and ate loads of food my parents cooked. so nice :)\n"
     },
     {
-        "title": "# Post Holiday Blues\n",
-        "date": "Date: Nov 05, 2018\n",
-        "mood": "Mood: Tired,Unmotivated\n",
-        "productivity": "\n",
+        "title": "Post Holiday Blues",
+        "date": "2018-11-05 00:00:00",
+        "mood": [
+            "Tired",
+            "Unmotivated"
+        ],
+        "productivity": [
+            ""
+        ],
         "contents": "\n"
     },
     {
-        "title": "# Pre holiday shopping\n",
-        "date": "Date: Oct 14, 2018\n",
-        "mood": "Mood: Content\n",
-        "productivity": "Productivity: Family,Programming\n",
+        "title": "Pre holiday shopping",
+        "date": "2018-10-14 00:00:00",
+        "mood": [
+            "Content"
+        ],
+        "productivity": [
+            "Family",
+            "Programming"
+        ],
         "contents": "shopping in bluewater and then dinner at jennys mum today. spent a bit too much money before holiday next week....\n"
     },
     {
-        "title": "# Production Change\n",
-        "date": "Date: Sep 13, 2018\n",
-        "mood": "Mood: Angry,Dissatisfied,Frustrated,Tired\n",
-        "productivity": "Productivity: Fitness,Work\n",
+        "title": "Production Change",
+        "date": "2018-09-13 00:00:00",
+        "mood": [
+            "Angry",
+            "Dissatisfied",
+            "Frustrated",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Work"
+        ],
         "contents": "Productive morning : - Gym and signed up to GP and cooked a cottage pie.\n"
     },
     {
-        "title": "# Productive Sunday\n",
-        "date": "Date: Jul 15, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure,Life,Programming\n",
+        "title": "Productive Sunday",
+        "date": "2018-07-15 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Great Sunday\n"
     },
     {
-        "title": "# Research\n",
-        "date": "Date: Nov 17, 2018\n",
-        "mood": "Mood: Happy,Motivated\n",
-        "productivity": "Productivity: Leisure,Life\n",
+        "title": "Research",
+        "date": "2018-11-17 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated"
+        ],
+        "productivity": [
+            "Leisure",
+            "Life"
+        ],
         "contents": "Researching hehehehehehe. \n"
     },
     {
-        "title": "# Rewflection on Yesterday  & Dinner with Jennys Family\n",
-        "date": "Date: Dec 30, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Family,Life,Programming\n",
+        "title": "Rewflection on Yesterday  & Dinner with Jennys Family",
+        "date": "2018-12-30 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family",
+            "Life",
+            "Programming"
+        ],
         "contents": "Reflection on yesterday, it was truly magical.  dropped to one knee and seeing a crowd form around us. Some radom woman screaming \" oh my god hes going to propose\". The lighting changed and  there I was proposing to the love of my love. \n"
     },
     {
-        "title": "# Rye & Camber \n",
-        "date": "Date: Aug 14, 2018\n",
-        "mood": "Mood: Happy,Optimistic\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Rye & Camber",
+        "date": "2018-08-14 00:00:00",
+        "mood": [
+            "Happy",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Day in Rye with Jenny. So chilled and felt so happy. Lots of photography around Rye and Camber exploring the local sights.\n"
     },
     {
-        "title": "# Saturday Coding and Chill\n",
-        "date": "Date: Oct 06, 2018\n",
-        "mood": "Mood: Content,Satisfied\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Saturday Coding and Chill",
+        "date": "2018-10-06 00:00:00",
+        "mood": [
+            "Content",
+            "Satisfied"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Spent all day learning about require JS and got it working with leaflet. Worked through most of the pluralsight tutorial too, its only useful at a high level, still can go much deeper in require JS. but satisfied i know how to use it in a project.\n"
     },
     {
-        "title": "# Shopping Crazy\n",
-        "date": "Date: Dec 01, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Family\n",
+        "title": "Shopping Crazy",
+        "date": "2018-12-01 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Family"
+        ],
         "contents": "Family shopping with jenny.. spending spending.\n"
     },
     {
-        "title": "# Shopping for flat stuff\n",
-        "date": "Date: Jul 14, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Life,Programming\n",
+        "title": "Shopping for flat stuff",
+        "date": "2018-07-14 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Life",
+            "Programming"
+        ],
         "contents": "A busy day of unsuccessfully trying to find stuff for the flat. Ended up spending a ton of money on food at Wing Yip . Found a great Vietnamese joint upstairs, forgot the name though... something like \"An banana\"..!? \n"
     },
     {
-        "title": "# Skipped Badders for cooking and code\n",
-        "date": "Date: Jul 30, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Leisure,Programming\n",
+        "title": "Skipped Badders for cooking and code",
+        "date": "2018-07-30 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Big cooking sesh instead of badmibton. Really cba for some reason this evening. Need to gym tomorrow though.\n"
     },
     {
-        "title": "# Slow Monday\n",
-        "date": "Date: Jul 16, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Slow Monday",
+        "date": "2018-07-16 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "A slow monday at work , nice to have new co-worker join the team today. I'm appreciated the fact the workload is much lower these days.\n"
     },
     {
-        "title": "# So so Tired\n",
-        "date": "Date: Nov 26, 2018\n",
-        "mood": "Mood: Frustrated,Motivated,Tired\n",
-        "productivity": "\n",
+        "title": "So so Tired",
+        "date": "2018-11-26 00:00:00",
+        "mood": [
+            "Frustrated",
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            ""
+        ],
         "contents": "\n"
     },
     {
-        "title": "# Stag Do\n",
-        "date": "Date: Aug 19, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Stag Do",
+        "date": "2018-08-19 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Stag do since Friday , bit of down time from everything really and didnt get a chance to update my logs...\n"
     },
     {
-        "title": "# Standard Evening\n",
-        "date": "Date: Jul 18, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Stag do planning",
+        "date": "2019-01-30 00:00:00",
+        "mood": [
+            "Content",
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Friends",
+            "Life"
+        ],
+        "contents": "Tired from badders. But somewhat productive day. Meetings all day planning.\n"
+    },
+    {
+        "title": "Standard Evening",
+        "date": "2018-07-18 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Gym\n"
     },
     {
-        "title": "# still stuck on vue exercise\n",
-        "date": "Date: Jan 16, 2019\n",
-        "mood": "Mood: Frustrated\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "still stuck on vue exercise",
+        "date": "2019-01-16 00:00:00",
+        "mood": [
+            "Frustrated"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "only a quick pomodoro spent on the vue exercise... still not much more progress.\n"
     },
     {
-        "title": "# Struggling\n",
-        "date": "Date: Nov 06, 2018\n",
-        "mood": "Mood: Dissatisfied,Tired\n",
-        "productivity": "\n",
+        "title": "Struggling",
+        "date": "2018-11-06 00:00:00",
+        "mood": [
+            "Dissatisfied",
+            "Tired"
+        ],
+        "productivity": [
+            ""
+        ],
         "contents": "\n"
     },
     {
-        "title": "# Stuck\n",
-        "date": "Date: Dec 15, 2018\n",
-        "mood": "Mood: Confused,Demotivated,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Stuck",
+        "date": "2018-12-15 00:00:00",
+        "mood": [
+            "Confused",
+            "Demotivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Stuck on my first task i set my self...\n"
     },
     {
-        "title": "# stuck on on vue exercises\n",
-        "date": "Date: Jan 10, 2019\n",
-        "mood": "Mood: Annoyed,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "stuck on on vue exercises",
+        "date": "2019-01-10 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "felt like i was making good progress on the vue exercises.\n"
     },
     {
-        "title": "# stuck on vue exercise\n",
-        "date": "Date: Jan 15, 2019\n",
-        "mood": "Mood: Annoyed,Frustrated\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "stuck on vue exercise",
+        "date": "2019-01-15 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Frustrated"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "stuck  on another thing on exercise 3 of vue js web development projects. components just are not interactive...\n"
     },
     {
-        "title": "# Sweat It Out\n",
-        "date": "Date: Aug 09, 2018\n",
-        "mood": "Mood: Energetic,Happy,Optimistic,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure\n",
+        "title": "Sunday Vue and Tennis",
+        "date": "2019-01-20 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
+        "contents": "wrapped up chapter 3 and the second vue exercise and put all my notes down on paper.\n"
+    },
+    {
+        "title": "Sweat It Out",
+        "date": "2018-08-09 00:00:00",
+        "mood": [
+            "Energetic",
+            "Happy",
+            "Optimistic",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure"
+        ],
         "contents": "Good first day of sprinting today, actually wrote some working code with the help of Tony. Feeling optimistic we can actually deliver some value to the business. Gotta believe more in myself.\n"
     },
     {
-        "title": "# Tennis and Chill\n",
-        "date": "Date: Sep 05, 2018\n",
-        "mood": "Mood: Content,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure\n",
+        "title": "Tennis and Chill",
+        "date": "2018-09-05 00:00:00",
+        "mood": [
+            "Content",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure"
+        ],
         "contents": "Slow day at work.. trying to understand some javascript logic for a webapp which is tricky.\n"
     },
     {
-        "title": "# Tennis and still lethargic\n",
-        "date": "Date: Sep 26, 2018\n",
-        "mood": "Mood: Tired,Unmotivated\n",
-        "productivity": "Productivity: Fitness,Leisure\n",
+        "title": "Tennis and still lethargic",
+        "date": "2018-09-26 00:00:00",
+        "mood": [
+            "Tired",
+            "Unmotivated"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure"
+        ],
         "contents": "Maybe coming down with something... everyone at work is ill... Learnt loads about javascript testing which is cool.\n"
     },
     {
-        "title": "# Tennis and Wontons\n",
-        "date": "Date: Sep 19, 2018\n",
-        "mood": "Mood: Happy,Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Tennis and Wontons",
+        "date": "2018-09-19 00:00:00",
+        "mood": [
+            "Happy",
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Thrashed nye at tennis again. perhaps i'm better than i thought or hes just shit? moaned and bitched a lot about things at work. dunno if this is normal. Doenst feel right. time to look for a new job perhaps?\n"
     },
     {
-        "title": "# Time is ticking\n",
-        "date": "Date: Nov 29, 2018\n",
-        "mood": "Mood: Annoyed,Excited,Tired\n",
-        "productivity": "Productivity: Fitness,Leisure,Life,Programming\n",
+        "title": "Time is ticking",
+        "date": "2018-11-29 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Excited",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Combination of feelings over the last couple days\n"
     },
     {
-        "title": "# Time with Jennys Fam\n",
-        "date": "Date: Jan 13, 2019\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Family,Programming\n",
+        "title": "Time with Jennys Fam",
+        "date": "2019-01-13 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Family",
+            "Programming"
+        ],
         "contents": "spent all day with jennys fam and her bros kids. i do like playing with them. brings out my inner child :)\n"
     },
     {
-        "title": "# Tommi's 100 Day\n",
-        "date": "Date: Oct 07, 2018\n",
-        "mood": "Mood: Content\n",
-        "productivity": "Productivity: Family,Leisure\n",
+        "title": "Tommi's 100 Day",
+        "date": "2018-10-07 00:00:00",
+        "mood": [
+            "Content"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure"
+        ],
         "contents": "spent all day eating celebrating tommi's 100 days since he was born. got me thinking about 100 days of code again. its amazing how much that challenge changed my perspective on coding. \n"
     },
     {
-        "title": "# Too many things I want to do\n",
-        "date": "Date: Dec 11, 2018\n",
-        "mood": "Mood: Nervous,Tired\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Too many things I want to do",
+        "date": "2018-12-11 00:00:00",
+        "mood": [
+            "Nervous",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "feeling nervous for some reason. overwhelmed that I never gonna be good enough . questioning if really want to be a developer.\n"
     },
     {
-        "title": "# Trying to Chill\n",
-        "date": "Date: Nov 19, 2018\n",
-        "mood": "Mood: Content,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Programming\n",
+        "title": "Triage coffee meetup",
+        "date": "2019-01-23 00:00:00",
+        "mood": [
+            "Excited",
+            "Motivated"
+        ],
+        "productivity": [
+            "Fitness",
+            "Life"
+        ],
+        "contents": "meeting with triage..\n"
+    },
+    {
+        "title": "Trying to Chill",
+        "date": "2018-11-19 00:00:00",
+        "mood": [
+            "Content",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Programming"
+        ],
         "contents": "Jenny cooked today :)\n"
     },
     {
-        "title": "# Vongle and Chill\n",
-        "date": "Date: Sep 18, 2018\n",
-        "mood": "Mood: Happy\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Tv binge and chill",
+        "date": "2019-01-19 00:00:00",
+        "mood": [
+            "Happy",
+            "Relaxed"
+        ],
+        "productivity": [
+            "Family",
+            "Leisure"
+        ],
+        "contents": "Tv binge with jenny watching You, so addicted....\n"
+    },
+    {
+        "title": "Vongle and Chill",
+        "date": "2018-09-18 00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "USed my mums clams to make vongle for the first time after today. was fucking delicious. need write down the recipe. too tired to code today, just chilled and watch the body guard and played more dead cells"
     },
     {
-        "title": "# Vue Break Through\n",
-        "date": "Date: Dec 17, 2018\n",
-        "mood": "Mood: Happy,Motivated\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Vue Break Through",
+        "date": "2018-12-17 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Managed to get past the issue I was stuck on ! was just a simple error which I was able to overcome.\n"
     },
     {
-        "title": "# Vue Productivity\n",
-        "date": "Date: Dec 18, 2018\n",
-        "mood": "Mood: Optimistic,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Vue Productivity",
+        "date": "2018-12-18 00:00:00",
+        "mood": [
+            "Optimistic",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "work sucks atm, but feeling super productive working with vue atm.\n"
     },
     {
-        "title": "# Vue progress getting fat\n",
-        "date": "Date: Jan 07, 2019\n",
-        "mood": "Mood: Motivated,Tired\n",
-        "productivity": "Productivity: Programming\n",
+        "title": "Vue progress getting fat",
+        "date": "2019-01-07 00:00:00",
+        "mood": [
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Programming"
+        ],
         "contents": "Tiredness again...\n"
     },
     {
-        "title": "# Weird Aylesbury Trip\n",
-        "date": "Date: Nov 16, 2018\n",
-        "mood": "Mood: Confused\n",
-        "productivity": "Productivity: Friends\n",
+        "title": "Weird Aylesbury Trip",
+        "date": "2018-11-16 00:00:00",
+        "mood": [
+            "Confused"
+        ],
+        "productivity": [
+            "Friends"
+        ],
         "contents": "Decided to go Aylesbury for a surprise bday for Jonathan. Seemed like a good idea at the time , but instantly regretted as I got on the train.\n"
     },
     {
-        "title": "# Whole Day of Eating!\n",
-        "date": "Date: Jul 29, 2018\n",
-        "mood": "Mood: Content,Energetic,Happy\n",
-        "productivity": "Productivity: Fitness,Leisure,Life,Programming\n",
+        "title": "Whole Day of Eating!",
+        "date": "2018-07-29 00:00:00",
+        "mood": [
+            "Content",
+            "Energetic",
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Leisure",
+            "Life",
+            "Programming"
+        ],
         "contents": "Productive day tidying up the flat ready for Natalie to visit us. Sqeezed in a quick sesh at the gym and got another PB on my squats.\n"
     },
     {
-        "title": "# Why do I programme?\n",
-        "date": "Date: Sep 04, 2018\n",
-        "mood": "Mood: Content,Optimistic\n",
-        "productivity": "Productivity: Fitness,Programming\n",
+        "title": "Why do I programme?",
+        "date": "2018-09-04 00:00:00",
+        "mood": [
+            "Content",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
         "contents": "This video has really hit home...\n"
     },
     {
-        "title": "# Work \u00f0\u0178\u02dc\u00aa\n",
-        "date": "Date: Aug 02, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Fitness,Work\n",
+        "title": "Work \u00f0\u0178\u02dc\u00aa",
+        "date": "2018-08-02 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Work"
+        ],
         "contents": "Routine flipped on its head today. Had a nice lie though and got a gym sesh in before work at 1.\n"
     },
     {
-        "title": "# Work is fraustrating\n",
-        "date": "Date: Jan 14, 2019\n",
-        "mood": "Mood: Annoyed,Optimistic\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Work is fraustrating",
+        "date": "2019-01-14 00:00:00",
+        "mood": [
+            "Annoyed",
+            "Optimistic"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "frustrating day as usual at work. hard to push things forward.\n"
     },
     {
-        "title": "# Xmas Tree\n",
-        "date": "Date: Dec 07, 2018\n",
-        "mood": "Mood: Happy,Motivated,Tired\n",
-        "productivity": "Productivity: Fitness,Life,Programming\n",
+        "title": "Xmas Tree",
+        "date": "2018-12-07 00:00:00",
+        "mood": [
+            "Happy",
+            "Motivated",
+            "Tired"
+        ],
+        "productivity": [
+            "Fitness",
+            "Life",
+            "Programming"
+        ],
         "contents": "Whoops forgot to blog for while! been busy with a new schedile of badminton and learning lot more vue. Almost finished all the net ninja tutorials but still some more things to learn\n"
     },
     {
-        "title": "# Zombie Mode\n",
-        "date": "Date: Aug 06, 2018\n",
-        "mood": "Mood: Tired\n",
-        "productivity": "Productivity: Leisure\n",
+        "title": "Zombie Mode",
+        "date": "2018-08-06 00:00:00",
+        "mood": [
+            "Tired"
+        ],
+        "productivity": [
+            "Leisure"
+        ],
         "contents": "Hardly slept and felt like a zombie all day at  work... its too fucking hot. All day meeting too and was difficult to stay focused. but excited that the project work is finally kicking off at work. This means real life development experience....not sure if i'm ready but i have definitely prepped as much as I can in terms of learning about javascript, perhaps i could have done more on the esri side of things but , i think my fundamentals are pretty much there.\n"
     }
 ]

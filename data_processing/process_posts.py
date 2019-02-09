@@ -22,7 +22,7 @@ for blog in MDFiles:
 
     #Read a posts
     with open ("temp/" + blog, "rt") as testMDFile:
-        # print("processing " + blog)
+        print("processing " + blog)
         blog_obj = {}
         lines = testMDFile.readlines()
         
