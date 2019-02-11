@@ -1,2 +1,3 @@
-data_processing/temp/
-data_processing/all_blogs_eg.json
+data_processing/temp
+jot-app/node_modules/*
+*.zip
