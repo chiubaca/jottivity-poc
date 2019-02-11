@@ -1,6 +1,14 @@
 <template>
   <div id="app">
-    <img alt="pen logo" src="./assets/logo.png">
+   
+    <header> 
+       <img alt="pen logo" src="./assets/logo.png">
+        <div>
+          <h1>Jot.</h1>
+          <h2>An application to jot your thoughts, mood &amp; productivity </h2>
+        </div>
+    
+    </header>
 
     <AllBlogs />
   </div>
@@ -18,12 +26,20 @@ export default {
 </script>
 
 <style>
-#app {
+header{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display:flex;
+  align-items: center;
+
+  border-bottom: 5px solid;  
 }
+
+header img{
+  height:100px;
+  padding: 0 10px 0 20px
+}
+
 </style>
