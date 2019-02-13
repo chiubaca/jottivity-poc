@@ -28,8 +28,11 @@ for blog in MDFiles:
         
         # cleans the title removes '# ' and other trailing spaces
         blog_title = lines[0][2:-1].strip()
-         #cleans dates string and covert it to proper date time stamp
-        blog_date =  str(datetime.strptime(lines[2][6:-1], '%b %d, %Y')) 
+        #cleans dates string and covert it to proper date time stamp
+        parsed_time_stamp = datetime.strptime(lines[2][6:-1], '%b %d, %Y')
+        #TODO: use strftime to make date conform with https://stackoverflow.com/questions/10286204/the-right-json-date-format
+        print(parsed_time_stamp.strftime("%Y"))
+        blog_date =  str(datetime.strptime(lines[2][6:-1], '%b %d, %Y'))
         # cleans string and coverts all moods to a list
         blog_mood = lines[3][6:-1].split(',')
         # cleans string and coverts all productivity to a list
