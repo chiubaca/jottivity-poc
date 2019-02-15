@@ -2,10 +2,11 @@ import zipfile
 import os
 import json
 from datetime import datetime
-import operator
+
 
 #all blogs will be processed and pushed into this list
 all_blogs = []
+
 # all_blogs_sorted = all_blogs.sort(key = operator.attrgetter('date'))
 ## Manualy extract post for now, this script cant handle some ascii characters like hearts
 ## some post may need to manually fixed...
@@ -50,10 +51,12 @@ for blog in MDFiles:
 
         all_blogs.append(blog_obj)
 
-#TODO: sort all_blogs list into date order
-for i in all_blogs:
-        print(i["date"])
+#Todo: group all tags 
+
+
+
+sorted_blogs =  sorted(all_blogs, key=lambda k: k['date'])
 
 # Export the all_blog list to a json file
 with open("all_blogs.json", "w") as outfile:
-    json.dump(all_blogs, outfile)
+    json.dump(sorted_blogs , outfile)
