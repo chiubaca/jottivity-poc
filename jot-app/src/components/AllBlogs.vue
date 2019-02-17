@@ -4,20 +4,29 @@
       <span>{{post.date}}</span>
       <h1>{{post.title}} </h1>
       <p>Mood: {{post.mood}}  </p>
-      <p>Productivity: {{post.productivity}}  </p>
+      <p>Productivity: {{post.productivity}}</p>
+    
+      <PostModal>
+          <h3 slot="post-contents"> {{post.contents}}</h3>
+      </PostModal>
+      
+      <button id="show-modal" @click="showModal = true">Show Modal</button>
+    
     </div>
   </div>
 </template>
 
 <script>
+import PostModal from './PostModal.vue'
 export default {
   name: "AllBlogs",
-  props: {
-    msg: String
+  components:{
+    PostModal
   },
   data() {
     return {
-      posts: []
+      posts: [],
+   
     };
   },
   created() {
@@ -28,7 +37,7 @@ export default {
       .then(myJson => {
         // this.posts = JSON.stringify(myJson)
         for (let i in myJson) {
-          console.log(myJson[i]);
+          // console.log(myJson[i]);
           this.posts.push(myJson[i]);
         }
         // console.log(JSON.stringify(myJson));
