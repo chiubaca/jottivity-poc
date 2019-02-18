@@ -1,33 +1,34 @@
 <template>
-  <div class="all-posts">
-    <div v-for="(post,index) in posts" :key="index">
-      <span>{{post.date}}</span>
-      <h1>{{post.title}} </h1>
-      <p>Mood: {{post.mood}}  </p>
-      <p>Productivity: {{post.productivity}}</p>
-    
-      <PostModal>
-          <h3 slot="post-contents"> {{post.contents}}</h3>
-      </PostModal>
-      
-      <button id="show-modal" @click="showModal = true">Show Modal</button>
-    
+  <div>
+    <div class="all-posts" v-for="(post,index) in posts" :key="index">
+      <Post v-bind:post-data="post"> </Post>
     </div>
   </div>
 </template>
 
 <script>
-import PostModal from './PostModal.vue'
+import Post from '../components/Post.vue'
 export default {
   name: "AllBlogs",
   components:{
-    PostModal
+    Post
   },
   data() {
     return {
       posts: [],
    
     };
+  },
+  methods: {
+    toggleModal() {
+      
+    },
+  },
+  computed: {
+    toggleShow() {
+
+      return true
+    }
   },
   created() {
     fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu.json")

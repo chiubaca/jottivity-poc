@@ -1,6 +1,8 @@
 <template>
   <div class="post-modal">
+         {{isShowing}}
    <slot name="post-contents">
+
         <p>default text</p>
    </slot>
   </div>
@@ -9,14 +11,14 @@
 <script>
 export default {
   name: "PostModal",
-  
+  props:["isShowing"],
   data() {
     return {
         showModal: false
     };
   },
   created() {
-
+    console.log(this.isShowing)
   }
 };
 </script>

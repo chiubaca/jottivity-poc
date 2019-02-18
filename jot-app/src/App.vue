@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import AllBlogs from './components/AllBlogs.vue'
+import AllBlogs from './pages/AllBlogs.vue'
 
 export default {
   name: 'app',
