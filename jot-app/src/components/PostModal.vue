@@ -1,6 +1,6 @@
 <template>
-  <div class="post-modal">
-         {{isShowing}}
+  <div v-if="modalState" class="post-modal">
+         {{modalState}}
    <slot name="post-contents">
 
         <p>default text</p>
@@ -11,14 +11,14 @@
 <script>
 export default {
   name: "PostModal",
-  props:["isShowing"],
+  props:["modalState"],
   data() {
     return {
         showModal: false
     };
   },
   created() {
-    console.log(this.isShowing)
+    console.log(this.modalState)
   }
 };
 </script>
@@ -28,7 +28,8 @@ export default {
  .post-modal{
    background-color: #fff;
    box-shadow: 0px 0px 13px #7d7d7d;
-   width:50%
+
+   width:100%
 
    
 }
