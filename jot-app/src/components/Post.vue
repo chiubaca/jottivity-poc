@@ -47,5 +47,19 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+ .post{
+    font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
 
+ }
+
+ .post{
+   box-shadow: 0px 0px 13px #7d7d7d;
+   width:75%;
+   margin:15px;
+   padding:5px
+   
+}
 </style>

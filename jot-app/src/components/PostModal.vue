@@ -1,10 +1,10 @@
 <template>
   <div v-if="modalState" class="post-modal">
-         {{modalState}}
-   <slot name="post-contents">
 
+   <slot name="post-contents">
         <p>default text</p>
    </slot>
+  
   </div>
 </template>
 
