@@ -1,5 +1,6 @@
 <template>
   <div>
+     <AddNewPost/>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
       <Post v-bind:post-data="post"> </Post>
     </div>
@@ -8,10 +9,12 @@
 
 <script>
 import Post from '../components/Post.vue'
+import AddNewPost from '../components/AddNewPost.vue'
 export default {
   name: "AllBlogs",
   components:{
-    Post
+    Post,
+    AddNewPost
   },
   data() {
     return {
