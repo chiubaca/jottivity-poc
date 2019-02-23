@@ -27,6 +27,8 @@ for blog in MDFiles:
         print("processing " + blog)
         blog_obj = {}
         lines = testMDFile.readlines()
+
+        print(len(lines))
         
         # cleans the title removes '# ' and other trailing spaces
         blog_title = lines[0][2:-1].strip()
@@ -38,15 +40,17 @@ for blog in MDFiles:
         # cleans string and coverts all productivity to a list
         blog_productivity = lines[4][14:-1].split(',')
         # no cleaning required on the contents 
-        blog_contents = lines[6]
+        # TODO: need work out the end of the file  
+        blog_contents = lines[6:]
         
+
         # individual blog object
         blog_obj = {
             "title": blog_title, #string
             "date" : blog_date, #string
             "mood" : blog_mood, #list
             "productivity" : blog_productivity, #list
-            "contents" : blog_contents #string
+            "contents" : "".join(blog_contents) #string
                     }
 
         all_blogs.append(blog_obj)
@@ -56,6 +60,7 @@ for blog in MDFiles:
 
 
 sorted_blogs =  sorted(all_blogs, key=lambda k: k['date'])
+print(sorted_blogs)
 
 # Export the all_blog list to a json file
 with open("all_blogs.json", "w") as outfile:
