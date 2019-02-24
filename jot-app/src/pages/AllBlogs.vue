@@ -34,7 +34,7 @@ export default {
     }
   },
   created() {
-    fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu.json")
+    fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json")
       .then(response => {
         return response.json();
       })
@@ -55,7 +55,7 @@ export default {
 .all-posts {
 
   display: flex;
-  flex-direction: column; /* easily reverse with column-reverse*/
+  flex-direction: column-reverse; /* easily reverse with column-reverse*/
   align-items: center
 }
 
