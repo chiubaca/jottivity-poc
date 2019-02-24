@@ -1,3 +1,4 @@
 data_processing/temp
 jot-app/node_modules/*
 *.zip
+data_processing/all_blogs.json
