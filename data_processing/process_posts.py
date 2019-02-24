@@ -28,8 +28,6 @@ for blog in MDFiles:
         blog_obj = {}
         lines = testMDFile.readlines()
 
-        print(len(lines))
-        
         # cleans the title removes '# ' and other trailing spaces
         blog_title = lines[0][2:-1].strip()
         #cleans dates string and covert it to proper date time stamp
@@ -40,7 +38,6 @@ for blog in MDFiles:
         # cleans string and coverts all productivity to a list
         blog_productivity = lines[4][14:-1].split(',')
         # no cleaning required on the contents 
-        # TODO: need work out the end of the file  
         blog_contents = lines[6:]
         
 
@@ -60,7 +57,6 @@ for blog in MDFiles:
 
 
 sorted_blogs =  sorted(all_blogs, key=lambda k: k['date'])
-print(sorted_blogs)
 
 # Export the all_blog list to a json file
 with open("all_blogs.json", "w") as outfile:
