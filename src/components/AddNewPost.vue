@@ -3,8 +3,11 @@
   <button v-on:click="showNewPostModal = !showNewPostModal"> add new post</button>
   <div v-if="showNewPostModal" class="new-post-container">
     <div> 
-      <p>Some data in here</p>
       <button v-on:click="showNewPostModal=!showNewPostModal"> exit </button>
+      <br>
+      <textarea cols="30" rows="10"></textarea>
+      <br>
+      <button>save entry</button>
     </div>   
   </div>
 </div>
