@@ -21,3 +21,4 @@ yarn-error.log*
 *.sw*
 
 data_processing/temp
+db_backup
