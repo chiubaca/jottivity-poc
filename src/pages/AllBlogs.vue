@@ -1,6 +1,6 @@
 <template>
   <div>
-     <AddNewPost/>
+     <AddNewPost></AddNewPost>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
       <Post v-bind:post-data="post"> </Post>
     </div>
@@ -53,7 +53,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .all-posts {
-
   display: flex;
   flex-direction: column-reverse; /* easily reverse with column-reverse*/
   align-items: center

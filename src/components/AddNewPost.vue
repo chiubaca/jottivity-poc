@@ -7,7 +7,7 @@
       <br>
       <textarea cols="30" rows="10"></textarea>
       <br>
-      <button>save entry</button>
+      <button v-on:click="testPost">save entry</button>
     </div>   
   </div>
 </div>
@@ -21,8 +21,43 @@ export default {
       showNewPostModal: false
     };
   },
+  methods: {
+    submitPost(url , data) {
+      console.log("submitting Post...")
+
+      return fetch(url, {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {
+            "Content-Type": "application/json",
+            // "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify(data), // body data type must match "Content-Type" header
+      })
+      .then(response => response.json()); // parses response to JSON
+    },
+    testPost(){
+      console.log("Test Post!")
+      let testPost = {
+        "title": "Test Post",
+        "date": "2018-07-05T00:00:00",
+        "mood": [
+            "Happy"
+        ],
+        "productivity": [
+            "Fitness",
+            "Programming"
+        ],
+        "contents": "Just another test post"
+      }
+      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json" , testPost)
+    }
+  },
   created() {
-    console.log(this.showNewPostModal);
   }
 };
 </script>

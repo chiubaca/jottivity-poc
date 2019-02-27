@@ -34,7 +34,6 @@ export default {
     }
   },
   created() {
-    console.log("hello from post component");
   }
 };
 </script>
