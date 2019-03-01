@@ -22,3 +22,4 @@ yarn-error.log*
 
 data_processing/temp
 db_backup
+data_processing/*.json
