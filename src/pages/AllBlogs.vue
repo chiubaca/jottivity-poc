@@ -1,6 +1,6 @@
 <template>
   <div>
-     <AddNewPost></AddNewPost>
+    <AddNewPost v-bind:tags="tags"></AddNewPost>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
       <Post v-bind:post-data="post"> </Post>
     </div>

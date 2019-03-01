@@ -1,13 +1,39 @@
 <template>
 <div>
   <button v-on:click="showNewPostModal = !showNewPostModal"> add new post</button>
-  <div v-if="showNewPostModal" class="new-post-container">
-    <div> 
+  <div v-if="showNewPostModal" class="new-post-wrapper">
+    <div class="container">
+       <h2>title:</h2>   
+       <textarea v-model="postTitle"></textarea>
+       <!--TODO: Need to work out all tags dynamically  -->
+        <div v-for="mood in tags[0].mood" :key="mood.id">
+           <label :for="mood" class="tags">
+            <input type="checkbox" 
+                    :id="mood" 
+                    :value="mood" 
+                    v-model="checkedMoods">            
+            {{mood}}
+          </label>
+        </div>
+
+        <br/>
+
+        <div v-for="prod in tags[1].productivity" :key="prod.id">
+           <label :for="prod" class="tags">
+            <input type="checkbox" 
+                    :id="prod" 
+                    :value="prod" 
+                    v-model="checkedProductivity">            
+            {{prod}}
+          </label>
+        </div>
+      
+      
+      <br>
+      <textarea v-model="postContents" cols="30" rows="10"></textarea>
+      <br>
+      <button v-on:click="postEntry">save entry</button>
       <button v-on:click="showNewPostModal=!showNewPostModal"> exit </button>
-      <br>
-      <textarea cols="30" rows="10"></textarea>
-      <br>
-      <button v-on:click="testPost">save entry</button>
     </div>   
   </div>
 </div>
@@ -16,9 +42,15 @@
 <script>
 export default {
   name: "AddNewPost",
+  props: ["tags"],
   data() {
     return {
-      showNewPostModal: false
+      showNewPostModal: false,
+      checkedMoods:[],
+      checkedProductivity:[],
+      postTitle:"",
+      postContents:"",
+      
     };
   },
   methods: {
@@ -40,21 +72,16 @@ export default {
       })
       .then(response => response.json()); // parses response to JSON
     },
-    testPost(){
-      console.log("Test Post!")
-      let testPost = {
-        "title": "Test Post",
-        "date": "2018-07-05T00:00:00",
-        "mood": [
-            "Happy"
-        ],
-        "productivity": [
-            "Fitness",
-            "Programming"
-        ],
-        "contents": "Just another test post"
+    postEntry(){
+      console.log("submitting a real post omg!!");
+      let postObject = {
+        "title": this.postTitle,
+        "date": "2019-03-01T00:00:00",
+        "mood": this.checkedMoods,
+        "productivity": this.checkedProductivity,
+        "contents": this.postContents
       }
-      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json" , testPost)
+      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json" , postObject)
     }
   },
   created() {
@@ -64,8 +91,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.new-post-container{
-  background-color: #3d3b3b5b;
+.new-post-wrapper{
+  background-color: #00000077;
   position: fixed;
   padding: 2em;
   left: 50%;
@@ -75,9 +102,9 @@ export default {
   height: 100%;
 }
 
-.new-post-container div {
+.new-post-wrapper .container {
   background-color: #fff;
-  box-shadow: 0px 0px 13px #7d7d7d;
+  box-shadow: 0px 0px 13px #504c4c8c;
    position: fixed;
   padding: 2em;
   left: 50%;
@@ -85,5 +112,6 @@ export default {
   transform: translate(-50%, -50%);
   width: 50%;
   height: 50%;
+  overflow: auto
 }
 </style>
