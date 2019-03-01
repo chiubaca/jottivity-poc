@@ -19,7 +19,7 @@ export default {
   data() {
     return {
       posts: [],
-   
+      tags: []
     };
   },
   methods: {
@@ -29,20 +29,22 @@ export default {
   },
   computed: {
     toggleShow() {
-
       return true
     }
   },
   created() {
-    fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json")
+    fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0.json")
       .then(response => {
         return response.json();
       })
       .then(myJson => {
-        // this.posts = JSON.stringify(myJson)
-        for (let i in myJson) {
-          // console.log(myJson[i]);
-          this.posts.push(myJson[i]);
+        //Store all posts from db
+        for (let i in myJson.posts) {
+          this.posts.push(myJson.posts[i]);
+        };
+         //Store all tags from db
+        for (let i in myJson.tags) {
+          this.tags.push(myJson.tags[i]);
         }
         // console.log(JSON.stringify(myJson));
       });
