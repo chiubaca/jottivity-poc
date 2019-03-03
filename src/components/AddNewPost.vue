@@ -1,6 +1,14 @@
 <template>
 <div>
-  <button v-on:click="showNewPostModal = !showNewPostModal"> add new post</button>
+  <div id="add-new-post-btn" 
+       v-on:click="showNewPostModal = !showNewPostModal">   
+       <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="40" cy="40" r="40" fill="#9A1E1E"/>
+       <path d="M30 40.5L29.9212 39.0021C29.1092 39.0448 28.4791 39.7266 28.5005 40.5394C28.5219 41.3522 29.1869 42 30 42V40.5ZM50.5 40.5L50.5 42C51.3284 42 52 41.3284 52 40.5C52 39.6716 51.3284 39 50.5 39L50.5 40.5ZM39 50C39 50.8284 39.6716 51.5 40.5 51.5C41.3284 51.5 42 50.8284 42 50H39ZM42 30C42 29.1716 41.3284 28.5 40.5 28.5C39.6716 28.5 39 29.1716 39 30H42ZM30 42H40.5V39H30V42ZM40.5 42H50.5V39H40.5V42ZM42 50V40.5H39V50H42ZM42 40.5V30H39V40.5H42ZM42 50V30H39V50H42ZM30.0788 41.9979C31.4515 41.9257 48.4392 42 50.5 42L50.5 39C48.5607 39 31.3985 38.9243 29.9212 39.0021L30.0788 41.9979Z" fill="white"/>
+       </svg>
+
+  </div>
+
   <div v-if="showNewPostModal" class="new-post-wrapper">
     <div class="container">
         {{getDate}}
@@ -111,6 +119,22 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+#add-new-post-btn{
+  position: fixed;
+  left: 90%;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  border-radius: 100%;
+  width: 80px;
+  height: 80px;
+  box-shadow: 0px 0px 13px #504c4c8c;
+}
+
+#add-new-post-btn:hover{
+    box-shadow: 0px 0px 6px #504c4c8c;
+}
+
 .new-post-wrapper{
   background-color: #00000077;
   position: fixed;
@@ -130,8 +154,8 @@ export default {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
+  width: 75%;
+  height: 75%;
   overflow: auto
 }
 
@@ -147,6 +171,4 @@ export default {
 #new-post-content{
   width: 100%
 }  
-
-
 </style>
