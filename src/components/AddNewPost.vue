@@ -3,35 +3,37 @@
   <button v-on:click="showNewPostModal = !showNewPostModal"> add new post</button>
   <div v-if="showNewPostModal" class="new-post-wrapper">
     <div class="container">
-       <h2>title:</h2>   
-       <textarea v-model="postTitle"></textarea>
-       <!--TODO: Need to work out all tags dynamically  -->
-        <div v-for="mood in tags[0].mood" :key="mood.id">
-           <label :for="mood" class="tags">
-            <input type="checkbox" 
-                    :id="mood" 
-                    :value="mood" 
-                    v-model="checkedMoods">            
-            {{mood}}
-          </label>
+        {{getDate}}
+        <textarea id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
+        
+        <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
+        
+        <div class="tag-container">
+         <!--TODO: Need to work out all tags dynamically  -->  
+          <div>
+            <div v-for="mood in tags[0].mood" :key="mood.id">
+              <label :for="mood" class="tags">
+                <input type="checkbox" 
+                        :id="mood" 
+                        :value="mood" 
+                        v-model="checkedMoods">            
+                {{mood}}
+              </label>
+            </div>
+          </div>
+          <div>
+            <div v-for="prod in tags[1].productivity" :key="prod.id">
+              <label :for="prod" class="tags">
+                <input type="checkbox" 
+                        :id="prod" 
+                        :value="prod" 
+                        v-model="checkedProductivity">            
+                {{prod}}
+              </label>
+            </div>
+          </div>
         </div>
 
-        <br/>
-
-        <div v-for="prod in tags[1].productivity" :key="prod.id">
-           <label :for="prod" class="tags">
-            <input type="checkbox" 
-                    :id="prod" 
-                    :value="prod" 
-                    v-model="checkedProductivity">            
-            {{prod}}
-          </label>
-        </div>
-      
-      
-      <br>
-      <textarea v-model="postContents" cols="30" rows="10"></textarea>
-      <br>
       <button v-on:click="postEntry">save entry</button>
       <button v-on:click="showNewPostModal=!showNewPostModal"> exit </button>
     </div>   
@@ -76,12 +78,30 @@ export default {
       console.log("submitting a real post omg!!");
       let postObject = {
         "title": this.postTitle,
-        "date": "2019-03-01T00:00:00",
+        "date": this.getDate,
         "mood": this.checkedMoods,
         "productivity": this.checkedProductivity,
         "contents": this.postContents
       }
       this.submitPost("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json" , postObject)
+    }
+  },
+  computed: {
+    getDate() {
+      let today = new Date();
+      let dd = today.getDate();
+      let mm = today.getMonth() + 1; //January is 0!
+      let yyyy = today.getFullYear();
+
+      if (dd < 10) {
+        dd = '0' + dd;
+      }
+
+      if (mm < 10) {
+        mm = '0' + mm;
+      }
+      today = `${yyyy}-${mm}-${dd}T00:00:00`
+      return today
     }
   },
   created() {
@@ -114,4 +134,19 @@ export default {
   height: 50%;
   overflow: auto
 }
+
+.tag-container{
+  display: flex;
+  justify-content: space-evenly
+}
+
+#new-post-title{
+  width: 100%
+}
+
+#new-post-content{
+  width: 100%
+}  
+
+
 </style>
