@@ -2,11 +2,10 @@
 <div>
   <div id="add-new-post-btn" 
        v-on:click="showNewPostModal = !showNewPostModal">   
-       <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-       <circle cx="40" cy="40" r="40" fill="#9A1E1E"/>
-       <path d="M30 40.5L29.9212 39.0021C29.1092 39.0448 28.4791 39.7266 28.5005 40.5394C28.5219 41.3522 29.1869 42 30 42V40.5ZM50.5 40.5L50.5 42C51.3284 42 52 41.3284 52 40.5C52 39.6716 51.3284 39 50.5 39L50.5 40.5ZM39 50C39 50.8284 39.6716 51.5 40.5 51.5C41.3284 51.5 42 50.8284 42 50H39ZM42 30C42 29.1716 41.3284 28.5 40.5 28.5C39.6716 28.5 39 29.1716 39 30H42ZM30 42H40.5V39H30V42ZM40.5 42H50.5V39H40.5V42ZM42 50V40.5H39V50H42ZM42 40.5V30H39V40.5H42ZM42 50V30H39V50H42ZM30.0788 41.9979C31.4515 41.9257 48.4392 42 50.5 42L50.5 39C48.5607 39 31.3985 38.9243 29.9212 39.0021L30.0788 41.9979Z" fill="white"/>
+       <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+       <circle cx="25" cy="25" r="25" fill="#9A1E1E"/>
+       <path d="M15 25.5L14.9212 24.0021C14.1092 24.0448 13.4791 24.7266 13.5005 25.5394C13.5219 26.3522 14.1869 27 15 27V25.5ZM35.5 25.5L35.5 27C36.3284 27 37 26.3284 37 25.5C37 24.6716 36.3284 24 35.5 24V25.5ZM24 35C24 35.8284 24.6716 36.5 25.5 36.5C26.3284 36.5 27 35.8284 27 35H24ZM27 15C27 14.1716 26.3284 13.5 25.5 13.5C24.6716 13.5 24 14.1716 24 15H27ZM15 27H25.5V24H15V27ZM25.5 27H35.5V24H25.5V27ZM27 35V25.5H24V35H27ZM27 25.5V15H24V25.5H27ZM27 35V15H24V35H27ZM15.0788 26.9979C16.4515 26.9257 33.4392 27 35.5 27L35.5 24C33.5607 24 16.3985 23.9243 14.9212 24.0021L15.0788 26.9979Z" fill="white"/>
        </svg>
-
   </div>
 
   <div v-if="showNewPostModal" class="new-post-wrapper">
@@ -122,13 +121,13 @@ export default {
 
 #add-new-post-btn{
   position: fixed;
-  left: 90%;
+  left: 87%;
   top: 90%;
   transform: translate(-50%, -50%);
   border-radius: 100%;
-  width: 80px;
-  height: 80px;
-  box-shadow: 0px 0px 13px #504c4c8c;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 0px 15px #504c4c8c;
 }
 
 #add-new-post-btn:hover{
