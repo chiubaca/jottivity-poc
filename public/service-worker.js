@@ -2,8 +2,9 @@ const filesToCache = [
 
 ]
 
-const offlineURL= '/offline.html';
-
+// Neither of these work...
+// const offlineURL= '<%= BASE_URL %>offline.html';
+// const offlineURL= '/offline.html';
 
 // listen for install event
 // the install event is a good time to be caching assets
