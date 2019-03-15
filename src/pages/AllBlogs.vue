@@ -27,12 +27,11 @@ export default {
       fetch("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0.json")
       .then(response => {
         return response.json();
-      })
-      .then(myJson => {
+      }).then(myJson => {
         //Store all posts from db
         for (let i in myJson.posts) {
           this.posts.push(myJson.posts[i]);
-        };
+        }
          //Store all tags from db
         for (let i in myJson.tags) {
           this.tags.push(myJson.tags[i]);
