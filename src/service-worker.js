@@ -1,10 +1,8 @@
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.suppressWarnings();
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
-
 if(workbox){
     console.log("workbox is loaded!")
-    workbox.precaching.precacheAndRoute([]);
+    self.__precacheManifest = [].concat(self.__precacheManifest || []); //add other resources to cache here
+    // workbox.precaching.suppressWarnings();
+    workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
     
     workbox.routing.registerRoute(
         /(.*)\.(?:json)/,
