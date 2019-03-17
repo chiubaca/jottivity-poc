@@ -2,6 +2,13 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []); //add other 
 // workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
+//install new service worker if message is received to do so
+self.addEventListener("message" , function(msg){
+  if (msg.data.action === "skipWaiting"){
+    self.skipWaiting()
+  }
+})
+
 if(workbox){
     console.log("workbox is loaded!") 
     workbox.routing.registerRoute(
