@@ -6,7 +6,7 @@
         <div>
           <h1>Jot.</h1>
           <h2>An application to jot your thoughts, mood &amp; productivity </h2>
-          <h3>pwa build</h3>
+           <h3>pwa build</h3>
         </div>
     
     </header>
