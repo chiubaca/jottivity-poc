@@ -1,5 +1,5 @@
 self.__precacheManifest = [].concat(self.__precacheManifest || []); //add other resources to cache here
-// workbox.precaching.suppressWarnings();
+workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 //install new service worker if message is received to do so

@@ -1,13 +1,6 @@
 /* eslint-disable no-console */
 
 import { register } from 'register-service-worker'
-import alertify from 'alertify.js'
-
-const notifyUserAboutUpdate = function(worker){
-  alertify.confirm("New content is available; please refresh", () => {
-    worker.postMessage({action:"skipWaiting"})
-  });
-}
 
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
@@ -17,19 +10,21 @@ if (process.env.NODE_ENV === 'production') {
         'For more details, visit https://goo.gl/AFskqB'
       )
     },
-    registered (registration) {
-      console.log('Service worker has been registered.', registration)
+    registered () {
+      console.log('Service worker has been registered.')
     },
     cached () {
       console.log('Content has been cached for offline use.')
     },
-    updatefound (registration) {
+    updatefound () {
       console.log('New content is downloading.')
     },
     updated (registration) {
       console.log('New content is available; please refresh.')
-      notifyUserAboutUpdate(registration.waiting)
-      alert("update availabe, refresh the app")
+      let confirmationResult = confirm("Update Available! Do you want to reload the app?")
+      if (confirmationResult){
+        registration.waiting.postMessage({action: "skipWaiting"})
+      } 
     },
     offline () {
       console.log('No internet connection found. App is running in offline mode.')
@@ -39,14 +34,12 @@ if (process.env.NODE_ENV === 'production') {
       console.error('Error during service worker registration:', error)
       alert('Error during service worker registration:', error)
     }
-  });
+  })
 
-  let refreshing;
-  navigator.serviceWorker.addEventListener("controllerchange" , function(){
-    if(refreshing){
-      return
-    }
-    window.location.reload();
-    refreshing = true;
+  let refreshing
+  navigator.serviceWorker.addEventListener("controllerchange", e=>{
+    if (refreshing) return
+    window.location.reload()
+    refreshing = true
   })
 }
