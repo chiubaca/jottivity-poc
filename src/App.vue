@@ -1,16 +1,13 @@
 <template>
   <div id="app">
-   
     <header> 
        <img alt="pen logo" src="./assets/logo.png">
         <div>
           <h1>Jottivity.</h1>
-          <h2>An application to jot your thoughts, mood &amp; productivity </h2>
-           <h3>pwa build</h3>
+          <h2>Jot your thoughts, mood &amp; productivity</h2>
+           <h3>PWA Build</h3>
         </div>
-    
     </header>
-
     <AllBlogs />
   </div>
 </template>
