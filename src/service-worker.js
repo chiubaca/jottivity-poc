@@ -5,7 +5,7 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 if(workbox){
     console.log("workbox is loaded!") 
     workbox.routing.registerRoute(
-        /(micro-blog.*)(?:json)/,
+        /(https:\/\/*micro-blog.*)(?:json)/,
         workbox.strategies.networkFirst({
           cacheName: 'api-cache',
           plugins: [
