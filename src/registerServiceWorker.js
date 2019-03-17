@@ -1,13 +1,13 @@
 /* eslint-disable no-console */
 
 import { register } from 'register-service-worker'
-// import alertify from 'alertify.js'
+import alertify from 'alertify.js'
 
-// const notifyUserAboutUpdate = function(worker){
-//   alertify.confirm("new content!", () => {
-//     worker.postMessage({action:"skipWaiting"})
-//   });
-// }
+const notifyUserAboutUpdate = function(worker){
+  alertify.confirm("New content is available; please refresh", () => {
+    worker.postMessage({action:"skipWaiting"})
+  });
+}
 
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
@@ -28,7 +28,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated () {
       console.log('New content is available; please refresh.')
-      // notifyUserAboutUpdate(registration.waiting)
+      notifyUserAboutUpdate(registration.waiting)
       alert("update availabe, refresh the app")
     },
     offline () {
@@ -41,12 +41,12 @@ if (process.env.NODE_ENV === 'production') {
     }
   });
 
-  // let refreshing;
-  // navigator.serviceWorker.addEventListener("controllerchange" , function(){
-  //   if(refreshing){
-  //     return
-  //   }
-  //   window.location.reload();
-  //   refreshing = true;
-  //})
+  let refreshing;
+  navigator.serviceWorker.addEventListener("controllerchange" , function(){
+    if(refreshing){
+      return
+    }
+    window.location.reload();
+    refreshing = true;
+  })
 }
