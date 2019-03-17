@@ -5,7 +5,7 @@
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-           <h3>PWA Build</h3>
+           <h3>PWA Build v0.1</h3>
         </div>
     </header>
     <AllBlogs />
@@ -24,6 +24,7 @@ export default {
 </script>
 
 <style>
+
 header{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
