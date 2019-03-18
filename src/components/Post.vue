@@ -49,6 +49,7 @@ export default {
   width: 75%;
   margin: 15px;
   padding: 5px;
+  border-radius: 10px
 }
 
 .post:hover {
