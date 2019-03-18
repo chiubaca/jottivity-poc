@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <header> 
-       <img alt="pen logo" src="./assets/logo.png">
+       <img alt="pen logo" src="./assets/logo.svg">
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-           <h3>PWA Build v0.2</h3>
+           <h3>PWA Build v0.2 </h3>
         </div>
     </header>
     <AllBlogs />
