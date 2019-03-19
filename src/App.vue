@@ -1,6 +1,12 @@
 <template>
   <div id="app">
-    <header> 
+    <div id="nav">
+      <!-- <router-link to="/">Home</router-link> | -->
+     
+      <router-link to="/posts">Posts</router-link> |
+       <router-link to="/about">About</router-link> |
+       <router-link to="/login">Login</router-link>
+      <header> 
        <img alt="pen logo" src="./assets/logo.svg">
         <div>
           <h1>Jottivity.</h1>
@@ -8,7 +14,9 @@
            <h3>PWA Build v0.2 </h3>
         </div>
     </header>
-    <AllBlogs />
+    <!-- <AllBlogs /> -->
+    </div>
+    <router-view/>
   </div>
 </template>
 
