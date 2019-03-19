@@ -11,9 +11,9 @@
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-           <h3>PWA Build v0.2 </h3>
+           <h3>PWA Build v0.2.1 </h3>
         </div>
-    </header>
+      </header>
     <!-- <AllBlogs /> -->
     </div>
     <router-view/>
@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import AllBlogs from './pages/AllBlogs.vue'
+// import AllBlogs from './pages/AllBlogs.vue'
 
 export default {
   name: 'app',
   components: {
-    AllBlogs
+    // AllBlogs
   }
 }
 </script>
