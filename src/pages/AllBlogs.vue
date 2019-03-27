@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Logout/>
     <AddNewPost v-bind:tags="tags"></AddNewPost>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
       <Post v-bind:post-data="post"> </Post>
@@ -10,11 +11,14 @@
 <script>
 import Post from '../components/Post.vue'
 import AddNewPost from '../components/AddNewPost.vue'
+import Logout from '@/components/Logout.vue'
+
 export default {
   name: "AllBlogs",
   components:{
     Post,
-    AddNewPost
+    AddNewPost,
+    Logout
   },
   data() {
     return {

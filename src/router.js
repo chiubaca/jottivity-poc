@@ -1,23 +1,43 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from './views/Home.vue'
-import LoginPage from './pages/LoginPage.vue'  
+import firebase from 'firebase'
+
+import Home from './views/Home.vue'
+import Login from './views/Login.vue'
+import Signup from './views/Signup.vue'   
+
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home
-    // },
+    {
+      path: '*', //any invalid paths will get redirected to login
+      redirect: '/login',
+    },
+    {
+      path: '/', 
+      redirect: '/login',
+    },
     {
       path: '/login',
       name: 'login',
-      component: LoginPage
+      component: Login
+    },
+    {
+      path: '/home',
+      name: 'home',
+      component: Home,
+      meta: {
+        requiresAuth:true
+      }
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
     },
     {
       path: '/about',
@@ -28,12 +48,38 @@ export default new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
-      path: '/',
+      path: '/posts',
       name: 'posts',
       // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './pages/AllBlogs.vue')
+      component: () => import(/* webpackChunkName: "about" */ './pages/AllBlogs.vue'),
+      meta: {
+        requiresAuth:true
+      }
     }
   ]
-})
+});
+
+//vue navigation guards
+router.beforeEach((to, from , next) => {
+  
+  const currentUser = firebase.auth().currentUser;
+  const requiresAuth = to.matched.some(record=>record.meta.requiresAuth); //this loops through every route with a requiresAuth meta tag
+
+  if(requiresAuth && !currentUser){
+    //If the route we navigate to requires authentication and there 
+    //is no current user logged in, we redirect to the Login view.
+    console.log("page requires auth, you're not logged in, redirect to login ")
+    next('login')
+  }else if(!requiresAuth && currentUser){
+    //If the route we navigate to does not require authentication and 
+    //there is a user logged in, we redirect to the Home view.
+    console.log("no auth required, you're logged in, redirecting to home")
+    next('home');
+  } 
+  else{
+    console.log("route pass through")
+    next();
+  } 
+});
+
+export default router;

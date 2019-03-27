@@ -1,17 +1,22 @@
 <template>
   <div class="home">
-    <h1>Home Page</h1>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
+    <h1>Logged In Home Page</h1>
+    <Logout />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-// import HelloWorld from '@/views/HelloWorld.vue'
+import Logout from '@/components/Logout.vue'
+
 
 export default {
   name: 'home',
   components: {
-  }
+    Logout
+  },
+  methods: {
+  },
+
 }
 </script>

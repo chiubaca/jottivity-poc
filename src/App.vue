@@ -2,16 +2,16 @@
   <div id="app">
     <div id="nav">
       <!-- <router-link to="/">Home</router-link> | -->
-     
-      <router-link to="/">Posts</router-link> |
-       <router-link to="/about">About</router-link> |
-       <router-link to="/login">Login</router-link>
+      <router-link to="/posts"> Alex's Posts</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/login">Login</router-link>
       <header> 
-       <img alt="pen logo" src="./assets/logo.svg">
+        <img alt="pen logo" src="./assets/logo.svg">
+          
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-           <h3>PWA Build v0.2.1 </h3>
+          <h3>PWA Build v0.2.1 </h3>
         </div>
       </header>
     <!-- <AllBlogs /> -->
@@ -26,21 +26,21 @@
 export default {
   name: 'app',
   components: {
-    // AllBlogs
   }
 }
 </script>
 
 <style>
+html *{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
 
 header{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   display:flex;
   align-items: center;
-
   border-bottom: 5px solid;  
 }
 
