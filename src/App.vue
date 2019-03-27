@@ -11,7 +11,7 @@
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-          <h3>PWA Build v0.2.1 </h3>
+          <h3>PWA Build v0.2.2 </h3>
         </div>
       </header>
     <!-- <AllBlogs /> -->
