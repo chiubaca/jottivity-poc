@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 
 export default {
   name: "Login",
@@ -51,14 +52,14 @@ export default {
 
 input {
     margin: 10px 0;
-    width: 20%;
+    width: 50%;
     padding: 15px;
 }
 
 button {
     margin-top: 20px;
     width: 10%;
-    cursor: pointer;
+     padding: 15px;
 }
 
 </style>

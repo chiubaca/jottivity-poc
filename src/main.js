@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import firebase from 'firebase'
-// import fbConfig from '../firebase.config'
+import firebase from 'firebase/app'
+import 'firebase/auth'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
