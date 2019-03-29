@@ -8,7 +8,6 @@ import './registerServiceWorker'
 Vue.config.productionTip = false
 
 let app = "" ;
-
 const fbConfig = {
   apiKey: "AIzaSyC7h4UCcs1f5uPDNjOW7xVMCJVnm-hWPRg",
   authDomain: "micro-blog-495b7.firebaseapp.com",

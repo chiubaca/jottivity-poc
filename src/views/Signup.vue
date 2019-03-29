@@ -2,12 +2,12 @@
 <template>
 
   <div>
-        <div>
-          <h1>Signup!</h1>
-          <input type="text" placeholder="Email" v-model="email">
-          <input type="text" placeholder="Password" v-model="password">
-          <button @click="signUp">Sign Up</button>
-           <router-link to="/login">Login</router-link>
+        <div class="signup">
+          <h3>Signup!</h3>
+          <input type="text" placeholder="Email" v-model="email"><br/>
+          <input type="password" placeholder="Password" v-model="password"><br/>
+          <button @click="signUp">Sign Up</button><br/>
+          <router-link to="/login">Login</router-link>
         </div>
   </div>
 </template>
@@ -42,6 +42,22 @@ export default {
 
 <style>
 
+.signup {
+    margin-top: 40px;
+    text-align: center
+  }
 
+input {
+    margin: 10px 0;
+    width: 20%;
+    padding: 15px;
+}
+
+button {
+    margin-top: 20px;
+    width: 10%;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
 
 </style>
