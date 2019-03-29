@@ -2,15 +2,15 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import firebase from 'firebase'
 
-import Home from './views/Home.vue'
-import Login from './views/Login.vue'
-import Signup from './views/Signup.vue'   
+import Home from '@/views/Home.vue'
+import Login from '@/views/Login.vue'
+import Signup from '@/views/Signup.vue'   
 
 
 Vue.use(Router)
 
 const router = new Router({
-  mode: 'history',
+  // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
     {
