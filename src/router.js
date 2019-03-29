@@ -14,12 +14,12 @@ const router = new Router({
   base: process.env.BASE_URL,
   routes: [
     {
-      path: '*', //any invalid paths will get redirected to login
-      redirect: '/login',
+      path: '*', //any invalid paths will get redirected to posts
+      redirect: '/posts',
     },
     {
       path: '/', 
-      redirect: '/login',
+      redirect: '/posts',
     },
     {
       path: '/login',
@@ -73,8 +73,8 @@ router.beforeEach((to, from , next) => {
   }else if(!requiresAuth && currentUser){
     //If the route we navigate to does not require authentication and 
     //there is a user logged in, we redirect to the Home view.
-    console.log("no auth required, you're logged in, redirecting to home")
-    next('home');
+    console.log("no auth required, you're logged in, redirecting to posts")
+    next();
   } 
   else{
     console.log("route pass through")

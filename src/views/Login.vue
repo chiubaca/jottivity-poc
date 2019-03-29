@@ -31,6 +31,7 @@ export default {
         console.log(user)
         alert("You've logged in!")
         //redirect to another page once signed in
+         console.log("logged in OK! redirecting you to your posts")
         this.$router.replace('posts')
       },
       (err) => {
