@@ -44,21 +44,19 @@ export default {
 <style>
 
 .signup {
-    margin-top: 40px;
-    text-align: center
+  margin-top: 40px;
+  text-align: center
   }
 
 input {
-    margin: 10px 0;
-    width: 20%;
-    padding: 15px;
+  margin: 10px 0;
+  width: 20%;
+  padding: 15px;
 }
 
 button {
-    margin-top: 20px;
-    width: 10%;
-    margin-bottom: 15px;
-    cursor: pointer;
+  margin-top: 20px;
+  margin-bottom: 15px;
 }
 
 </style>

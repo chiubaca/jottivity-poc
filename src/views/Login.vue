@@ -46,20 +46,19 @@ export default {
 <style scoped>
 
 .login {
-    margin-top: 40px;
-    text-align: center
-  }
+  margin-top: 40px;
+  text-align: center
+}
 
 input {
-    margin: 10px 0;
-    width: 50%;
-    padding: 15px;
+  margin: 10px 0;
+  width: 50%;
+  padding: 15px;
 }
 
 button {
-    margin-top: 20px;
-    width: 10%;
-     padding: 15px;
+  margin-top: 20px;
+  padding: 15px;
 }
 
 </style>
