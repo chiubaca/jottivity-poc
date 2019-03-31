@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import Post from '../components/Post.vue'
-import AddNewPost from '../components/AddNewPost.vue'
+import Post from '@/components/Post.vue'
+import AddNewPost from '@/components/AddNewPost.vue'
 import Logout from '@/components/Logout.vue'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -31,27 +31,24 @@ export default {
   },
   methods: {
     getData() {
-      const uid = firebase.auth().currentUser.uid;
-      
       firebase.auth().currentUser.getIdToken().then((token) => {
-         const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${uid}/notebooks/0.json`+ `?auth=${token}`
-
+        const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/0.json?auth=${token}`
+        //TODO:this needs tidying up
         fetch(postsURL)
         .then(response => {
           return response.json();
-        }).then(myJson => {
-        //Store all posts from db
-          for (let i in myJson.posts) {
-            this.posts.push(myJson.posts[i]);
+        })
+        .then(notebookObject => {
+          //Store all posts from db
+          for (let i in notebookObject.posts) {
+            this.posts.push(notebookObject.posts[i]);
           }
           //Store all tags from db
-          for (let i in myJson.tags) {
-          this.tags.push(myJson.tags[i]);
+          for (let i in notebookObject.tags) {
+          this.tags.push(notebookObject.tags[i]);
           }
-          // console.log(JSON.stringify(myJson));
         });
-      })
-     
+      });
     },
  
   },
@@ -60,17 +57,13 @@ export default {
       return true
     }
   },
-  beforeCreate() {
-    //get uid for the session
-    this.uid = firebase.auth().currentUser.uid
-
-  },
   created() {
+    //get user id for the session, store in state
+    this.uid = firebase.auth().currentUser.uid
+    //get data from db
     this.getData()
-
   },
   
-
 };
 </script>
 
