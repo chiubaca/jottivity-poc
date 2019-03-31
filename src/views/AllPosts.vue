@@ -16,7 +16,7 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 export default {
-  name: "AllBlogs",
+  name: "AllPosts",
   components:{
     Post,
     AddNewPost,

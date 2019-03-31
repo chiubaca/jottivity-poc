@@ -82,7 +82,6 @@ export default {
       .then(response => response.json()); // parses response to JSON
     },
     postEntry(){
-      console.log("submitting a real post omg!!");
       let postObject = {
         "title": this.postTitle,
         "date": this.getDate,
@@ -90,7 +89,7 @@ export default {
         "productivity": this.checkedProductivity,
         "contents": this.postContents
       }
-      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/alexchiu/notebooks/0/posts.json" , postObject)
+      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/Ki6HfZeETzWZxjhwAuELlWyrxMA2/notebooks/0/posts.json" , postObject)
     }
   },
   computed: {

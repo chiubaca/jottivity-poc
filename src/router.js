@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
-import Home from '@/views/Home.vue'
 import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'   
 
@@ -16,29 +15,11 @@ const router = new Router({
   routes: [
     {
       path: '*', //any invalid paths will get redirected to posts
-      redirect: '/posts',
+      redirect: '/about',
     },
     {
       path: '/', 
-      redirect: '/posts',
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
-    },
-    {
-      path: '/home',
-      name: 'home',
-      component: Home,
-      meta: {
-        requiresAuth:true
-      }
-    },
-    {
-      path: '/signup',
-      name: 'signup',
-      component: Signup
+      redirect: '/about',
     },
     {
       path: '/about',
@@ -49,10 +30,20 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
+    },
+    {
       path: '/posts',
       name: 'posts',
       // route level code-splitting
-      component: () => import(/* webpackChunkName: "about" */ './pages/AllBlogs.vue'),
+      component: () => import(/* webpackChunkName: "pots" */ './views/AllPosts.vue'),
       meta: {
         requiresAuth:true
       }
