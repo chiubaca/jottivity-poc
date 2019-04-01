@@ -49,11 +49,15 @@
 </template>
 
 <script>
+import firebase from 'firebase/app'
+import 'firebase/auth'
+
 export default {
   name: "AddNewPost",
   props: ["tags"],
   data() {
     return {
+      uid:"",
       showNewPostModal: false,
       checkedMoods:[],
       checkedProductivity:[],
@@ -89,7 +93,14 @@ export default {
         "productivity": this.checkedProductivity,
         "contents": this.postContents
       }
-      this.submitPost("https://micro-blog-495b7.firebaseio.com/users/Ki6HfZeETzWZxjhwAuELlWyrxMA2/notebooks/0/posts.json" , postObject)
+
+      firebase.auth().currentUser.getIdToken()
+      .then((token) => {
+        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/0/posts.json?auth=${token}` , postObject)
+      })
+
+
+      
     }
   },
   computed: {
@@ -111,6 +122,8 @@ export default {
     }
   },
   created() {
+    //get user id for the session, store in state
+    this.uid = firebase.auth().currentUser.uid
   }
 };
 </script>
