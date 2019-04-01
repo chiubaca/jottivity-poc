@@ -47,6 +47,15 @@ const router = new Router({
       meta: {
         requiresAuth:true
       }
+    },
+    {
+      path: '/notebooks',
+      name: 'notebooks',
+      // route level code-splitting
+      component: () => import(/* webpackChunkName: "pots" */ './views/AllNotebooks.vue'),
+      meta: {
+        requiresAuth:true
+      }
     }
   ]
 });
