@@ -19,7 +19,7 @@ const router = new Router({
     },
     {
       path: '/', 
-      redirect: '/about',
+      redirect: '/posts',
     },
     {
       path: '/about',
