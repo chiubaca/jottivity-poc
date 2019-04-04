@@ -1,38 +1,44 @@
 <template>
   <div id="app">
-    <header> 
-       <img alt="pen logo" src="./assets/logo.svg">
+    <div id="nav">
+      <router-link to="/notebooks">Notebooks</router-link> | 
+      <router-link to="/posts">Posts</router-link> |
+      <router-link to="/about">About</router-link> |
+      <router-link to="/login">Login</router-link>
+      <header> 
+        <img alt="pen logo" src="./assets/logo.svg">
+          
         <div>
           <h1>Jottivity.</h1>
           <h2>Jot your thoughts, mood &amp; productivity</h2>
-           <h3>PWA Build v0.2 </h3>
+          <h3>PWA Build v0.2.4 </h3>
         </div>
-    </header>
-    <AllBlogs />
+      </header>
+
+    </div>
+    <router-view/>
   </div>
 </template>
 
 <script>
-import AllBlogs from './pages/AllBlogs.vue'
-
 export default {
   name: 'app',
   components: {
-    AllBlogs
   }
 }
 </script>
 
 <style>
+html *{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
+}
 
 header{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
   display:flex;
   align-items: center;
-
   border-bottom: 5px solid;  
 }
 
