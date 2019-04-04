@@ -4,7 +4,9 @@ import firebase from 'firebase/app'
 import 'firebase/auth'
 
 import Login from '@/views/Login.vue'
-import Signup from '@/views/Signup.vue'   
+import Signup from '@/views/Signup.vue'
+import AllPosts from '@/views/AllPosts.vue'
+import AllNotebooks from '@/views/AllNotebooks.vue'      
 
 
 Vue.use(Router)
@@ -13,10 +15,10 @@ const router = new Router({
   // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    {
-      path: '*', //any invalid paths will get redirected to posts
-      redirect: '/about',
-    },
+    // {
+    //   path: '*', //any invalid paths will get redirected to posts
+    //   redirect: '/about',
+    // },
     {
       path: '/', 
       redirect: '/posts',
@@ -43,16 +45,22 @@ const router = new Router({
       path: '/posts',
       name: 'posts',
       // route level code-splitting
-      component: () => import(/* webpackChunkName: "pots" */ './views/AllPosts.vue'),
+      component: () => import(/* webpackChunkName: "posts" */ './views/AllPosts.vue'),
       meta: {
         requiresAuth:true
       }
     },
     {
-      path: '/notebooks',
+      path: '/:id',
       name: 'notebooks',
-      // route level code-splitting
-      component: () => import(/* webpackChunkName: "pots" */ './views/AllNotebooks.vue'),
+      component: AllNotebooks,
+      children:[
+        {
+          path:'posts',
+          name:'posts',
+          component: AllPosts,
+        }
+      ],
       meta: {
         requiresAuth:true
       }

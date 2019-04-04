@@ -1,10 +1,17 @@
 <template>
   <div>
     <Logout/>
+    logged in user id: {{$route.params.id}}
+    
     <div class="notebooks-container">
-     <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
-      {{notebook}}
-      </div>
+      <router-link to='posts' 
+        >
+        <div class="notebook" 
+             v-for="(notebook,index) in notebooks" :key="index">
+        {{notebook}} | {{index}}
+        </div>
+      </router-link>
+    <div class="new-notebook"> + New Notebook </div>  
     </div>
   </div>
 </template>
@@ -66,8 +73,11 @@ export default {
 <style scoped>
 .notebooks-container {
   display: flex;
-  flex-direction: column; /* easily reverse with column-reverse*/
-  align-items: center
+  flex-direction: row; /* easily reverse with column-reverse*/
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap
+
 }
 
 .notebook {
@@ -77,10 +87,12 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
   box-shadow: 0px 0px 13px #7d7d7d;
-  width: 75%;
+  width: 60px;
+  height: 60px;
   margin: 15px;
   padding: 50px;
-  border-radius: 10px
+  border-radius: 10px;
+
 }
 
 .notebook:hover {
@@ -88,5 +100,23 @@ export default {
 
 }
 
+.new-notebook {
+  
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+  box-shadow: 0px 0px 13px #7d7d7d;
+  width: 60px;
+  height: 60px;
+  margin: 15px;
+  padding: 50px;
+  border-radius: 10px
+}
+
+.new-notebook:hover {
+  box-shadow: 0px 0px 6px #7d7d7d;
+
+}
 
 </style>

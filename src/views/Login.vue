@@ -27,12 +27,13 @@ export default {
   methods: {
     logIn() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
-      .then((user) => {
-        console.log(user)
+      .then((userCredential) => {
+        let userID = userCredential.user.X.O
+        console.log(`User ID: ${userID} has logged in` )
         alert("You've logged in!")
         //redirect to another page once signed in
-         console.log("logged in OK! redirecting you to your posts")
-        this.$router.replace('posts')
+         console.log("logged in OK! redirecting you to your notebooks")
+        this.$router.replace(`${userID}`)
       },
       (err) => {
         console.log(err.message)

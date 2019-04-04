@@ -62,6 +62,7 @@ export default {
     this.uid = firebase.auth().currentUser.uid
     //get data from db
     this.getData()
+    console.log("All Posts comp created hello!!")
   },
   
 };
