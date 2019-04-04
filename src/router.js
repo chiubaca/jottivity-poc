@@ -42,7 +42,7 @@ const router = new Router({
       component: Signup
     },
     {
-      path: '/posts',
+      path: '/notebooks/posts/:id',
       name: 'posts',
       // route level code-splitting
       component: () => import(/* webpackChunkName: "posts" */ './views/AllPosts.vue'),
@@ -51,16 +51,9 @@ const router = new Router({
       }
     },
     {
-      path: '/:id',
+      path: '/notebooks',
       name: 'notebooks',
       component: AllNotebooks,
-      children:[
-        {
-          path:'posts',
-          name:'posts',
-          component: AllPosts,
-        }
-      ],
       meta: {
         requiresAuth:true
       }

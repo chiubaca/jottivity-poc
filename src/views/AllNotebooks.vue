@@ -2,17 +2,18 @@
   <div>
     <Logout/>
     logged in user id: {{$route.params.id}}
-    
+
     <div class="notebooks-container">
-      <router-link to='posts' 
-        >
-        <div class="notebook" 
-             v-for="(notebook,index) in notebooks" :key="index">
-        {{notebook}} | {{index}}
-        </div>
-      </router-link>
-    <div class="new-notebook"> + New Notebook </div>  
+      <div v-for="(notebook,index) in notebooks" :key="index">
+        <router-link :to="{path:'posts/'+ index}" 
+                      class="notebook"
+                      append>
+            {{notebook}} | {{index}}
+        </router-link>
+      </div>
+      <div class="new-notebook"> + New Notebook </div>  
     </div>
+
   </div>
 </template>
 

@@ -33,7 +33,7 @@ export default {
         alert("You've logged in!")
         //redirect to another page once signed in
          console.log("logged in OK! redirecting you to your notebooks")
-        this.$router.replace(`${userID}`)
+        this.$router.push('notebooks')
       },
       (err) => {
         console.log(err.message)
