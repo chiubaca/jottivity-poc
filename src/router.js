@@ -21,7 +21,7 @@ const router = new Router({
     // },
     {
       path: '/', 
-      redirect: '/posts',
+      redirect: '/notebooks',
     },
     {
       path: '/about',
