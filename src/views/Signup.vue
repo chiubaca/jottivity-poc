@@ -50,7 +50,7 @@ export default {
 
 input {
   margin: 10px 0;
-  width: 20%;
+  width: 50%;
   padding: 15px;
 }
 
