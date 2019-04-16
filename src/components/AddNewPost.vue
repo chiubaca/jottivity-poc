@@ -10,6 +10,7 @@
 
   <div v-if="showNewPostModal" class="new-post-wrapper">
     <div class="container">
+        {{this.$route.params.id}}
         {{getDate}}
         <textarea id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
         
@@ -96,7 +97,7 @@ export default {
 
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/0/posts.json?auth=${token}` , postObject)
+        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}/posts.json?auth=${token}` , postObject)
       })
 
 

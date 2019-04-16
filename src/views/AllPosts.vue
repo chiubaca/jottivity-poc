@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{this.$route.params.id}}
     <Logout/>
     <AddNewPost v-bind:tags="tags"></AddNewPost>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
@@ -32,7 +33,7 @@ export default {
   methods: {
     getData() {
       firebase.auth().currentUser.getIdToken().then((token) => {
-        const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/0.json?auth=${token}`
+        const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}.json?auth=${token}`
         //TODO:this needs tidying up
         fetch(postsURL)
         .then(response => {
@@ -62,7 +63,6 @@ export default {
     this.uid = firebase.auth().currentUser.uid
     //get data from db
     this.getData()
-    console.log("All Posts comp created hello!!")
   },
   
 };

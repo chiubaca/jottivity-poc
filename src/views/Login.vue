@@ -1,13 +1,13 @@
 
 <template>
   <div>
-        <div class="login">
-          <h3>Hey!</h3>
-          <input type="text" placeholder="username" v-model="email"><br/>
-          <input type="password" placeholder="password" v-model="password"><br/>
-          <button @click="logIn">Login</button>
-          <p>Dont have an account? <router-link to="/signup">Signup!</router-link></p>
-        </div>
+      <div class="login">
+        <h3>Hey!</h3>
+        <input type="text" placeholder="username" v-model="email"><br/>
+        <input type="password" placeholder="password" v-model="password"><br/>
+        <button @click="logIn">Login</button>
+        <p>Dont have an account? <router-link to="/signup">Signup!</router-link></p>
+      </div>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
         alert("You've logged in!")
         //redirect to another page once signed in
          console.log("logged in OK! redirecting you to your notebooks")
-        this.$router.replace(`${userID}`)
+        this.$router.push({path:'notebooks'})
       },
       (err) => {
         console.log(err.message)
