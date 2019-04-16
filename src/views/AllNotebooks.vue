@@ -2,23 +2,20 @@
   <div>
     <Logout/>
     <div class="notebooks-container">
+
       <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
-        <router-link :to="{path:'posts/'+ index}"        
-                     append>
-          <p> {{notebook.notebookID}}  </p>
-          <p>  {{notebook.notebookAlias}} </p>
-          <p>   {{notebook.dateCreated}}</p>
-         
-        
-       
+        <router-link :to="{path:'posts/'+ notebook.notebookID}" append>
+          <p> Notebook ID:  {{notebook.notebookID}} </p>
+          <p> Notebook Name: {{notebook.notebookAlias}} </p>
+          <p> Date Created:  {{notebook.dateCreated}} </p>
         </router-link>
       </div>
-     
     </div>
-     <div class="new-notebook"> 
-        <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"> </textarea>
+
+    <div class="new-notebook"> 
+      <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"> </textarea>
       <button v-on:click="addNewNotebook">+ New Notebook</button>  
-      </div>  
+    </div>  
 
   </div>
 </template>
@@ -63,6 +60,7 @@ export default {
         // parse the data, standard fetch operation
         .then(response => {return response.json()})
         //we get back an array of strings which are the notebookIds
+        .catch(err => {console.log("error getting notebook objects" , err)})
         .then(notebookIdsArray => {
           for (let notebookID in notebookIdsArray) {
             //we wrap the string into a simple object and push this into a holding array
@@ -70,37 +68,53 @@ export default {
             //whilst we know the notebookID here, we can fetch the metadata properties of each notebook
             fetch(baseURL + `notebooks/${notebookID}/metadata.json?auth=${token}`)
             .then(response => {return response.json()})
-            //this returns the notebook meta data object which push into vue data 
+            //this returns the notebook meta data object which push into vue data
+            .catch(err => {console.log("error getting notebook metadata" , err)}) 
             .then(notebookObject => {
+              console.log("got metadata:" , notebookObject)
               this.notebooks.push(notebookObject);
               return this.notebooks;
-            //with each notebook object that is push into vue data we merge it with the 
+            //with each notebook object that is pushed into vue data we merge it with the 
             //the equivlent notbookID which should have its index in-sync with the order
-            //with the notebooks array
-            }).then(notebooksArray => {
+            //of the notebooks array
+            })
+            .catch(err => {console.log("error pushing notebook metadata into app state" , err)})
+            .then(notebooksArray => {
               let arrayIndex = notebooksArray.length - 1;
               Object.assign(notebooksArray[arrayIndex] , notebookIdsArr[arrayIndex])
             })
           }
         })
+        .catch(err => {console.log("error iterating through notebooks data" , err)})
       });  
     },
     addNewNotebook(){
       let notebookObject = {
         metadata:{
-          'dateCreated':'2019-01-01T00:00:00',
+          'dateCreated':'n/a',
           'notebookAlias': this.newNotebookName
         },
-        "posts":[{}],
-        "tags":[{}],
-      }
+        "posts":{
+         "0" : { 
+          "contents" : "Edit me!",
+          "title": "Example Post",
+          "date": "2019-01-01T00:00:00",
+          "mood": ["happy"],
+          "productivity": ["life"],
+          }
+        },
+         "tags" : [ {
+            "mood" : [ "Happy", "Content", "Energetic", "Frustrated", "Angry", "Tired", "Optimistic", "Annoyed", "Dissatisfied", "Unmotivated", "Motiviated", "Satisfied", "Inspired", "Confused", "Sad", "Excited", "Demotivated", "Relaxed", "Stressed" ]
+          }, {
+            "productivity" : [ "Fitness", "Leisure", "Life", "Work", "Friends", "Family", "Holiday" ]
+          } ]
+      };
       
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-      this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/Ki6HfZeETzWZxjhwAuELlWyrxMA2/notebooks.json?auth=${token}`, notebookObject)
-      console.log("adding new notebook...")
-      }).catch(err => console.log(err))
-    
+        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/Ki6HfZeETzWZxjhwAuELlWyrxMA2/notebooks.json?auth=${token}`, notebookObject)
+        console.log("adding new notebook...")
+        }).catch(err => console.log(err))
     }
  
   },
@@ -114,7 +128,6 @@ export default {
     this.uid = firebase.auth().currentUser.uid
     //get data from db
     this.getData()
-    
   },
 };
 </script>
@@ -148,7 +161,6 @@ export default {
 
 .notebook:hover {
   box-shadow: 0px 0px 6px #7d7d7d;
-
 }
 
 .new-notebook {
@@ -163,6 +175,5 @@ export default {
   padding: 20px;
   border-radius: 10px
 }
-
 
 </style>
