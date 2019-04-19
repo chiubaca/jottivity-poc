@@ -2,9 +2,6 @@
 A journal app to optimise your mood, productivity and life.
 
 ## Project setup
-Ensure you have [vue cli 3](https://cli.vuejs.org/guide/installation.html) installed. 
-
-Then:
 
 ```
 npm install

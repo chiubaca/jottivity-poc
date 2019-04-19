@@ -1,45 +1,28 @@
 <template>
   <div id="app">
-   
-    <header> 
-       <img alt="pen logo" src="./assets/logo.png">
-        <div>
-          <h1>Jot.</h1>
-          <h2>An application to jot your thoughts, mood &amp; productivity </h2>
-        </div>
-    
-    </header>
+    <CustomHeader/>
 
-    <AllBlogs />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import AllBlogs from './pages/AllBlogs.vue'
+import CustomHeader from '@/components/CustomHeader.vue'
 
 export default {
   name: 'app',
   components: {
-    AllBlogs
+    CustomHeader
   }
 }
 </script>
 
 <style>
-header{
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  display:flex;
-  align-items: center;
-
-  border-bottom: 5px solid;  
-}
-
-header img{
-  height:100px;
-  padding: 0 10px 0 20px
+html *{
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #2c3e50;
 }
 
 </style>
