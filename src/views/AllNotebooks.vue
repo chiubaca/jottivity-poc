@@ -1,7 +1,7 @@
 <template>
   <div>
     <Logout/>
-    <p>Uses ID : {{this.uid}}</p>
+    <p>User ID : {{this.uid}}</p>
     <div class="notebooks-container">
 
       <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
