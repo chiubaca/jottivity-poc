@@ -1,6 +1,7 @@
 <template>
   <div>
     <Logout/>
+    <p>Uses ID : {{this.uid}}</p>
     <div class="notebooks-container">
 
       <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
@@ -112,7 +113,7 @@ export default {
       
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/Ki6HfZeETzWZxjhwAuELlWyrxMA2/notebooks.json?auth=${token}`, notebookObject)
+        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks.json?auth=${token}`, notebookObject)
         console.log("adding new notebook...")
         }).catch(err => console.log(err))
     }
