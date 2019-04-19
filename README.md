@@ -1,4 +1,4 @@
-# 🖋️ Jot. 
+# 🖋️ Jottivity 
 A journal app to optimise your mood, productivity and life.
 
 ## Project setup
