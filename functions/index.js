@@ -24,6 +24,7 @@ exports.createUserAccount = functions.auth.user().onCreate( (user) => {
         },
         "posts":{
           0:{
+            "title": "Edit This Post",
             "contents":"",
             "date":"n/a",
             "mood": ["happy"],
