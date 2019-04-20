@@ -1,7 +1,12 @@
 <template>
   <div v-if="modalState" class="modal-container">
     <div class="modal-contents">
-      <slot name="post-contents"> </slot>
+      <p>postID: {{postData.postID}}</p>
+      <textarea name="post-contents" v-model="postData.contents"></textarea>
+      <br/>
+      <button>Update</button>
+      <br/>
+      <button v-on:click="closeModal()">Close</button>
     </div>
   </div>
 </template>
@@ -9,13 +14,22 @@
 <script>
 export default {
   name: "PostModal",
-  props: ["modalState"],
+  props: ["modalState" , "postData"],
   data() {
-    return {
-      showModal: false
-    };
+    return{
+     
+    }
+  },
+  methods: {
+    closeModal(){
+      this.$emit('closeModal')
+    }
+  },
+  computer: {
+
   },
   created() {
+
   }
 };
 </script>
@@ -43,5 +57,10 @@ export default {
   transform: translate(-50%, -50%);
   width: 50%;
   height: 50%;
+}
+
+textarea{
+  width:100%;
+  height:50%;
 }
 </style>

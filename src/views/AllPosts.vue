@@ -41,8 +41,11 @@ export default {
         })
         .then(notebookObject => {
           //Store all posts from db
+          
           for (let i in notebookObject.posts) {
-            this.posts.push(notebookObject.posts[i]);
+            //this merges the notebook ID as another key in the notebookObject
+            //then pushes into app state
+            this.posts.push(Object.assign(notebookObject.posts[i], {"postID": i}));
           }
           //Store all tags from db
           for (let i in notebookObject.tags) {
