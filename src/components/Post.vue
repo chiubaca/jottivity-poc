@@ -1,13 +1,13 @@
 <template>
-  <div class="post" v-on:click="showPostContent=!showPostContent">
+  <div class="post" >
     <span>{{postData.date}}</span>
-    <h1>{{postData.title}}</h1>
+    <h1 v-on:click="showPostContent=true">{{postData.title}}</h1>
     <p>Mood: {{postData.mood}}</p>
     <p>Productivity: {{postData.productivity}}</p>
 
-    <PostModal v-bind:modalState="showPostContent">
-      <div slot="post-contents">{{postData.contents}}</div>
-    </PostModal>
+    <PostModal v-bind:modalState="showPostContent" 
+               v-bind:postData="postData" 
+               v-on:closeModal="closeModal" />
   </div>
 </template>
 
@@ -26,12 +26,12 @@ export default {
     };
   },
   methods: {
-    toggleModal() {}
+    closeModal() {
+      this.showPostContent = false
+    }
   },
   computed: {
-    toggleShow() {
-      return true;
-    }
+
   },
   created() {
   }
@@ -56,4 +56,6 @@ export default {
   box-shadow: 0px 0px 6px #7d7d7d;
 
 }
+
+
 </style>
