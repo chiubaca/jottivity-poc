@@ -24,3 +24,4 @@ data_processing/temp
 db_backup
 data_processing/*.json
 #firebase.config.js
+firebase-debug.log
