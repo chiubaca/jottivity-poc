@@ -1,10 +1,8 @@
 <template>
   <div v-if="modalState" class="modal-container">
     <div class="modal-contents">
-      <p>postID: {{postData.postID}}</p>
-      <p>UserID: {{UserID}}</p>
-      <p>NotebookID: {{NotebookID}}</p>
-      <textarea name="post-contents" v-model="postData.contents"></textarea>
+      <textarea id="post-title" v-model="postData.title"></textarea>
+      <textarea id="post-contents" v-model="postData.contents"></textarea>
       <br/>
       <button v-on:click="editPost()">Update</button>
       <br/>
@@ -55,7 +53,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+
 .modal-container {
   background-color: #3d3b3b5b;
   position: fixed;
@@ -70,17 +69,27 @@ export default {
 .modal-container .modal-contents {
   background-color: #fff;
   box-shadow: 0px 0px 13px #7d7d7d;
-   position: fixed;
+  position: fixed;
   padding: 2em;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 50%;
-  height: 50%;
+  width: 70%;
+  height: 75%;
+  overflow-x: hidden;
 }
 
 textarea{
+  resize: none;
   width:100%;
-  height:50%;
+} 
+
+#post-title{
+    height:10%;
 }
+
+#post-contents{
+  height:70%;
+}
+
 </style>
