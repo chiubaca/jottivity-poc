@@ -1,6 +1,6 @@
 {
   "name": "jottivity",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -22,6 +22,8 @@
     "babel-eslint": "^10.0.1",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue-cli-plugin-webpack-bundle-analyzer": "^1.2.0",
     "vue-template-compiler": "^2.5.21"
   },

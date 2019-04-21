@@ -1,10 +1,11 @@
 <template>
   <div>
-    {{this.$route.params.id}}
+    <p>NotebookID: {{this.$route.params.id}} </p>
+    <p>UserID: {{this.uid}}</p>     
     <Logout/>
     <AddNewPost v-bind:tags="tags"></AddNewPost>
     <div class="all-posts" v-for="(post,index) in posts" :key="index">
-      <Post v-bind:post-data="post"> </Post>
+      <Post v-bind:post-data="post"/>
     </div>
   </div>
 </template>
@@ -32,6 +33,7 @@ export default {
   },
   methods: {
     getData() {
+      //This could be done via the REST API - https://firebase.google.com/docs/database/rest/auth#generate_an_access_token
       firebase.auth().currentUser.getIdToken().then((token) => {
         const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}.json?auth=${token}`
         //TODO:this needs tidying up
@@ -42,7 +44,9 @@ export default {
         .then(notebookObject => {
           //Store all posts from db
           for (let i in notebookObject.posts) {
-            this.posts.push(notebookObject.posts[i]);
+            //this merges the notebook ID as another key in the notebookObject
+            //then pushes into app state
+            this.posts.push(Object.assign(notebookObject.posts[i], {"postID": i}));
           }
           //Store all tags from db
           for (let i in notebookObject.tags) {
@@ -60,7 +64,9 @@ export default {
   },
   created() {
     //get user id for the session, store in state
-    this.uid = firebase.auth().currentUser.uid
+    this.uid = localStorage.getItem("UserID")
+    localStorage.setItem("NotebookID", this.$route.params.id)
+    // console.log(localStorage.getItem("UserID"))
     //get data from db
     this.getData()
   },
