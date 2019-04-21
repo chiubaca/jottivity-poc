@@ -127,6 +127,7 @@ export default {
   created() {
     //get user id for the session, store in state
     this.uid = firebase.auth().currentUser.uid
+    localStorage.setItem('UserID', this.uid);
     //get data from db
     this.getData()
   },
