@@ -82,14 +82,18 @@ export default {
 textarea{
   resize: none;
   width:100%;
+  border:none
 } 
 
 #post-title{
     height:10%;
+    font-size: 1.5em;
+    border-bottom: 5px solid
 }
 
 #post-contents{
   height:70%;
+  border-bottom: 1px solid
 }
 
 </style>
