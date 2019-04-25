@@ -100,15 +100,17 @@ export default {
           "contents" : "Edit me!",
           "title": "Example Post",
           "date": "2019-01-01T00:00:00",
-          "mood": ["happy"],
-          "productivity": ["life"],
+            "tags":{
+            "mood": this.checkedMoods,
+            "productivity": this.checkedProductivity,
+            },
           }
         },
-         "tags" : [ {
-            "mood" : [ "Happy", "Content", "Energetic", "Frustrated", "Angry", "Tired", "Optimistic", "Annoyed", "Dissatisfied", "Unmotivated", "Motiviated", "Satisfied", "Inspired", "Confused", "Sad", "Excited", "Demotivated", "Relaxed", "Stressed" ]
-          }, {
-            "productivity" : [ "Fitness", "Leisure", "Life", "Work", "Friends", "Family", "Holiday" ]
-          } ]
+         "tags" :
+            {  
+              "mood" : [ "Happy", "Content", "Energetic", "Frustrated", "Angry", "Tired", "Optimistic", "Annoyed", "Dissatisfied", "Unmotivated", "Motiviated", "Satisfied", "Inspired", "Confused", "Sad", "Excited", "Demotivated", "Relaxed", "Stressed" ],
+              "productivity" : [ "Fitness", "Leisure", "Life", "Work", "Friends", "Family", "Holiday" ]
+            }
       };
       
       firebase.auth().currentUser.getIdToken()

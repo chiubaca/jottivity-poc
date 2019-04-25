@@ -2,9 +2,15 @@
   <div class="post" >
     <span>{{postData.date}}</span>
     <h1 v-on:click="showPostContent=true">{{postData.title}}</h1>
-    <p>Mood: {{postData.mood}}</p>
-    <p>Productivity: {{postData.productivity}}</p>
+    <!-- <p>Mood: {{postData.mood}}</p>
+    <p>Productivity: {{postData.productivity}}</p> -->
 
+    <div  v-for="(tag ,index) in postData.tags" :key="index" > 
+
+      {{index}} | {{tag}}
+
+    </div>
+    
     <PostModal v-bind:modalState="showPostContent" 
                v-bind:postData="postData" 
                v-on:closeModal="closeModal" />
