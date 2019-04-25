@@ -16,30 +16,23 @@
         
         <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
         
+        <!-- dynamically retrive all tags associated with
+             this notebook.
+         --> 
         <div class="tag-container">
-         <!--TODO: Need to work out all tags dynamically  -->  
-          <div>
-            <div v-for="mood in tags[0].mood" :key="mood.id">
-              <label :for="mood" class="tags">
-                <input type="checkbox" 
-                        :id="mood" 
-                        :value="mood" 
-                        v-model="checkedMoods">            
-                {{mood}}
-              </label>
+          <div v-for="(tag , title) in tags" :key="title">
+            <h2> {{title}} </h2>
+            <div v-for="tagObject in tag">
+
+              <input type="checkbox"
+                     :id="tagObject"
+                     :value="tagObject"
+                
+                     v-model="checkedTags">
+              {{tagObject.description}}
             </div>
           </div>
-          <div>
-            <div v-for="prod in tags[1].productivity" :key="prod.id">
-              <label :for="prod" class="tags">
-                <input type="checkbox" 
-                        :id="prod" 
-                        :value="prod" 
-                        v-model="checkedProductivity">            
-                {{prod}}
-              </label>
-            </div>
-          </div>
+
         </div>
 
       <button v-on:click="postEntry">save entry</button>
@@ -60,8 +53,9 @@ export default {
     return {
       uid:"",
       showNewPostModal: false,
-      checkedMoods:[],
-      checkedProductivity:[],
+      // checkedMoods:[],
+      // checkedProductivity:[],
+      checkedTags:[],
       postTitle:"",
       postContents:"",
       
@@ -90,8 +84,12 @@ export default {
       let postObject = {
         "title": this.postTitle,
         "date": this.getDate,
-        "mood": this.checkedMoods,
-        "productivity": this.checkedProductivity,
+        // "mood": this.checkedMoods,
+        // "productivity": this.checkedProductivity,
+         "tags":{
+           "mood": this.checkedMoods,
+           "productivity": this.checkedProductivity,
+        },
         "contents": this.postContents
       }
 
@@ -120,7 +118,10 @@ export default {
       }
       today = `${yyyy}-${mm}-${dd}T00:00:00`
       return today
-    }
+    },
+   contructObject(){
+     //TODO - contruct the tags object to be sent to firebase
+   }
   },
   created() {
     //get user id for the session, store in state
