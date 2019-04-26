@@ -28,7 +28,7 @@ export default {
     return {
       uid:"",
       posts: [],
-      tags: []
+      tags: {}
     };
   },
   methods: {
@@ -49,9 +49,11 @@ export default {
             this.posts.push(Object.assign(notebookObject.posts[i], {"postID": i}));
           }
           //Store all tags from db
-          for (let i in notebookObject.tags) {
-          this.tags.push(notebookObject.tags[i]);
-          }
+          console.log(notebookObject)
+          this.tags = notebookObject.tags
+          // for (let i in notebookObject.tags) {
+          // this.tags.push(notebookObject.tags[i]);
+          // }
         });
       });
     },
