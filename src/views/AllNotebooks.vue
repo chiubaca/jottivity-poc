@@ -101,8 +101,16 @@ export default {
           "title": "Example Post",
           "date": "2019-01-01T00:00:00",
             "tags":{
-            "mood": this.checkedMoods,
-            "productivity": this.checkedProductivity,
+              "mood" : [ {
+                "colour" : "blue",
+                "description" : "Happy",
+                "tag" : "mood"
+              } ],
+              "productivity" : [ {
+                "colour" : "blue",
+                "description" : "Friends",
+                "tag" : "productivity"
+              } ]
             },
           }
         },
