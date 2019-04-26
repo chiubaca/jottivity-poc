@@ -27,8 +27,8 @@
               <input type="checkbox"
                      :id="tagObject"
                      :value="tagObject"
-                
                      v-model="checkedTags">
+
               {{tagObject.description}}
             </div>
           </div>
@@ -57,7 +57,7 @@ export default {
       // checkedProductivity:[],
       checkedTags:[],
       postTitle:"",
-      postContents:"",
+      postContents:""
       
     };
   },
@@ -86,10 +86,7 @@ export default {
         "date": this.getDate,
         // "mood": this.checkedMoods,
         // "productivity": this.checkedProductivity,
-         "tags":{
-           "mood": this.checkedMoods,
-           "productivity": this.checkedProductivity,
-        },
+       "tags": this.tagsObject,
         "contents": this.postContents
       }
 
@@ -119,9 +116,42 @@ export default {
       today = `${yyyy}-${mm}-${dd}T00:00:00`
       return today
     },
-   contructObject(){
-     //TODO - contruct the tags object to be sent to firebase
-   }
+    tagsObject(){
+      /* returns an array of unique tags from an array of tag objects
+      firstly loops over all tag keys in the tags object
+      this is done within a Set object - it is similar to an Array Object
+      but it guarantees unique itemms so it doe the deduplication for us.
+      finally the output set object is spread back into an Array so we have
+      a good'ol Array to work with instead of a Set which has weird api. */
+
+      let uniqueTags = [...new Set(this.checkedTags.map(index => index.tag ))]
+
+      //contructs the shell of the tags object for firebase
+      //we iterate and push the corresponding tag objects into
+      //the relevant array in the next block
+      
+      let objectFromUniqueTags = (() => {
+          const obj = {};
+          for (const key of uniqueTags) {
+              obj[key] = [];
+          }
+          return obj
+      })() //eg. returns { mood: [], productivity: [] }
+
+      //loops over all checkedTags items and push into 
+      //corresponding category in objectFromUniqueTags
+      for (let tags in uniqueTags){
+          this.checkedTags.filter(tag => {
+              // console.log(tag)
+              if(tag.tag === uniqueTags[tags]){
+                  objectFromUniqueTags[uniqueTags[tags]].push(tag)
+              } 
+          })
+      }
+
+      return objectFromUniqueTags
+    }
+
   },
   created() {
     //get user id for the session, store in state
