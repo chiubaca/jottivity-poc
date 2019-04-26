@@ -7,7 +7,10 @@
 
     <div  v-for="(tag ,index) in postData.tags" :key="index" > 
 
-      {{index}} | {{tag}}
+      <h2>{{index}}</h2> 
+        <div  v-for="(desc ,index) in tag" :key="index" > 
+          {{desc.description}}
+        </div>
 
     </div>
     
