@@ -28,13 +28,11 @@ describe('Post.vue', () => {
       }
   })
 
-  // wrapper.setData({showPostContent:false})
-
   it('is a Vue instance', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
-  it(' ".post" class', () => {
+  it('contains a ".post" class', () => {
     expect(wrapper.contains('.post')).toBe(true)
   })
 
@@ -42,16 +40,12 @@ describe('Post.vue', () => {
     expect(wrapper.vm.showPostContent).toBe(false)
   })
 
+  it('show the post content when the header is clicked', () => {
+    wrapper.find('h1').trigger('click')
+    expect(wrapper.vm.showPostContent).toBe(true)
+  })
 })
 
-
-
-
-  // displays posts
-
-  // displays the add new post component
- 
-  // gets posts objects from db
 
 
 

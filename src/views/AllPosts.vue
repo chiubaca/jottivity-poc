@@ -4,9 +4,11 @@
     <p>UserID: {{this.uid}}</p>     
     <Logout/>
     <AddNewPost v-bind:tags="tags"></AddNewPost>
-    <div class="all-posts" v-for="(post,index) in posts" :key="index">
-      <Post v-bind:post-data="post"/>
+    <div class="all-posts" >
+        <Post v-for="(post,index) in posts" :key="index"  v-bind:post-data="post"/>
     </div>
+
+  
   </div>
 </template>
 
