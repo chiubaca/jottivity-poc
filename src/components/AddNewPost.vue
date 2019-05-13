@@ -16,9 +16,6 @@
         
         <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
         
-        <!-- dynamically retrive all tags associated with
-             this notebook.
-         --> 
         <div class="tag-container">
           <div v-for="(tag , title) in tags" :key="title">
             <h2> {{title}} </h2>
@@ -53,8 +50,6 @@ export default {
     return {
       uid:"",
       showNewPostModal: false,
-      // checkedMoods:[],
-      // checkedProductivity:[],
       checkedTags:[],
       postTitle:"",
       postContents:""
@@ -154,8 +149,7 @@ export default {
 
   },
   created() {
-    //get user id for the session, store in state
-    this.uid = firebase.auth().currentUser.uid
+    this.uid = localStorage.getItem("UserID")
   }
 };
 </script>
