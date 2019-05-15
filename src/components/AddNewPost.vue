@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- TODO: this should be button element -->
   <div id="add-new-post-btn" 
        v-on:click="showNewPostModal = !showNewPostModal">   
        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +11,6 @@
 
   <div v-if="showNewPostModal" class="new-post-wrapper">
     <div class="container">
-        {{this.$route.params.id}}
         {{getDate}}
         <textarea id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
         

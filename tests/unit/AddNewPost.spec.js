@@ -1,16 +1,16 @@
 import { shallowMount } from '@vue/test-utils'
 import AddNewPost from '@/components/AddNewPost'
-import firebase from 'firebase/app'
 import 'firebase/auth'
 import sinon from 'sinon'
 
 describe('AddNewPost.vue', () => {
 
   let wrapper = null;
+  let savePostStub = sinon.stub();
+
+ 
 
   beforeEach(() =>{
-    
-
     wrapper = shallowMount(AddNewPost, {
       propsData: {
         tags:  {
@@ -26,26 +26,49 @@ describe('AddNewPost.vue', () => {
                     {"colour":"blue","description":"Life","tag":"productivity"},
                     {"colour":"blue","description":"Family","tag":"productivity"}
                   ]
-        },
-
+        }
       }
     });
+
+    wrapper.setMethods({
+      postEntry : savePostStub
+    });
+
   })
 
-  // afterEach(() => {
-  //   wrapper.destroy()
-  // })
+
+  afterEach(() => {
+    wrapper.destroy()
+  })
 
   it('is a Vue instance', () => {
     expect(wrapper.isVueInstance()).toBeTruthy()
   })
 
+  it('should not show the new post modal by default', () => {
+    expect(wrapper.vm.showNewPostModal).toBe(false)
+  })
 
-  // it('triggers postEntry when save entry button is clicked', () => {
-  // })
+   it('shows modal when add-new-post-btn is clicked  ', () => {
+    const newPostButton = wrapper.find('#add-new-post-btn')
+    expect(newPostButton.attributes().id).toBe('add-new-post-btn')  
+    newPostButton.trigger('click')
+    expect(wrapper.vm.showNewPostModal).toBe(true)
+  })
 
-  // it('closes modal when exit button is clicked', () => {
-  // })
+  it('triggers postEntry when save entry button is clicked', () => {
+    wrapper.setData({ showNewPostModal: true })
+    const saveButton = wrapper.findAll('button').at(0)
+    saveButton.trigger('click')
+    expect(savePostStub.called).toBe(true)
+  })
+
+  it('closes modal when exit button is clicked', () => {
+    wrapper.setData({ showNewPostModal: true })
+    const exitButton = wrapper.findAll('button').at(1)
+    exitButton.trigger('click')
+    expect(wrapper.vm.showNewPostModal).toBe(false)
+  })
 
   // it('', () => {
   // })

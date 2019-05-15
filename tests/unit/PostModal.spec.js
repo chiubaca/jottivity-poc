@@ -35,7 +35,7 @@ describe('Post.vue', () => {
       }
     });
 
-    wrapper.setMethods({
+  wrapper.setMethods({
       editPost : editPostStub
     });
   })
