@@ -13,7 +13,7 @@
       <div>
         <h1>Jottivity.</h1>
         <h2>Jot your thoughts, mood &amp; productivity</h2>
-        <h3>v0.2.7</h3>
+        <h3>v0.3.0</h3>
       </div>
     </header>
 

@@ -4,9 +4,11 @@
     <p>UserID: {{this.uid}}</p>     
     <Logout/>
     <AddNewPost v-bind:tags="tags"></AddNewPost>
-    <div class="all-posts" v-for="(post,index) in posts" :key="index">
-      <Post v-bind:post-data="post"/>
+    <div class="all-posts" >
+        <Post v-for="(post,index) in posts" :key="index"  v-bind:post-data="post"/>
     </div>
+
+  
   </div>
 </template>
 
@@ -28,7 +30,7 @@ export default {
     return {
       uid:"",
       posts: [],
-      tags: []
+      tags: {}
     };
   },
   methods: {
@@ -49,9 +51,11 @@ export default {
             this.posts.push(Object.assign(notebookObject.posts[i], {"postID": i}));
           }
           //Store all tags from db
-          for (let i in notebookObject.tags) {
-          this.tags.push(notebookObject.tags[i]);
-          }
+          console.log(notebookObject)
+          this.tags = notebookObject.tags
+          // for (let i in notebookObject.tags) {
+          // this.tags.push(notebookObject.tags[i]);
+          // }
         });
       });
     },
