@@ -1,5 +1,6 @@
 <template>
 <div>
+  <!-- TODO: this should be button element -->
   <div id="add-new-post-btn" 
        v-on:click="showNewPostModal = !showNewPostModal">   
        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -10,15 +11,11 @@
 
   <div v-if="showNewPostModal" class="new-post-wrapper">
     <div class="container">
-        {{this.$route.params.id}}
         {{getDate}}
         <textarea id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
         
         <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
         
-        <!-- dynamically retrive all tags associated with
-             this notebook.
-         --> 
         <div class="tag-container">
           <div v-for="(tag , title) in tags" :key="title">
             <h2> {{title}} </h2>
@@ -53,8 +50,6 @@ export default {
     return {
       uid:"",
       showNewPostModal: false,
-      // checkedMoods:[],
-      // checkedProductivity:[],
       checkedTags:[],
       postTitle:"",
       postContents:""
@@ -154,8 +149,7 @@ export default {
 
   },
   created() {
-    //get user id for the session, store in state
-    this.uid = firebase.auth().currentUser.uid
+    this.uid = localStorage.getItem("UserID")
   }
 };
 </script>
