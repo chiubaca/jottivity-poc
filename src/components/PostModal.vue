@@ -1,12 +1,16 @@
 <template>
-  <div v-if="modalState" class="modal-container">
+  <div v-if="modalState" class="modal-container" v-on:keyup="closeModal()">
+    
     <div class="modal-contents">
-      <textarea id="post-title" v-model="postData.title"></textarea>
+      <textarea v-focus id="post-title" v-model="postData.title"></textarea>
       <textarea id="post-contents" v-model="postData.contents"></textarea>
-      <br/>
+
       <button v-on:click="editPost()">Update</button>
-      <br/>
-      <button v-on:click="closeModal()">Close</button>
+      <button id="exit-button" 
+            v-on:click="closeModal()">
+              &times;
+      </button>
+      
     </div>
   </div>
 </template>
@@ -94,6 +98,26 @@ textarea{
 #post-contents{
   height:70%;
   border-bottom: 1px solid
+}
+
+#exit-button{
+  border: none;
+  outline: none;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  position: absolute;
+  top: 0px;
+  right: 20px;
+  z-index: 1;
+}
+
+#exit-button:hover,
+#exit-button:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 </style>
