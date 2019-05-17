@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='component-container'>
     <Logout/>
     <p>User ID : {{this.uid}}</p>
     <div class="notebooks-container">
@@ -278,12 +278,17 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#component-container{
+    background-image: url(../assets/dot.png) 
+}
+
 .notebooks-container {
   display: flex;
   flex-direction: row; /* easily reverse with column-reverse*/
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
+
 }
 
 .notebook {
