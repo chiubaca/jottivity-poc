@@ -1,12 +1,16 @@
 <template>
-  <div v-if="modalState" class="modal-container">
+  <div v-if="modalState" class="modal-container" v-on:keyup.esc="closeModal()">
+    
     <div class="modal-contents">
-      <textarea id="post-title" v-model="postData.title"></textarea>
+      <textarea v-focus id="post-title" v-model="postData.title"></textarea>
       <textarea id="post-contents" v-model="postData.contents"></textarea>
-      <br/>
+
       <button v-on:click="editPost()">Update</button>
-      <br/>
-      <button v-on:click="closeModal()">Close</button>
+      <button id="button-exit" 
+            v-on:click="closeModal()">
+              &times;
+      </button>
+      
     </div>
   </div>
 </template>
@@ -54,6 +58,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+@import "src/assets/css/buttons.scss";
 
 .modal-container {
   background-color: #3d3b3b5b;

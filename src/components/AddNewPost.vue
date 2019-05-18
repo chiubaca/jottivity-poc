@@ -9,10 +9,11 @@
        </svg>
   </div>
 
-  <div v-if="showNewPostModal" class="new-post-wrapper">
+  <div v-if="showNewPostModal" class="new-post-wrapper" v-on:keyup.esc="showNewPostModal=!showNewPostModal">
+    
     <div class="container">
         {{getDate}}
-        <textarea id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
+        <textarea v-focus id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
         
         <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
         
@@ -33,8 +34,10 @@
         </div>
 
       <button v-on:click="postEntry">save entry</button>
-      <button v-on:click="showNewPostModal=!showNewPostModal"> exit </button>
-    </div>   
+    </div>
+    <button v-on:click="showNewPostModal=!showNewPostModal" 
+      id="button-exit"> &times;
+    </button>   
   </div>
 </div>
 </template>
@@ -155,7 +158,8 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style  lang="scss" scoped>
+@import "src/assets/css/buttons.scss";
 
 #add-new-post-btn{
   position: fixed;
@@ -208,4 +212,10 @@ export default {
 #new-post-content{
   width: 100%
 }  
+
+#button-exit{
+  position: relative;
+  top: 0%;
+  right: 5%;
+}
 </style>

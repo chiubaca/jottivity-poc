@@ -1,6 +1,16 @@
+import Vue from 'vue'
 import { shallowMount } from '@vue/test-utils'
 import PostModal from '@/components/PostModal'
 import sinon from 'sinon'
+
+
+Vue.directive('focus', {
+  // When the bound element is inserted into the DOM...
+  inserted: function (el) {
+    // Focus the element
+    el.focus()
+  }
+})
 
 describe('Post.vue', () => {
 
