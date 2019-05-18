@@ -9,7 +9,7 @@
     </div>
         
     <header> 
-      <img alt="pen logo" src="@/assets/logo.svg">
+      <img alt="pen logo" src="@/assets/images/logo.svg">
       <div>
         <h1>Jottivity.</h1>
         <h2>Jot your thoughts, mood &amp; productivity</h2>
