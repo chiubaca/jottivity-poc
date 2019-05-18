@@ -279,7 +279,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 #component-container{
-    background-image: url(../assets/images/dot.png) 
+    background-image: url("../assets/images/dot.png") 
 }
 
 .notebooks-container {

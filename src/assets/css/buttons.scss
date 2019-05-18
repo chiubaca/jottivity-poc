@@ -1,0 +1,19 @@
+#button-exit{
+    border: none;
+    outline: none;
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 0px;
+    right: 20px;
+    z-index: 1;
+  }
+  
+  #button-exit:hover,
+  #button-exit:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
