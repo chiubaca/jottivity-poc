@@ -9,7 +9,10 @@
        </svg>
   </div>
 
-  <div v-if="showNewPostModal" class="new-post-wrapper" v-on:keyup.esc="showNewPostModal=!showNewPostModal">
+  <div class="new-post-wrapper"
+       v-if="showNewPostModal"
+       v-on:keyup.esc="showNewPostModal=!showNewPostModal"
+       >
     
     <div class="container">
         {{getDate}}
@@ -17,21 +20,8 @@
         
         <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
         
-        <div class="tag-container">
-          <div v-for="(tag , title) in tags" :key="title">
-            <h2> {{title}} </h2>
-            <div v-for="tagObject in tag">
-
-              <input type="checkbox"
-                     :id="tagObject"
-                     :value="tagObject"
-                     v-model="checkedTags">
-
-              {{tagObject.description}}
-            </div>
-          </div>
-
-        </div>
+        <TagContainer v-bind:tags="tags"
+                      v-on:checked-tags="handleCheckedTags"/>
 
       <button v-on:click="postEntry">save entry</button>
     </div>
@@ -43,20 +33,23 @@
 </template>
 
 <script>
+import TagContainer from '@/components/TagsContainer'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 export default {
   name: "AddNewPost",
   props: ["tags"],
+  components:{
+    TagContainer
+  },
   data() {
     return {
       uid:"",
       showNewPostModal: false,
-      checkedTags:[],
       postTitle:"",
-      postContents:""
-      
+      postContents:"",
+      tagsObject:{}
     };
   },
   methods: {
@@ -82,8 +75,6 @@ export default {
       let postObject = {
         "title": this.postTitle,
         "date": this.getDate,
-        // "mood": this.checkedMoods,
-        // "productivity": this.checkedProductivity,
        "tags": this.tagsObject,
         "contents": this.postContents
       }
@@ -95,7 +86,11 @@ export default {
 
 
       
+    },
+    handleCheckedTags(selectedTagsObject){
+      this.tagsObject = selectedTagsObject;
     }
+ 
   },
   computed: {
     getDate() {
@@ -113,43 +108,7 @@ export default {
       }
       today = `${yyyy}-${mm}-${dd}T00:00:00`
       return today
-    },
-    tagsObject(){
-      /* returns an array of unique tags from an array of tag objects
-      firstly loops over all tag keys in the tags object
-      this is done within a Set object - it is similar to an Array Object
-      but it guarantees unique itemms so it doe the deduplication for us.
-      finally the output set object is spread back into an Array so we have
-      a good'ol Array to work with instead of a Set which has weird api. */
-
-      let uniqueTags = [...new Set(this.checkedTags.map(index => index.tag ))]
-
-      //contructs the shell of the tags object for firebase
-      //we iterate and push the corresponding tag objects into
-      //the relevant array in the next block
-      
-      let objectFromUniqueTags = (() => {
-          const obj = {};
-          for (const key of uniqueTags) {
-              obj[key] = [];
-          }
-          return obj
-      })() //eg. returns { mood: [], productivity: [] }
-
-      //loops over all checkedTags items and push into 
-      //corresponding category in objectFromUniqueTags
-      for (let tags in uniqueTags){
-          this.checkedTags.filter(tag => {
-              // console.log(tag)
-              if(tag.tag === uniqueTags[tags]){
-                  objectFromUniqueTags[uniqueTags[tags]].push(tag)
-              } 
-          })
-      }
-
-      return objectFromUniqueTags
     }
-
   },
   created() {
     this.uid = localStorage.getItem("UserID")
