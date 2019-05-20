@@ -159,10 +159,7 @@ export default {
   overflow: auto
 }
 
-.tag-container{
-  display: flex;
-  justify-content: space-evenly
-}
+
 
 #new-post-title{
   width: 100%

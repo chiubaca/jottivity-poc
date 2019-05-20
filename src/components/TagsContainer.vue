@@ -1,15 +1,22 @@
 <template>
-     <div class="tag-container">
+     <div class="all-tags-container">
           <div v-for="(tag , title) in tags" :key="title">
             <h2> {{title}} </h2>
-            <div v-for="tagObject in tag">
-              <input type="checkbox"
-                     :id="tagObject"
-                     :value="tagObject"
-                     v-model="checkedTags">
+            <div class="tag-container">
+              <div class="tags" v-for="tagObject in tag">
+               
+                <label class="tag-label" :for="tagObject.description">
+                   <input type="checkbox"
+                      class="tag-checkbox"
+                      :value="tagObject.description"
+                      v-model="checkedTags">
+                      <span>{{tagObject.description}}</span>
+                </label>
 
-              {{tagObject.description}}
             </div>
+            </div>
+          
+
           </div>
 
         </div>
@@ -83,6 +90,52 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss" scoped>
+.all-tags-container {
+/* display: flex;
+justify-content: space-evenly */
+}
+
+.tag-container {
+  display: flex;
+    flex-wrap: wrap
+
+}
+
+.tags{
+  margin:1px;
+}
+  
+input[type=checkbox]  {
+    border-style: solid;
+    appearance: none;
+    width:100%;
+    border-radius: 10px;
+   
+}
+
+label.tag-label span {
+  position:relative;
+  bottom: 40px;
+  left: 10px;
+  z-index: -1
+}
+
+label input.tag-checkbox:hover {
+    background:rgba(255, 192, 203, 0.404) 
+}
+
+label input.tag-checkbox:checked {
+    background:rgba(192, 193, 255, 0.404) 
+}
+
+
+
+
+// tag:checked {
+//   background:blue 
+// }
+
+
 
 </style>
