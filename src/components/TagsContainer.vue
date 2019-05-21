@@ -8,7 +8,7 @@
                 <label class="tag-label" :for="tagObject.description">
                    <input type="checkbox"
                       class="tag-checkbox"
-                      :value="tagObject.description"
+                      :value="tagObject"
                       v-model="checkedTags">
                       <span>{{tagObject.description}}</span>
                 </label>
