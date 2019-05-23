@@ -4,21 +4,17 @@
             <h2> {{title}} </h2>
             <div class="tag-container">
               <div class="tags" v-for="tagObject in tag">
-               
-                <label class="tag-label" :for="tagObject.description">
-                   <input type="checkbox"
-                      class="tag-checkbox"
-                      :value="tagObject"
-                      v-model="checkedTags">
-                      <span>{{tagObject.description}}</span>
+                <label class="tag-label" 
+                       :for="tagObject.description">
+                       {{tagObject.description}}
                 </label>
-
+                <input type="checkbox"
+                       class="tag-checkbox"
+                       :value="tagObject"
+                       v-model="checkedTags">
+              </div>
             </div>
-            </div>
-          
-
           </div>
-
         </div>
 </template>
 
@@ -91,19 +87,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.all-tags-container {
-/* display: flex;
-justify-content: space-evenly */
-}
 
 .tag-container {
   display: flex;
-    flex-wrap: wrap
-
+  flex-wrap: wrap;
+  justify-content: center
 }
 
 .tags{
-  margin:1px;
+  margin:-30px 5px 0px 0px
 }
   
 input[type=checkbox]  {
@@ -111,31 +103,23 @@ input[type=checkbox]  {
     appearance: none;
     width:100%;
     border-radius: 10px;
-   
 }
 
-label.tag-label span {
-  position:relative;
-  bottom: 40px;
-  left: 10px;
-  z-index: -1
+label.tag-label {
+  top: 38px;
+  left: 20px;
+  position: relative;
+  z-index: -1;
 }
 
-label input.tag-checkbox:hover {
+
+input.tag-checkbox:hover {
     background:rgba(255, 192, 203, 0.404) 
 }
 
-label input.tag-checkbox:checked {
+
+input.tag-checkbox:checked {
     background:rgba(192, 193, 255, 0.404) 
 }
-
-
-
-
-// tag:checked {
-//   background:blue 
-// }
-
-
 
 </style>
