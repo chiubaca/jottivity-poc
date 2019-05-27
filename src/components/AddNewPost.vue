@@ -159,14 +159,22 @@ export default {
   overflow: auto
 }
 
-
+textarea{
+  resize: none;
+  width:100%;
+  border:none;
+} 
 
 #new-post-title{
-  width: 100%
+  // width: 100%;
+  height:10%;
+  font-size: 1.5em;
+  border-bottom: 5px solid
 }
 
 #new-post-content{
-  width: 100%
+  width: 100%;
+  border-bottom: 1px solid
 }  
 
 #button-exit{
