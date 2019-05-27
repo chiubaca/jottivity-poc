@@ -80,10 +80,6 @@ describe('AddNewPost.vue', () => {
     expect(wrapper.vm.showNewPostModal).toBe(false)
   })
 
-  // it('', () => {
-  // })
-
-
 })
 
 
