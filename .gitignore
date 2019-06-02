@@ -26,3 +26,4 @@ data_processing/*.json
 #firebase.config.js
 firebase-debug.log
 micro-blog-495b7-firebase-adminsdk-uxwyo-969c4e2dfc.json
+webpack_analysis/*
