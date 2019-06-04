@@ -16,17 +16,15 @@
     
     <div class="container">
         {{getDate}}
-        <textarea v-focus id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
-        
-        <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
-        
+        <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
+        <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
 
-      <button v-on:click="postEntry">save entry</button>
+        <button v-on:click="postEntry">save entry</button>
     </div>
     <button v-on:click="showNewPostModal=!showNewPostModal" 
-      id="button-exit"> &times;
+            id="button-exit"> &times;
     </button>   
   </div>
 </div>
@@ -34,8 +32,11 @@
 
 <script>
 import TagContainer from '@/components/TagsContainer'
+import {HTTP} from '@/httpCommon'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+
+let uid;
 
 export default {
   name: "AddNewPost",
@@ -45,52 +46,45 @@ export default {
   },
   data() {
     return {
-      uid:"",
       showNewPostModal: false,
-      postTitle:"",
-      postContents:"",
-      tagsObject:{}
+      postObject:{
+        title:"",
+        contents:"",
+        tags:{},
+        date: "",
+      }
     };
   },
   methods: {
-    submitPost(url , data) {
-      console.log("submitting Post...")
-
-      return fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-      })
-      .then(response => response.json()); // parses response to JSON
-    },
     postEntry(){
-      let postObject = {
-        "title": this.postTitle,
-        "date": this.getDate,
-       "tags": this.tagsObject,
-        "contents": this.postContents
-      }
-
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}/posts.json?auth=${token}` , postObject)
+        HTTP({
+          method: 'post',
+          url : `users/${uid}/notebooks/${this.$route.params.id}/posts.json?auth=${token}`,
+          data : this.postObject
+        })
+        .then((response) => {
+          alert(`Success : ${response.status}`);
+          // assign the postID to the postObject before emit the event
+          // for AllPost component to read.
+          this.postObject.postID = response.data.name;
+          this.$emit('new-post', this.postObject);
+          this.showNewPostModal = false;
+        }).catch(function (error) {
+          console.error('something went wrong', Error(error) );
+          alert(error);
+        });
       })
-
-
-      
     },
+    
     handleCheckedTags(selectedTagsObject){
-      this.tagsObject = selectedTagsObject;
+      this.postObject.tags = selectedTagsObject;
+    },
+
+    pingEvent(){
+      this.$emit("new-post")
     }
- 
   },
   computed: {
     getDate() {
@@ -102,7 +96,6 @@ export default {
       if (dd < 10) {
         dd = '0' + dd;
       }
-
       if (mm < 10) {
         mm = '0' + mm;
       }
@@ -111,7 +104,8 @@ export default {
     }
   },
   created() {
-    this.uid = localStorage.getItem("UserID")
+    uid = localStorage.getItem("UserID");
+    this.postObject.date = this.getDate;
   }
 };
 </script>
