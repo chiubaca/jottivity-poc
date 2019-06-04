@@ -53,7 +53,7 @@ const router = new Router({
     {
       path: '/notebooks',
       name: 'notebooks',
-      component: AllNotebooks,
+      component: () => import(/* webpackChunkName: "all-notebooks" */ './views/AllNotebooks.vue'),
       meta: {
         requiresAuth:true
       }
@@ -70,7 +70,7 @@ router.beforeEach((to, from , next) => {
   if(requiresAuth && !currentUser){
     //If the route we navigate to requires authentication and there 
     //is no current user logged in, we redirect to the Login view.
-    console.log("page requires auth, you're not logged in, redirect to login ")
+    alert("page requires authentication, you're not logged in. Redirecting to login page")
     next('login')
   }else if(!requiresAuth && currentUser){
     //If the route we navigate to does not require authentication and 
