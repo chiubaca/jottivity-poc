@@ -3,12 +3,11 @@
     <p>NotebookID: {{this.$route.params.id}} </p>
     <p>UserID: {{this.uid}}</p>     
     <Logout/>
-    <AddNewPost v-bind:tags="tags"></AddNewPost>
-    <div class="all-posts" >
+    <AddNewPost v-on:new-post="handleNewPost"  
+                v-bind:tags="tags"></AddNewPost>
+    <div class="all-posts">
         <Post v-for="(post,index) in posts" :key="index"  v-bind:post-data="post"/>
-    </div>
-
-  
+    </div>  
   </div>
 </template>
 
@@ -58,7 +57,9 @@ export default {
         });
       });
     },
- 
+     handleNewPost(newPost){
+      this.posts.push(newPost)
+    }
   },
   computed: {
     toggleShow() {
