@@ -13,6 +13,7 @@
     "firebase": "^5.9.0",
     "firebaseui": "^3.5.2",
     "register-service-worker": "^1.6.2",
+    "sentiment": "^5.0.1",
     "vue": "^2.5.22",
     "vue-router": "^3.0.1"
   },

@@ -18,9 +18,14 @@
         {{getDate}}
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
+         <div>
+          Overall Sentiment: {{sentiment.score}} <br/>
+          Postive Words: {{sentiment.positive}} <br/>
+          Nostive Words: {{sentiment.negative}} <br/>        
+        </div>
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
-
+        
         <button v-on:click="postEntry">save entry</button>
     </div>
     <button v-on:click="showNewPostModal=!showNewPostModal" 
@@ -33,10 +38,12 @@
 <script>
 import TagContainer from '@/components/TagsContainer'
 import {HTTP} from '@/httpCommon'
+import Sentiment from 'sentiment'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 let uid;
+var sentiment = new Sentiment();
 
 export default {
   name: "AddNewPost",
@@ -47,6 +54,7 @@ export default {
   data() {
     return {
       showNewPostModal: false,
+      sentiment: {},
       postObject:{
         title:"",
         contents:"",
@@ -103,9 +111,19 @@ export default {
       return today
     }
   },
+  watch: {
+    postObject: {
+      handler: function(val, oldVal){
+      this.sentiment = sentiment.analyze(val.contents)
+      },
+      deep: true
+    }
+  },
   created() {
     uid = localStorage.getItem("UserID");
     this.postObject.date = this.getDate;
+
+   
   }
 };
 </script>
