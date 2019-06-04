@@ -23,72 +23,26 @@
 
 <script>
 import Logout from '@/components/Logout.vue'
-import firebaseHelpers from '@/mixins/firebaseHelpers'
+import {HTTP} from '@/httpCommon'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+
+
 
 export default {
   name: "AllNotebooks",
   components:{
     Logout
   },
-  mixins:[firebaseHelpers],
+  mixins:[],
   data() {
     return {
       uid:"",
       notebooks: [],
-      notebookIdLookup:[],
       newNotebookName:""
     };
   },
   methods: {
-    getData() {
-    
-      console.log("getting notebooks...")
-      firebase.auth().currentUser.getIdToken().then((token) => {
-        const baseURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/`
-        let notebookIdsArr = [];
-        //TODO: this needs tidying up and need to implement error handling!!
-        //A shallow fetch is required so we dont get all posts in each notebooks
-        //we only want to get notebooks IDs + metadata but firebase querying is a bit crap
-        //so we need to loop through all notebook ids and perform a fetch on each notebook- 
-        //ID invidually once we have the ID in memory. So here comes some spaghetti..
-
-        //We get fetch the data, the shallow parameter is important so
-        //that we dont get a deep copy the contents all the notebooks
-        //in the users account.
-        fetch(baseURL + `notebooks/.json?auth=${token}&shallow=true`)
-        // parse the data, standard fetch operation
-        .then(response => {return response.json()})
-        //we get back an array of strings which are the notebookIds
-        .catch(err => {console.log("error getting notebook objects" , err)})
-        .then(notebookIdsArray => {
-          for (let notebookID in notebookIdsArray) {
-            //we wrap the string into a simple object and push this into a holding array
-            notebookIdsArr.push({'notebookID':notebookID});
-            //whilst we know the notebookID here, we can fetch the metadata properties of each notebook
-            fetch(baseURL + `notebooks/${notebookID}/metadata.json?auth=${token}`)
-            .then(response => {return response.json()})
-            //this returns the notebook meta data object which push into vue data
-            .catch(err => {console.log("error getting notebook metadata" , err)}) 
-            .then(notebookObject => {
-              console.log("got metadata:" , notebookObject)
-              this.notebooks.push(notebookObject);
-              return this.notebooks;
-            //with each notebook object that is pushed into vue data we merge it with the 
-            //the equivlent notbookID which should have its index in-sync with the order
-            //of the notebooks array
-            })
-            .catch(err => {console.log("error pushing notebook metadata into app state" , err)})
-            .then(notebooksArray => {
-              let arrayIndex = notebooksArray.length - 1;
-              Object.assign(notebooksArray[arrayIndex] , notebookIdsArr[arrayIndex])
-            })
-          }
-        })
-        .catch(err => {console.log("error iterating through notebooks data" , err)})
-      });  
-    },
     addNewNotebook(){
       let notebookObject = {
         metadata:{
@@ -264,15 +218,48 @@ export default {
   computed: {
     toggleShow() {
       return true
-    }
+    },
+    getData2() {
+      let notebookIdsArr = [];
+      firebase.auth().currentUser.getIdToken().then((token) => {
+        // First request gets all items IDs - shallow request is important 
+        // so that the notebooks data is not retrieved.
+        HTTP({
+          method:'get',
+          url: `users/${this.uid}/notebooks/.json?auth=${token}&shallow=true`
+        })
+        .then((notebookIdsObj)=>{
+          // We make an additional request for each notebook id to get the full
+          // metadata of the notebook. We can make dynamic requests to the full
+          // contents of then notebook using the notebook id.
+          for (let notebookID in notebookIdsObj.data){
+            notebookIdsArr.push({'notebookID':notebookID});
+            HTTP({
+              method:'get',
+              url: `users/${this.uid}/notebooks/${notebookID}/metadata.json?auth=${token}`  
+            })
+            .then(notebookObj => {
+              this.notebooks.push(notebookObj.data);
+              return this.notebooks;
+            })
+            .then(notebooksArray => {
+              let arrayIndex = notebooksArray.length - 1;
+              //Object.assign doesnt trigger vue reactive system so need to use $set 
+              this.$set(notebooksArray[arrayIndex] , "notebookID" ,notebookIdsArr[arrayIndex].notebookID)
+            })
+          }
+        })
+      })
+    },
   },
   created() {
     //get user id for the session, store in state
     this.uid = firebase.auth().currentUser.uid
     localStorage.setItem('UserID', this.uid);
     //get data from db
-    this.getData()
-  },
+    // this.getData()
+    this.getData2
+  }
 };
 </script>
 
