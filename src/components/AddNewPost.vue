@@ -19,9 +19,13 @@
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
          <div>
-          Overall Sentiment: {{sentiment.score}} <br/>
+          
+          Overall Score: {{sentiment.score}} <br/>
+          Comparative Score: {{sentiment.comparative}} <br/>
           Postive Words: {{sentiment.positive}} <br/>
-          Nostive Words: {{sentiment.negative}} <br/>        
+          Negative Words: {{sentiment.negative}} <br/>
+          Analysed Words: {{sentiment.tokens}} <br/>
+          All Words: {{sentiment.words}} <br/>        
         </div>
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
@@ -109,12 +113,22 @@ export default {
       }
       today = `${yyyy}-${mm}-${dd}T00:00:00`
       return today
+    },
+    selectedTagsArray(){
+       let allTags = []
+       for (let tagNames in this.postObject.tags) {
+        for(let items in this.postObject.tags[tagNames]){
+          allTags.push(this.postObject.tags[tagNames][items].description)
+        };
+      }; 
+      return allTags;  
     }
   },
   watch: {
     postObject: {
       handler: function(val, oldVal){
-      this.sentiment = sentiment.analyze(val.contents)
+
+      this.sentiment = sentiment.analyze(val.contents + this.selectedTagsArray.join(" "))
       },
       deep: true
     }
