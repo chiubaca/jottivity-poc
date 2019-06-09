@@ -13,8 +13,6 @@
     </div>
 
     <br/>
-    <div>Sentiment Score: {{postData.sentiment.comparative}}</div>
-    
     <PostModal v-bind:modalState="showPostContent" 
                v-bind:postData="postData" 
                v-on:closeModal="closeModal" />

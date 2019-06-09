@@ -64,12 +64,12 @@ export default {
         contents:"",
         tags:{},
         date: "",
-        sentiment:{},
       }
     };
   },
   methods: {
     postEntry(){
+      this.postObject.sentiment = this.sentiment;
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
         HTTP({
@@ -130,9 +130,7 @@ export default {
       handler: function(val, oldVal){
 
       this.sentiment = sentiment.analyze(val.contents + this.selectedTagsArray.join(" "));
-      // assigning sentiment directly to postObject causes an infinite loops, so
-      // the sentiment analysis is done outside of the postObject, then assigned to it after
-      this.postObject.sentiment = this.sentiment;
+
       },
       deep: true
     }
