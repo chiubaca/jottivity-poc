@@ -11,15 +11,14 @@
 
   <div class="new-post-wrapper"
        v-if="showNewPostModal"
-       v-on:keyup.esc="showNewPostModal=!showNewPostModal"
-       >
+       v-on:keyup.esc="showNewPostModal=!showNewPostModal">
     
     <div class="container">
         {{getDate}}
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
-         <div>
-          
+        
+        <div>
           Overall Score: {{sentiment.score}} <br/>
           Comparative Score: {{sentiment.comparative}} <br/>
           Postive Words: {{sentiment.positive}} <br/>
@@ -27,6 +26,7 @@
           Analysed Words: {{sentiment.tokens}} <br/>
           All Words: {{sentiment.words}} <br/>        
         </div>
+        
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
         
@@ -58,12 +58,13 @@ export default {
   data() {
     return {
       showNewPostModal: false,
-      sentiment: {},
+      sentiment:{},
       postObject:{
         title:"",
         contents:"",
         tags:{},
         date: "",
+        sentiment:{},
       }
     };
   },
@@ -128,7 +129,10 @@ export default {
     postObject: {
       handler: function(val, oldVal){
 
-      this.sentiment = sentiment.analyze(val.contents + this.selectedTagsArray.join(" "))
+      this.sentiment = sentiment.analyze(val.contents + this.selectedTagsArray.join(" "));
+      // assigning sentiment directly to postObject causes an infinite loops, so
+      // the sentiment analysis is done outside of the postObject, then assigned to it after
+      this.postObject.sentiment = this.sentiment;
       },
       deep: true
     }
