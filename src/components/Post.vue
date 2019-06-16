@@ -1,18 +1,18 @@
 <template>
   <div class="post" >
     <span>{{postData.date}}</span>
-    <h1 v-on:click="showPostContent=true">{{postData.title}}</h1>
+    <h1 v-on:click="showPostContent=true"> {{postData.title}} </h1>
 
+    <div>Mood Score: {{postData.sentiment.score}} </div>
+    <div>Mood Comparative: {{postData.sentiment.comparative}} </div>
+    
     <div  v-for="(tag ,index) in postData.tags" :key="index" > 
-
       <h2>{{index}}</h2> 
         <div  v-for="(desc ,index) in tag" :key="index" > 
           {{desc.description}}
         </div>
-
     </div>
 
-    <br/>
     <PostModal v-bind:modalState="showPostContent" 
                v-bind:postData="postData" 
                v-on:closeModal="closeModal" />
