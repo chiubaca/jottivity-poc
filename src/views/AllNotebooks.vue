@@ -50,7 +50,7 @@ export default {
       let notebookObj = notebook;
       notebookObj.metadata.notebookAlias = this.newNotebookName
       notebookObj.metadata.dateCreated = this.getDate
-
+      notebookObj.posts["0"].date = this.getDate
       //Send the new notebook to db
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
