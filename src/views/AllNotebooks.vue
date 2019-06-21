@@ -24,10 +24,9 @@
 <script>
 import Logout from '@/components/Logout.vue'
 import {HTTP} from '@/httpCommon'
+import notebook from '@/components/notebook.json'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-
-
 
 export default {
   name: "AllNotebooks",
@@ -44,174 +43,35 @@ export default {
   },
   methods: {
     addNewNotebook(){
-      let notebookObject = {
-        metadata:{
-          'dateCreated':'n/a',
-          'notebookAlias': this.newNotebookName
-        },
-        "posts":{
-         "0" : { 
-          "contents" : "Edit me!",
-          "title": "Example Post",
-          "date": "2019-01-01T00:00:00",
-            "tags":{
-              "mood" : [ {
-                "colour" : "blue",
-                "description" : "Happy",
-                "tag" : "mood"
-              } ],
-              "productivity" : [ {
-                "colour" : "blue",
-                "description" : "Friends",
-                "tag" : "productivity"
-              } ]
-            },
-          }
-        },
-         "tags" :
-           {
-          "mood": [
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Happy"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Content"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Energetic"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Frustrated"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Angry"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Tired"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Optimistic"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Annoyed"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Dissatisfied"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Unmotivated"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Motiviated"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Satisfied"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Inspired"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Confused"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Sad"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Excited"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Demotivated"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Relaxed"
-              },
-              {
-                  "tag": "mood",
-                  "colour": "blue",
-                  "description": "Stressed"
-              }
-          ],
-          "productivity": [
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Fitness"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Leisure"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Life"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Work"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Friends"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Family"
-              },
-              {
-                  "tag": "productivity",
-                  "colour": "blue",
-                  "description": "Holiday"
-              }
-          ]
-        }
-      };
-      
+      //assign the notebook name to metadata
+      //TODO: need to check notebook alias is not blank
+      //TODO: notebooks need to be set with a valid date
+      let notebookObj = notebook;
+      notebookObj.metadata.notebookAlias = this.newNotebookName
+      notebookObj.metadata.dateCreated = "n/a"
+
+      //Send the new notebook to db
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks.json?auth=${token}`, notebookObject)
-        console.log("adding new notebook...")
-        }).catch(err => console.log(err))
+        HTTP({
+          method: 'post',
+          url : `users/${this.uid}/notebooks.json?auth=${token}`,
+          data : notebookObj
+        })
+        .then((response) => {
+          alert(`Success, created a new notebook : ${response.status}`);
+          this.notebooks.push({
+            notebookAlias : this.newNotebookName,
+            dateCreated : "n/a",
+            notebookID: response.data.name
+          })
+          let newNotebookID = response.data.name;
+
+        }).catch(function (error) {
+          console.error('something went wrong', Error(error) );
+          alert(error);
+        });
+      })
     }
  
   },
@@ -219,7 +79,7 @@ export default {
     toggleShow() {
       return true
     },
-    getData2() {
+    getData() {
       let notebookIdsArr = [];
       firebase.auth().currentUser.getIdToken().then((token) => {
         // First request gets all items IDs - shallow request is important 
@@ -257,8 +117,7 @@ export default {
     this.uid = firebase.auth().currentUser.uid
     localStorage.setItem('UserID', this.uid);
     //get data from db
-    // this.getData()
-    this.getData2
+    this.getData
   }
 };
 </script>
