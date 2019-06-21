@@ -24,6 +24,7 @@
 <script>
 import Logout from '@/components/Logout.vue'
 import {HTTP} from '@/httpCommon'
+import getDate from '@/mixins/getDate'
 import notebook from '@/components/notebook.json'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -33,7 +34,7 @@ export default {
   components:{
     Logout
   },
-  mixins:[],
+  mixins:[getDate],
   data() {
     return {
       uid:"",
@@ -48,7 +49,7 @@ export default {
       //TODO: notebooks need to be set with a valid date
       let notebookObj = notebook;
       notebookObj.metadata.notebookAlias = this.newNotebookName
-      notebookObj.metadata.dateCreated = "n/a"
+      notebookObj.metadata.dateCreated = this.getDate
 
       //Send the new notebook to db
       firebase.auth().currentUser.getIdToken()
@@ -62,7 +63,7 @@ export default {
           alert(`Success, created a new notebook : ${response.status}`);
           this.notebooks.push({
             notebookAlias : this.newNotebookName,
-            dateCreated : "n/a",
+            dateCreated : this.getDate,
             notebookID: response.data.name
           })
           let newNotebookID = response.data.name;
