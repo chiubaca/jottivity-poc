@@ -42,6 +42,7 @@
 <script>
 import TagContainer from '@/components/TagsContainer'
 import {HTTP} from '@/httpCommon'
+import getDate from '@/mixins/getDate'
 import Sentiment from 'sentiment'
 import firebase from 'firebase/app'
 import 'firebase/auth'
@@ -55,6 +56,7 @@ export default {
   components:{
     TagContainer
   },
+  mixins:[getDate],
   data() {
     return {
       showNewPostModal: false,
@@ -100,21 +102,6 @@ export default {
     }
   },
   computed: {
-    getDate() {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1; //January is 0!
-      let yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      today = `${yyyy}-${mm}-${dd}T00:00:00`
-      return today
-    },
     selectedTagsArray(){
        let allTags = []
        for (let tagNames in this.postObject.tags) {
@@ -129,7 +116,7 @@ export default {
     postObject: {
       handler: function(val, oldVal){
 
-      this.sentiment = sentiment.analyze(val.contents + this.selectedTagsArray.join(" "));
+      this.sentiment = sentiment.analyze(`${val.contents} ${this.selectedTagsArray.join(" ")}`);
 
       },
       deep: true
