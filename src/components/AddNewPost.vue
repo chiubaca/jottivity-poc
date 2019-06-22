@@ -87,8 +87,7 @@ export default {
           this.$emit('new-post', this.postObject);
           this.showNewPostModal = false;
         }).catch(function (error) {
-          console.error('something went wrong', Error(error) );
-          alert(error);
+          alert('something went wrong', Error(error) );
         });
       })
     },
@@ -107,8 +106,8 @@ export default {
        for (let tagNames in this.postObject.tags) {
         for(let items in this.postObject.tags[tagNames]){
           allTags.push(this.postObject.tags[tagNames][items].description)
-        };
-      }; 
+        }
+      }
       return allTags;  
     }
   },
