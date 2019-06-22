@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import AsyncComputed from 'vue-async-computed'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 import './registerServiceWorker'
 
 Vue.config.productionTip = false
+
+/* Initialize the plugins */
+Vue.use(AsyncComputed)
 
 let app = "" ;
 const fbConfig = {

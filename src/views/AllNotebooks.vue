@@ -66,11 +66,8 @@ export default {
             dateCreated : this.getDate,
             notebookID: response.data.name
           })
-          let newNotebookID = response.data.name;
-
         }).catch(function (error) {
-          console.error('something went wrong', Error(error) );
-          alert(error);
+          alert('something went wrong', Error(error) );
         });
       })
     }
@@ -79,8 +76,10 @@ export default {
   computed: {
     toggleShow() {
       return true
-    },
-    getData() {
+    }
+  },
+  asyncComputed: {
+     getData() {
       let notebookIdsArr = [];
       firebase.auth().currentUser.getIdToken().then((token) => {
         // First request gets all items IDs - shallow request is important 
@@ -107,11 +106,12 @@ export default {
               let arrayIndex = notebooksArray.length - 1;
               //Object.assign doesnt trigger vue reactive system so need to use $set 
               this.$set(notebooksArray[arrayIndex] , "notebookID" ,notebookIdsArr[arrayIndex].notebookID)
+              return
             })
           }
         })
       })
-    },
+    }
   },
   created() {
     //get user id for the session, store in state
