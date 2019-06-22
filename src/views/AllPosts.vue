@@ -1,8 +1,9 @@
 <template>
   <div>
     <p>NotebookID: {{this.$route.params.id}} </p>
-    <p>UserID: {{this.uid}}</p>     
+    <p>UserID: {{this.uid}}</p>   
     <Logout/>
+    <MoodGraph id="mood-graph"/>
     <AddNewPost v-on:new-post="handleNewPost"  
                 v-bind:tags="tags"></AddNewPost>
     <div class="all-posts">
@@ -15,6 +16,7 @@
 import Post from '@/components/Post.vue'
 import AddNewPost from '@/components/AddNewPost.vue'
 import Logout from '@/components/Logout.vue'
+import MoodGraph from '@/components/MoodGraph.vue'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
@@ -23,13 +25,14 @@ export default {
   components:{
     Post,
     AddNewPost,
-    Logout
+    Logout,
+    MoodGraph
   },
   data() {
     return {
       uid:"",
       posts: [],
-      tags: {}
+      tags: {},
     };
   },
   methods: {
@@ -66,6 +69,9 @@ export default {
       return true
     }
   },
+  watch:{
+    
+  },
   created() {
     //get user id for the session, store in state
     this.uid = localStorage.getItem("UserID")
@@ -85,6 +91,7 @@ export default {
   flex-direction: column-reverse; /* easily reverse with column-reverse*/
   align-items: center
 }
+
 
 
 </style>
