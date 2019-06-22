@@ -35,19 +35,12 @@ export default {
       this.$emit('closeModal')
     },
     editPost(){
-      console.log(this.postData.title)
       let url =`https://micro-blog-495b7.firebaseio.com/users/${this.UserID}/notebooks/${this.NotebookID}/posts/${this.postData.postID}`
-      console.log(url)
-      console.log(this.postData)
-
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
         this.updatePost(`${url}.json?auth=${token}`, this.postData)
       })
     }
-  },
-  computer: {
-
   },
   created() {
     this.UserID = localStorage.getItem("UserID");

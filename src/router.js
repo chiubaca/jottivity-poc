@@ -2,11 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import firebase from 'firebase/app'
 import 'firebase/auth'
-
 import Login from '@/views/Login.vue'
 import Signup from '@/views/Signup.vue'
-import AllPosts from '@/views/AllPosts.vue'
-import AllNotebooks from '@/views/AllNotebooks.vue'      
 
 
 Vue.use(Router)
@@ -70,16 +67,15 @@ router.beforeEach((to, from , next) => {
   if(requiresAuth && !currentUser){
     //If the route we navigate to requires authentication and there 
     //is no current user logged in, we redirect to the Login view.
-    alert("page requires authentication, you're not logged in. Redirecting to login page")
     next('login')
-  }else if(!requiresAuth && currentUser){
+  }
+  else if(!requiresAuth && currentUser){
     //If the route we navigate to does not require authentication and 
     //there is a user logged in, we redirect to the Home view.
-    console.log("no auth required, you're logged in, redirecting to posts")
     next();
   } 
   else{
-    console.log("route pass through")
+    //No auth required and not logged in
     next();
   } 
 });

@@ -1,8 +1,7 @@
 export default {
     methods: {
         submitPost(url , data) {
-          console.log("Posting...")
-    
+
           return fetch(url, {
             method: "POST", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, cors, *same-origin
@@ -20,8 +19,7 @@ export default {
           .catch(err => console.log("problem submitting", err)); // parses response to JSON
         },
         updatePost(url , data) {
-          console.log("updating...")
-    
+
           return fetch(url, {
             method: "PATCH", // *GET, POST, PUT, DELETE, etc.
             mode: "cors", // no-cors, cors, *same-origin
@@ -36,7 +34,7 @@ export default {
             body: JSON.stringify(data), // body data type must match "Content-Type" header
           })
           .then(response => response.json())
-          .catch(err => console.log("problem submitting", err)); // parses response to JSON
+          .catch(err => alert("problem submitting", err)); // parses response to JSON
         },
         printThis() {
           alert("Hey from firebaseHelpers!")

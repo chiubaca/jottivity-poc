@@ -1,5 +1,7 @@
 <template>
-  <button v-on:click="logout"> Log Out </button>
+  <button v-on:click="logout"> 
+    <router-link to="/login">Log Out </router-link>
+  </button>
 </template>
 
 <script>
@@ -12,9 +14,9 @@ export default {
     logout() {
       firebase.auth().signOut()
       .then(()=> {
-        this.$router.replace('login')
-        console.log("signing out")
+        alert("You logged out")
       })
+      
     }
   },
 };

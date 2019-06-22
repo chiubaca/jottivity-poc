@@ -11,16 +11,25 @@
 
   <div class="new-post-wrapper"
        v-if="showNewPostModal"
-       v-on:keyup.esc="showNewPostModal=!showNewPostModal"
-       >
+       v-on:keyup.esc="showNewPostModal=!showNewPostModal">
     
     <div class="container">
         {{getDate}}
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
+        
+        <div>
+          Overall Score: {{sentiment.score}} <br/>
+          Comparative Score: {{sentiment.comparative}} <br/>
+          Postive Words: {{sentiment.positive}} <br/>
+          Negative Words: {{sentiment.negative}} <br/>
+          Analysed Words: {{sentiment.tokens}} <br/>
+          All Words: {{sentiment.words}} <br/>        
+        </div>
+        
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
-
+        
         <button v-on:click="postEntry">save entry</button>
     </div>
     <button v-on:click="showNewPostModal=!showNewPostModal" 
@@ -33,10 +42,13 @@
 <script>
 import TagContainer from '@/components/TagsContainer'
 import {HTTP} from '@/httpCommon'
+import getDate from '@/mixins/getDate'
+import Sentiment from 'sentiment'
 import firebase from 'firebase/app'
 import 'firebase/auth'
 
 let uid;
+var sentiment = new Sentiment();
 
 export default {
   name: "AddNewPost",
@@ -44,9 +56,11 @@ export default {
   components:{
     TagContainer
   },
+  mixins:[getDate],
   data() {
     return {
       showNewPostModal: false,
+      sentiment:{},
       postObject:{
         title:"",
         contents:"",
@@ -57,6 +71,7 @@ export default {
   },
   methods: {
     postEntry(){
+      this.postObject.sentiment = this.sentiment;
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
         HTTP({
@@ -72,8 +87,7 @@ export default {
           this.$emit('new-post', this.postObject);
           this.showNewPostModal = false;
         }).catch(function (error) {
-          console.error('something went wrong', Error(error) );
-          alert(error);
+          alert('something went wrong', Error(error) );
         });
       })
     },
@@ -87,25 +101,31 @@ export default {
     }
   },
   computed: {
-    getDate() {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1; //January is 0!
-      let yyyy = today.getFullYear();
+    selectedTagsArray(){
+       let allTags = []
+       for (let tagNames in this.postObject.tags) {
+        for(let items in this.postObject.tags[tagNames]){
+          allTags.push(this.postObject.tags[tagNames][items].description)
+        }
+      }
+      return allTags;  
+    }
+  },
+  watch: {
+    postObject: {
+      handler: function(val, oldVal){
 
-      if (dd < 10) {
-        dd = '0' + dd;
-      }
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      today = `${yyyy}-${mm}-${dd}T00:00:00`
-      return today
+      this.sentiment = sentiment.analyze(`${val.contents} ${this.selectedTagsArray.join(" ")}`);
+
+      },
+      deep: true
     }
   },
   created() {
     uid = localStorage.getItem("UserID");
     this.postObject.date = this.getDate;
+
+   
   }
 };
 </script>
