@@ -6,6 +6,9 @@
 </template>
 
 <script>
+import { Chart } from "frappe-charts/dist/frappe-charts.esm.js";
+// import css
+import "frappe-charts/dist/frappe-charts.min.css";
 
 export default {
   name: "MoodGraph",
@@ -13,7 +16,7 @@ export default {
   mixins: [],
   data() {
     return {
-      data: {
+      testData: {
         labels: [
           "12am-3am",
           "3am-6pm",
@@ -44,7 +47,19 @@ export default {
       return;
     }
   },
-  created() {
+  mounted() {
+    //replace new frappe.Chart() with new Chart()
+    const chart = new Chart("#chart", {
+      // or a DOM element,
+      // new Chart() in case of ES6 module with above usage
+      title: "My Awesome Chart",
+      data: this.testData,
+      type: "axis-mixed", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+      height: 250,
+      colors: ["#7cd6fd", "#743ee2"]
+    });
+
+    console.log(chart)
   }
 };
 </script>
