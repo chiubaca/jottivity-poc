@@ -1,65 +1,55 @@
 <template>
   <div class="mood-graph">
-    <p>Awesome graph is gonna go here</p>
     <div id="chart"></div>
+    {{dateRange.length}}
+     {{sentimentScores.length}}
   </div>
 </template>
 
 <script>
 import { Chart } from "frappe-charts/dist/frappe-charts.esm.js";
-// import css
 import "frappe-charts/dist/frappe-charts.min.css";
 
 export default {
   name: "MoodGraph",
-  props: [],
+  props: ["dateRange", "sentimentScores"],
   mixins: [],
   data() {
     return {
       testData: {
-        labels: [
-          "12am-3am",
-          "3am-6pm",
-          "6am-9am",
-          "9am-12am",
-          "12pm-3pm",
-          "3pm-6pm",
-          "6pm-9pm",
-          "9am-12am"
-        ],
+        labels: this.dateRange,
         datasets: [
           {
-            name: "Some Data",
+            name: "Sentiment",
             type: "bar",
-            values: [25, 40, 30, 35, 8, 52, 17, -4]
-          },
-          {
-            name: "Another Set",
-            type: "line",
-            values: [25, 50, -10, 15, 18, 32, 27, 14]
+            values: this.sentimentScores
           }
         ]
       }
     };
   },
   methods: {
-    stub() {
-      return;
-    }
   },
   mounted() {
     //replace new frappe.Chart() with new Chart()
     const chart = new Chart("#chart", {
       // or a DOM element,
       // new Chart() in case of ES6 module with above usage
-      title: "My Awesome Chart",
+      title: "Sentiment",
       data: this.testData,
-      type: "axis-mixed", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+      type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
       height: 250,
-      colors: ["#7cd6fd", "#743ee2"]
+      colors: ["#743ee2"],
+      axisOptions: {
+        xIsSeries: true // default: false
+      },
+      lineOptions: {
+        heatline: 1, // default: 0
+        regionFill: 1, // default: 0
+        hideDots: 1 // default: 0
+      },
     });
-
-    console.log(chart)
+    
   }
 };
 </script>
@@ -69,5 +59,9 @@ export default {
 .mood-graph {
   border-color: black;
   border-style: solid;
+}
+
+#chart{
+  overflow-x: scroll;
 }
 </style>
