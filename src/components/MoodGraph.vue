@@ -1,8 +1,9 @@
 <template>
   <div class="mood-graph">
+    <div v-if="dateRange.length === 0">Setting up chart</div>
     <div id="chart"></div>
     {{dateRange.length}}
-     {{sentimentScores.length}}
+    {{sentimentScores.length}}
   </div>
 </template>
 
@@ -16,41 +17,53 @@ export default {
   mixins: [],
   data() {
     return {
-      testData: {
-        labels: this.dateRange,
+      chart: {},
+      placeholderData: {
+        labels: [0, 0, 0, 0],
         datasets: [
           {
             name: "Sentiment",
             type: "bar",
-            values: this.sentimentScores
+            values: [0, 0, 0, 0]
           }
         ]
       }
     };
   },
-  methods: {
+  methods: {},
+  watch: {
+    dateRange: function(val, oldVal) {
+      // console.log("hello from date watcher", val)
+      if (val.length === 0) {
+        console.log("loading data");
+      } else if (val.length > 0) {
+        //Got data to use for charts
+        console.log("setting up chart")
+        this.chart = new Chart("#chart", {
+          // or a DOM element,
+          // new Chart() in case of ES6 module with above usage
+          title: "Sentiment",
+          data: this.placeholderData,
+          type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+          height: 250,
+          colors: ["#743ee2"],
+          axisOptions: {
+            xIsSeries: true // default: false
+          },
+          lineOptions: {
+            heatline: 1, // default: 0
+            regionFill: 1, // default: 0
+            hideDots: 1, // default: 0
+            isNavigable: true // default: false
+          }
+        });
+
+        this.placeholderData.datasets[0].values = this.sentimentScores;
+        this.placeholderData.labels = this.dateRange;
+      }
+    }
   },
-  mounted() {
-    //replace new frappe.Chart() with new Chart()
-    const chart = new Chart("#chart", {
-      // or a DOM element,
-      // new Chart() in case of ES6 module with above usage
-      title: "Sentiment",
-      data: this.testData,
-      type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-      height: 250,
-      colors: ["#743ee2"],
-      axisOptions: {
-        xIsSeries: true // default: false
-      },
-      lineOptions: {
-        heatline: 1, // default: 0
-        regionFill: 1, // default: 0
-        hideDots: 1 // default: 0
-      },
-    });
-    
-  }
+  mounted() {}
 };
 </script>
 
@@ -61,7 +74,7 @@ export default {
   border-style: solid;
 }
 
-#chart{
+#chart {
   overflow-x: scroll;
 }
 </style>
