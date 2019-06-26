@@ -67,14 +67,17 @@ export default {
     },
     getDateRange() {
       this.dateRange = []; 
+      let monthsArr = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"]
       this.posts.forEach((post) => {
-        this.dateRange.push(post.date);
+        let month = new Date(post.date).getMonth()
+        let day = new Date(post.date).getDate()
+        this.dateRange.push(`${day}-${monthsArr[month]}`);
       });
     },
      getSentimentScores() {
       this.sentimentScores = [];
        this.posts.forEach((post) => {
-        this.sentimentScores.push(post.sentiment.comparative);
+        this.sentimentScores.push(post.sentiment.comparative.toPrecision(1));
       });
     },
     handleNewPost(newPost) {

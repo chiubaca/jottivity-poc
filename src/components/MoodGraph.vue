@@ -2,8 +2,6 @@
   <div class="mood-graph">
     <div v-if="dateRange.length === 0">Setting up chart</div>
     <div id="chart"></div>
-    {{dateRange.length}}
-    {{sentimentScores.length}}
   </div>
 </template>
 
@@ -45,6 +43,7 @@ export default {
           title: "Sentiment",
           data: this.placeholderData,
           type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
+          isNavigable: false, // default: false
           height: 250,
           colors: ["#743ee2"],
           axisOptions: {
@@ -54,12 +53,15 @@ export default {
             heatline: 1, // default: 0
             regionFill: 1, // default: 0
             hideDots: 1, // default: 0
-            isNavigable: true // default: false
           }
         });
 
         this.placeholderData.datasets[0].values = this.sentimentScores;
         this.placeholderData.labels = this.dateRange;
+
+        this.chart.parent.addEventListener('data-select', (e) => {
+          console.log(e); // e contains index and value of current datapoint
+        });
       }
     }
   },
@@ -75,6 +77,5 @@ export default {
 }
 
 #chart {
-  overflow-x: scroll;
 }
 </style>
