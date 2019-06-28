@@ -3,7 +3,8 @@
     <p>NotebookID: {{this.$route.params.id}}</p>
     <p>UserID: {{this.uid}}</p>
     <Logout/>
-    <MoodGraph id="mood-graph" 
+    <MoodGraph id="mood-graph"
+               :class="fixGraph"
                v-bind:dateRange="dateRange"
                v-bind:sentimentScores="sentimentScores"/>
     <AddNewPost v-on:new-post="handleNewPost" v-bind:tags="tags"></AddNewPost>
@@ -36,7 +37,8 @@ export default {
       posts: [],
       tags: {},
       dateRange:[],
-      sentimentScores:[]
+      sentimentScores:[],
+      fixGraph:""
     };
   },
   methods: {
@@ -69,15 +71,17 @@ export default {
       this.dateRange = []; 
       let monthsArr = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"]
       this.posts.forEach((post) => {
+        let year = new Date(post.date).getYear()
         let month = new Date(post.date).getMonth()
         let day = new Date(post.date).getDate()
-        this.dateRange.push(`${day}-${monthsArr[month]}`);
+        this.dateRange.push(new Date(post.date).toLocaleDateString());
+        // this.dateRange.push(new Date(post.date))
       });
     },
      getSentimentScores() {
       this.sentimentScores = [];
        this.posts.forEach((post) => {
-        this.sentimentScores.push(post.sentiment.comparative.toPrecision(1));
+        this.sentimentScores.push(post.sentiment.comparative.toPrecision(2));
       });
     },
     handleNewPost(newPost) {
@@ -94,6 +98,7 @@ export default {
   },
   watch: {},
   created() {
+    let vue = this
     //get user id for the session, store in state
     this.uid = localStorage.getItem("UserID");
     localStorage.setItem("NotebookID", this.$route.params.id);
@@ -101,6 +106,19 @@ export default {
     //get data from db
     this.getAllPosts();
     
+    window.addEventListener("scroll", function(event) {
+    var top = this.scrollY,
+        left =this.scrollX;
+
+    if(top > 340){
+      vue.fixGraph = "fix-graph"
+    }
+    if(top < 340){
+      vue.fixGraph = ""
+    }
+
+    }, false);
+
   }
 };
 </script>
@@ -111,5 +129,15 @@ export default {
   display: flex;
   flex-direction: column-reverse; /* easily reverse with column-reverse*/
   align-items: center;
+}
+
+#mood-graph{
+  background: white
+}
+
+.fix-graph{
+  position: fixed;
+  top: 0px;
+  width: 100%;
 }
 </style>

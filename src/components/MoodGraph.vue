@@ -16,15 +16,22 @@ export default {
   data() {
     return {
       chart: {},
-      placeholderData: {
-        labels: [0, 0, 0, 0],
+      graphData: {
+        labels: [0,0],
         datasets: [
           {
-            name: "Sentiment",
-            type: "bar",
-            values: [0, 0, 0, 0]
+            name: "Mood Score",
+            type: "line",
+            values: [0,0]
           }
-        ]
+        ],
+        yMarkers: [
+        {
+          label: "Neutral",
+          value:0,
+          options: { labelPos: 'right' } // default: 'right'
+        }
+    ]
       }
     };
   },
@@ -36,12 +43,10 @@ export default {
         console.log("loading data");
       } else if (val.length > 0) {
         //Got data to use for charts
-        console.log("setting up chart")
         this.chart = new Chart("#chart", {
           // or a DOM element,
           // new Chart() in case of ES6 module with above usage
-          title: "Sentiment",
-          data: this.placeholderData,
+          data: this.graphData,
           type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
           isNavigable: false, // default: false
           height: 250,
@@ -56,8 +61,8 @@ export default {
           }
         });
 
-        this.placeholderData.datasets[0].values = this.sentimentScores;
-        this.placeholderData.labels = this.dateRange;
+        this.graphData.datasets[0].values = this.sentimentScores;
+        this.graphData.labels = this.dateRange;
 
         this.chart.parent.addEventListener('data-select', (e) => {
           console.log(e); // e contains index and value of current datapoint
@@ -70,12 +75,22 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-.mood-graph {
-  border-color: black;
-  border-style: solid;
+<style lang="scss">
+
+
+/* x axis */
+.frappe-chart .x.axis .line-vertical {
+    display: none;
 }
 
-#chart {
+/* y axis */
+.frappe-chart .y.axis .line-horizontal {
+    display: none;
 }
+
+// .frappe-chart .y.axis .line-horizontal,
+// .frappe-chart .y.axis .line-horizontal text {
+//     display: none;
+// }
+
 </style>
