@@ -5,8 +5,7 @@
     <Logout/>
     <MoodGraph id="mood-graph"
                :class="fixGraph"
-               v-bind:dateRange="dateRange"
-               v-bind:sentimentScores="sentimentScores"/>
+               :allPosts="posts"/>
     <AddNewPost v-on:new-post="handleNewPost" v-bind:tags="tags"></AddNewPost>
     <div class="all-posts">
       <Post v-for="(post,index) in posts" :key="index" v-bind:post-data="post"/>
@@ -62,32 +61,11 @@ export default {
           return
         })
         .finally(()=>{
-          this.getDateRange()
-          this.getSentimentScores()
         })
       })
     },
-    getDateRange() {
-      this.dateRange = []; 
-      let monthsArr = ["Jan","Feb","Mar","Apr","May","Jun","Jul", "Aug","Sep","Oct","Nov","Dec"]
-      this.posts.forEach((post) => {
-        let year = new Date(post.date).getYear()
-        let month = new Date(post.date).getMonth()
-        let day = new Date(post.date).getDate()
-        this.dateRange.push(new Date(post.date).toLocaleDateString());
-        // this.dateRange.push(new Date(post.date))
-      });
-    },
-     getSentimentScores() {
-      this.sentimentScores = [];
-       this.posts.forEach((post) => {
-        this.sentimentScores.push(post.sentiment.comparative.toPrecision(2));
-      });
-    },
     handleNewPost(newPost) {
       this.posts.push(newPost);
-      this.getDateRange()
-      this.getSentimentScores()
     }
   },
   computed: {

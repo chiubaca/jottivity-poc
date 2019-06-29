@@ -1,6 +1,6 @@
 <template>
   <div class="mood-graph">
-    <div v-if="dateRange.length === 0">Setting up chart</div>
+    <div v-if="allPosts.length === 0">Setting up chart</div>
     <div id="chart"></div>
   </div>
 </template>
@@ -11,38 +11,53 @@ import "frappe-charts/dist/frappe-charts.min.css";
 
 export default {
   name: "MoodGraph",
-  props: ["dateRange", "sentimentScores"],
+  props: ["allPosts"],
   mixins: [],
   data() {
     return {
       chart: {},
       graphData: {
-        labels: [0,0],
-        datasets: [
-          {
+        labels: [0,0], //placeholder data, gets overiden in the watcher
+        datasets: [{
             name: "Mood Score",
             type: "line",
             values: [0,0]
-          }
-        ],
-        yMarkers: [
-        {
+          }],
+        yMarkers: [{
           label: "Neutral",
           value:0,
           options: { labelPos: 'right' } // default: 'right'
-        }
-    ]
-      }
+        }]
+      },
     };
   },
-  methods: {},
+  methods: {
+  },
+  computed:{
+    allDates() {
+      let dateRange = [];
+      this.allPosts.forEach((post) => {
+        dateRange.push(new Date(post.date).toLocaleDateString());
+        // this.dateRange.push(new Date(post.date))
+      });
+      return dateRange
+    },
+    allSentimentScores() {
+      let sentimentScores = [];
+      this.allPosts.forEach((post) => {
+        sentimentScores.push(post.sentiment.comparative.toPrecision(2));
+      });
+      return sentimentScores
+    },
+  },
   watch: {
-    dateRange: function(val, oldVal) {
+    allPosts: function(val, oldVal) {
       // console.log("hello from date watcher", val)
       if (val.length === 0) {
-        console.log("loading data");
+        console.warn("No Data");
+        
       } else if (val.length > 0) {
-        //Got data to use for charts
+
         this.chart = new Chart("#chart", {
           // or a DOM element,
           // new Chart() in case of ES6 module with above usage
@@ -61,12 +76,11 @@ export default {
           }
         });
 
-        this.graphData.datasets[0].values = this.sentimentScores;
-        this.graphData.labels = this.dateRange;
+        //Set Data to graph data object
+        this.graphData.datasets[0].values = this.allSentimentScores;
+        this.graphData.labels =  this.allDates;
 
-        this.chart.parent.addEventListener('data-select', (e) => {
-          console.log(e); // e contains index and value of current datapoint
-        });
+       
       }
     }
   },
