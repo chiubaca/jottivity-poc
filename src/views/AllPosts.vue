@@ -3,9 +3,14 @@
     <p>NotebookID: {{this.$route.params.id}}</p>
     <p>UserID: {{this.uid}}</p>
     <Logout/>
+    
     <MoodGraph id="mood-graph"
                :class="fixGraph"
                :allPosts="posts"/>
+    <!-- Im not happy with this hacky fix, Witout it, the posts element shift
+         straight up when the graph element becomes fixed, need a better way solve this -->
+    <div v-if="fixGraph === 'fix-graph'" id="hack"> you should never see this...</div>
+
     <AddNewPost v-on:new-post="handleNewPost" v-bind:tags="tags"></AddNewPost>
     <div class="all-posts">
       <Post v-for="(post,index) in posts" :key="index" v-bind:post-data="post"/>
@@ -115,6 +120,9 @@ export default {
   background: white;
   box-shadow: 0px 0px 13px #7d7d7d;
 
+}
+#hack{
+  height:180px
 }
 
 .fix-graph {
