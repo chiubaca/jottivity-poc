@@ -41,5 +41,6 @@ if (process.env.NODE_ENV === 'production') {
     if (refreshing) return
     window.location.reload()
     refreshing = true
+    console.log(e)
   })
 }

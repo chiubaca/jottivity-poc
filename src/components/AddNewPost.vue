@@ -113,7 +113,7 @@ export default {
   },
   watch: {
     postObject: {
-      handler: function(val, oldVal){
+      handler: function(val){
 
       this.sentiment = sentiment.analyze(`${val.contents} ${this.selectedTagsArray.join(" ")}`);
 

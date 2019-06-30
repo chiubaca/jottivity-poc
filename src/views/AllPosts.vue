@@ -1,80 +1,110 @@
 <template>
   <div>
-    <p>NotebookID: {{this.$route.params.id}} </p>
-    <p>UserID: {{this.uid}}</p>     
+    <p>NotebookID: {{this.$route.params.id}}</p>
+    <p>UserID: {{this.uid}}</p>
     <Logout/>
-    <AddNewPost v-on:new-post="handleNewPost"  
-                v-bind:tags="tags"></AddNewPost>
+    
+    <MoodGraph id="mood-graph"
+               :class="fixGraph"
+               :allPosts="posts"/>
+    <!-- Im not happy with this hacky fix, Witout it, the posts element shift
+         straight up when the graph element becomes fixed, need a better way solve this -->
+    <div v-if="fixGraph === 'fix-graph'" id="hack"> you should never see this...</div>
+
+    <AddNewPost v-on:new-post="handleNewPost" v-bind:tags="tags"></AddNewPost>
     <div class="all-posts">
-        <Post v-for="(post,index) in posts" :key="index"  v-bind:post-data="post"/>
-    </div>  
+      <Post v-for="(post,index) in posts" :key="index" v-bind:post-data="post"/>
+    </div>
   </div>
 </template>
 
 <script>
-import Post from '@/components/Post.vue'
-import AddNewPost from '@/components/AddNewPost.vue'
-import Logout from '@/components/Logout.vue'
-import firebase from 'firebase/app'
-import 'firebase/auth'
+import Post from "@/components/Post.vue";
+import AddNewPost from "@/components/AddNewPost.vue";
+import Logout from "@/components/Logout.vue";
+import MoodGraph from "@/components/MoodGraph.vue";
+import {HTTP} from '@/httpCommon'
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default {
   name: "AllPosts",
-  components:{
+  components: {
     Post,
     AddNewPost,
-    Logout
+    Logout,
+    MoodGraph
   },
   data() {
     return {
-      uid:"",
+      uid: "",
       posts: [],
-      tags: {}
+      tags: {},
+      dateRange:[],
+      sentimentScores:[],
+      fixGraph:""
     };
   },
   methods: {
-    getData() {
-      //This could be done via the REST API - https://firebase.google.com/docs/database/rest/auth#generate_an_access_token
+    getAllPosts(){
       firebase.auth().currentUser.getIdToken().then((token) => {
-        const postsURL = `https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}.json?auth=${token}`
-        //TODO:this needs tidying up
-        fetch(postsURL)
-        .then(response => {
-          return response.json();
+        HTTP({
+          method:'get',
+          url: `users/${this.uid}/notebooks/${this.$route.params.id}.json?auth=${token}`
         })
-        .then(notebookObject => {
+        .then((notebookObject)=>{
           //Store all posts from db
-          for (let i in notebookObject.posts) {
+          for (let i in notebookObject.data.posts) {
             //this merges the notebook ID as another key in the notebookObject
             //then pushes into app state
-            this.posts.push(Object.assign(notebookObject.posts[i], {"postID": i}));
+            this.posts.push(
+              Object.assign(notebookObject.data.posts[i], { postID: i })
+            );
           }
           //Store all tags from db
-          this.tags = notebookObject.tags
-          // for (let i in notebookObject.tags) {
-          // this.tags.push(notebookObject.tags[i]);
-          // }
-        });
-      });
+          this.tags = notebookObject.data.tags;
+          return
+        })
+        .finally(()=>{
+        })
+      })
     },
-     handleNewPost(newPost){
-      this.posts.push(newPost)
+    handleNewPost(newPost) {
+      this.posts.push(newPost);
     }
   },
   computed: {
     toggleShow() {
-      return true
-    }
+      return true;
+    },
+    
   },
+  watch: {},
   created() {
+    //TODO: Seems kinda hacky, is there a better way to do this?
+    let vue = this;
     //get user id for the session, store in state
-    this.uid = localStorage.getItem("UserID")
-    localStorage.setItem("NotebookID", this.$route.params.id)
+    this.uid = localStorage.getItem("UserID");
+    localStorage.setItem("NotebookID", this.$route.params.id);
     // console.log(localStorage.getItem("UserID"))
     //get data from db
-    this.getData()
-  },
-  
+    this.getAllPosts();
+    
+    //We fix the graph after 348 scrolled down
+    window.addEventListener("scroll", function(event) {
+    var top = this.scrollY,
+        left =this.scrollX;
+        
+    if(top > 337){
+      
+      vue.fixGraph = "fix-graph"
+    }
+    if(top < 337){
+      vue.fixGraph = ""
+    }
+    }, false);
+
+  }
 };
 </script>
 
@@ -83,8 +113,22 @@ export default {
 .all-posts {
   display: flex;
   flex-direction: column-reverse; /* easily reverse with column-reverse*/
-  align-items: center
+  align-items: center;
 }
 
+#mood-graph{
+  background: white;
+  box-shadow: 0px 0px 13px #7d7d7d;
 
+}
+#hack{
+  height:180px
+}
+
+.fix-graph {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  left:0px  
+}
 </style>
