@@ -76,7 +76,8 @@ export default {
   },
   watch: {},
   created() {
-    let vue = this
+    //TODO: Seems kinda hacky, is there a better way to do this?
+    let vue = this;
     //get user id for the session, store in state
     this.uid = localStorage.getItem("UserID");
     localStorage.setItem("NotebookID", this.$route.params.id);
@@ -84,17 +85,18 @@ export default {
     //get data from db
     this.getAllPosts();
     
+    //We fix the graph after 348 scrolled down
     window.addEventListener("scroll", function(event) {
     var top = this.scrollY,
         left =this.scrollX;
-
-    if(top > 340){
+        
+    if(top > 337){
+      
       vue.fixGraph = "fix-graph"
     }
-    if(top < 340){
+    if(top < 337){
       vue.fixGraph = ""
     }
-
     }, false);
 
   }
@@ -110,12 +112,15 @@ export default {
 }
 
 #mood-graph{
-  background: white
+  background: white;
+  box-shadow: 0px 0px 13px #7d7d7d;
+
 }
 
-.fix-graph{
+.fix-graph {
   position: fixed;
   top: 0px;
   width: 100%;
+  left:0px  
 }
 </style>
