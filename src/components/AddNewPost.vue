@@ -11,22 +11,29 @@
 
   <div class="new-post-wrapper"
        v-if="showNewPostModal"
-       v-on:keyup.esc="showNewPostModal=!showNewPostModal"
-       >
+       v-on:keyup.esc="showNewPostModal=!showNewPostModal">
     
     <div class="container">
         {{getDate}}
-        <textarea v-focus id="new-post-title" v-model="postTitle" placeholder="Title"> </textarea>
+        <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
+        <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
         
-        <textarea id="new-post-content" v-model="postContents" rows="10" placeholder="How was your day?"></textarea>  
+        <div>
+          Overall Score: {{sentiment.score}} <br/>
+          Comparative Score: {{sentiment.comparative}} <br/>
+          Postive Words: {{sentiment.positive}} <br/>
+          Negative Words: {{sentiment.negative}} <br/>
+          Analysed Words: {{sentiment.tokens}} <br/>
+          All Words: {{sentiment.words}} <br/>        
+        </div>
         
         <TagContainer v-bind:tags="tags"
                       v-on:checked-tags="handleCheckedTags"/>
-
-      <button v-on:click="postEntry">save entry</button>
+        
+        <button v-on:click="postEntry">save entry</button>
     </div>
     <button v-on:click="showNewPostModal=!showNewPostModal" 
-      id="button-exit"> &times;
+            id="button-exit"> &times;
     </button>   
   </div>
 </div>
@@ -34,8 +41,14 @@
 
 <script>
 import TagContainer from '@/components/TagsContainer'
+import {HTTP} from '@/httpCommon'
+import getDate from '@/mixins/getDate'
+import Sentiment from 'sentiment'
 import firebase from 'firebase/app'
 import 'firebase/auth'
+
+let uid;
+var sentiment = new Sentiment();
 
 export default {
   name: "AddNewPost",
@@ -43,75 +56,76 @@ export default {
   components:{
     TagContainer
   },
+  mixins:[getDate],
   data() {
     return {
-      uid:"",
       showNewPostModal: false,
-      postTitle:"",
-      postContents:"",
-      tagsObject:{}
+      sentiment:{},
+      postObject:{
+        title:"",
+        contents:"",
+        tags:{},
+        date: "",
+      }
     };
   },
   methods: {
-    submitPost(url , data) {
-      console.log("submitting Post...")
-
-      return fetch(url, {
-        method: "POST", // *GET, POST, PUT, DELETE, etc.
-        mode: "cors", // no-cors, cors, *same-origin
-        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-        credentials: "same-origin", // include, *same-origin, omit
-        headers: {
-            "Content-Type": "application/json",
-            // "Content-Type": "application/x-www-form-urlencoded",
-        },
-        redirect: "follow", // manual, *follow, error
-        referrer: "no-referrer", // no-referrer, *client
-        body: JSON.stringify(data), // body data type must match "Content-Type" header
-      })
-      .then(response => response.json()); // parses response to JSON
-    },
     postEntry(){
-      let postObject = {
-        "title": this.postTitle,
-        "date": this.getDate,
-       "tags": this.tagsObject,
-        "contents": this.postContents
-      }
-
+      this.postObject.sentiment = this.sentiment;
       firebase.auth().currentUser.getIdToken()
       .then((token) => {
-        this.submitPost(`https://micro-blog-495b7.firebaseio.com/users/${this.uid}/notebooks/${this.$route.params.id}/posts.json?auth=${token}` , postObject)
+        HTTP({
+          method: 'post',
+          url : `users/${uid}/notebooks/${this.$route.params.id}/posts.json?auth=${token}`,
+          data : this.postObject
+        })
+        .then((response) => {
+          alert(`Success : ${response.status}`);
+          // assign the postID to the postObject before emit the event
+          // for AllPost component to read.
+          this.postObject.postID = response.data.name;
+          this.$emit('new-post', this.postObject);
+          this.showNewPostModal = false;
+        }).catch(function (error) {
+          alert('something went wrong', Error(error) );
+        });
       })
-
-
-      
     },
+    
     handleCheckedTags(selectedTagsObject){
-      this.tagsObject = selectedTagsObject;
+      this.postObject.tags = selectedTagsObject;
+    },
+
+    pingEvent(){
+      this.$emit("new-post")
     }
- 
   },
   computed: {
-    getDate() {
-      let today = new Date();
-      let dd = today.getDate();
-      let mm = today.getMonth() + 1; //January is 0!
-      let yyyy = today.getFullYear();
-
-      if (dd < 10) {
-        dd = '0' + dd;
+    selectedTagsArray(){
+       let allTags = []
+       for (let tagNames in this.postObject.tags) {
+        for(let items in this.postObject.tags[tagNames]){
+          allTags.push(this.postObject.tags[tagNames][items].description)
+        }
       }
+      return allTags;  
+    }
+  },
+  watch: {
+    postObject: {
+      handler: function(val){
 
-      if (mm < 10) {
-        mm = '0' + mm;
-      }
-      today = `${yyyy}-${mm}-${dd}T00:00:00`
-      return today
+      this.sentiment = sentiment.analyze(`${val.contents} ${this.selectedTagsArray.join(" ")}`);
+
+      },
+      deep: true
     }
   },
   created() {
-    this.uid = localStorage.getItem("UserID")
+    uid = localStorage.getItem("UserID");
+    this.postObject.date = this.getDate;
+
+   
   }
 };
 </script>

@@ -3,7 +3,7 @@
           <div v-for="(tag , title) in tags" :key="title">
             <h2> {{title}} </h2>
             <div class="tag-container">
-              <div class="tags" v-for="tagObject in tag">
+              <div class="tags" v-for="(tagObject, index) in tag" :key="index">
                 <label class="tag-label" 
                        :for="tagObject.description">
                        {{tagObject.description}}
@@ -46,7 +46,7 @@ export default {
       /* returns an array of unique tags from an array of tag objects
       firstly loops over all tag keys in the tags object
       this is done within a Set object - it is similar to an Array Object
-      but it guarantees unique itemms so it doe the deduplication for us.
+      but it guarantees unique items so it dose the deduplication for us.
       finally the output set object is spread back into an Array so we have
       a good'ol Array to work with instead of a Set which has weird api. */
 
