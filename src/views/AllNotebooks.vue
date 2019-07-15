@@ -5,9 +5,7 @@
     <div class="notebooks-container">
       <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
         <router-link :to="{path:'posts/'+ notebook.notebookID}" append>
-          <p>Notebook ID: {{notebook.notebookID}}</p>
-          <p>Notebook Name: {{notebook.notebookAlias}}</p>
-          <p>Date Created: {{notebook.dateCreated}}</p>
+          <p class="notebook-title">{{notebook.notebookAlias}}</p>
         </router-link>
       </div>
     </div>
@@ -147,7 +145,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  box-shadow: 0px 0px 13px #7d7d7d;
+  box-shadow: 2px 2px 2px #7d7d7dbb;
   border-radius: 10px;
   width: 300px;
   height: 60px;
@@ -157,10 +155,17 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  background: white
 }
 
 .notebook:hover {
-  box-shadow: 0px 0px 6px #7d7d7d;
+  box-shadow: 0px 0px 0px white;
+  background: #f0f0f0;
+}
+
+.notebook-title{
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .new-notebook {
