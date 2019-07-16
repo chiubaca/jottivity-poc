@@ -3,7 +3,7 @@
     <Logout/>
     <p>User ID : {{this.uid}}</p>
     <div class="notebooks-container">
-      <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
+      <div class="notebook box" v-for="(notebook,index) in notebooks" :key="index">
         <router-link :to="{path:'posts/'+ notebook.notebookID}" append>
           <p class="notebook-title">{{notebook.notebookAlias}}</p>
         </router-link>
@@ -127,9 +127,13 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+@import "src/assets/scss/variables.scss";
+@import "src/assets/scss/common.scss";
+
+
 #component-container {
-  background-image: url("../assets/images/note_bg.png");
+  background-color: $background-color
 }
 
 .notebooks-container {
@@ -141,12 +145,6 @@ export default {
 }
 
 .notebook {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  box-shadow: 2px 2px 2px #7d7d7dbb;
-  border-radius: 10px;
   width: 300px;
   height: 60px;
   margin: 15px;
@@ -155,12 +153,12 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: white
+  background-color: white;
+  background-image: url("../assets/images/dot.png");
 }
 
 .notebook:hover {
   box-shadow: 0px 0px 0px white;
-  background: #f0f0f0;
 }
 
 .notebook-title{

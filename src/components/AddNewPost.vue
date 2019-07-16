@@ -132,7 +132,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style  lang="scss" scoped>
-@import "src/assets/css/buttons.scss";
+@import "src/assets/scss/buttons.scss";
 
 #add-new-post-btn{
   position: fixed;
