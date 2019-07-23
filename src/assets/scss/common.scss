@@ -1,4 +1,29 @@
-.box{
+.dot-box{
   box-shadow: 2px 2px 2px #7d7d7dbb;
   border-radius: 10px;
+  background-color:white;
+  //cant get this fucking background image to work so its moved into App.vue
+  //background-image: url("./src/assets/images/dot.png");
+}
+
+//Loading spinner
+.blue-loading-spinner {
+    width: 75px;
+    height: 75px;
+    margin: 0;
+    background: transparent;
+    border-top: 4px solid #3a8bbb;
+    border-right: 4px solid transparent;
+    border-radius: 50%;
+    animation: 1s spin linear infinite;
+    margin: 0 auto;
+}    
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
