@@ -13,7 +13,7 @@
        v-if="showNewPostModal"
        v-on:keyup.esc="showNewPostModal=!showNewPostModal">
     
-    <div class="container">
+    <div class="container dot-box">
         {{getDate}}
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
@@ -31,10 +31,10 @@
                       v-on:checked-tags="handleCheckedTags"/>
         
         <button v-on:click="postEntry">save entry</button>
-    </div>
-    <button v-on:click="showNewPostModal=!showNewPostModal" 
+        <button v-on:click="showNewPostModal=!showNewPostModal" 
             id="button-exit"> &times;
-    </button>   
+        </button>  
+    </div> 
   </div>
 </div>
 </template>
@@ -134,23 +134,7 @@ export default {
 <style  lang="scss" scoped>
 @import "src/assets/scss/buttons.scss";
 
-#add-new-post-btn{
-  position: fixed;
-  left: 87%;
-  top: 90%;
-  transform: translate(-50%, -50%);
-  border-radius: 100%;
-  width: 50px;
-  height: 50px;
-  box-shadow: 0px 0px 15px #504c4c8c;
-}
-
-#add-new-post-btn:hover{
-    box-shadow: 0px 0px 6px #504c4c8c;
-}
-
 .new-post-wrapper{
-  background-color: #00000077;
   position: fixed;
   padding: 2em;
   left: 50%;
