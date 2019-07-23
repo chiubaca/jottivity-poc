@@ -18,6 +18,7 @@
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
         
+        //TODO: better UI UX here
         <div>
           Overall Score: {{sentiment.score}} <br/>
           Comparative Score: {{sentiment.comparative}} <br/>
@@ -31,10 +32,11 @@
                       v-on:checked-tags="handleCheckedTags"/>
         
         <button v-on:click="postEntry">save entry</button>
-        <button v-on:click="showNewPostModal=!showNewPostModal" 
+         
+    </div>
+    <button v-on:click="showNewPostModal=!showNewPostModal" 
             id="button-exit"> &times;
-        </button>  
-    </div> 
+    </button>  
   </div>
 </div>
 </template>
