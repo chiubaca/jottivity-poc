@@ -1,7 +1,7 @@
 <template>
   <div v-if="modalState" class="modal-container" v-on:keyup.esc="closeModal()">
     
-    <div class="modal-contents">
+    <div class="modal-contents dot-box">
       <textarea v-focus id="post-title" v-model="postData.title"></textarea>
       <textarea id="post-contents" v-model="postData.contents"></textarea>
 
@@ -51,7 +51,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-@import "src/assets/css/buttons.scss";
+@import "src/assets/scss/buttons.scss";
 
 .modal-container {
   background-color: #3d3b3b5b;

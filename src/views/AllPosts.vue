@@ -1,17 +1,20 @@
 <template>
-  <div>
-    <p>NotebookID: {{this.$route.params.id}}</p>
-    <p>UserID: {{this.uid}}</p>
+  <div id="posts-view-container">
+
     <Logout/>
     
-    <MoodGraph id="mood-graph"
+    <MoodGraph class="mood-graph dot-box"
                :class="fixGraph"
                :allPosts="posts"/>
     <!-- Im not happy with this hacky fix, Witout it, the posts element shift
          straight up when the graph element becomes fixed, need a better way solve this -->
     <div v-if="fixGraph === 'fix-graph'" id="hack"> you should never see this...</div>
 
-    <AddNewPost v-on:new-post="handleNewPost" v-bind:tags="tags"></AddNewPost>
+    <AddNewPost v-on:new-post="handleNewPost" 
+                v-bind:tags="tags"
+                id="add-new-post-btn">
+    </AddNewPost>
+
     <div class="all-posts">
       <Post v-for="(post,index) in posts" :key="index" v-bind:post-data="post"/>
     </div>
@@ -40,8 +43,6 @@ export default {
       uid: "",
       posts: [],
       tags: {},
-      dateRange:[],
-      sentimentScores:[],
       fixGraph:""
     };
   },
@@ -109,18 +110,19 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+
+#posts-view-container{
+  margin:0;
+  background-color: $background-color
+}
+
 .all-posts {
   display: flex;
   flex-direction: column-reverse; /* easily reverse with column-reverse*/
   align-items: center;
 }
 
-#mood-graph{
-  background: white;
-  box-shadow: 0px 0px 13px #7d7d7d;
-
-}
 #hack{
   height:180px
 }
@@ -129,6 +131,18 @@ export default {
   position: fixed;
   top: 0px;
   width: 100%;
-  left:0px  
+  left:0px ;
+    border-radius: 0px 0px 10px 10px;
+
+}
+
+
+ #add-new-post-btn{
+  position: fixed;
+  left: 87%;
+  top: 90%;
+}
+
+#add-new-post-btn:hover{
 }
 </style>

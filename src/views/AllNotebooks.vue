@@ -1,19 +1,20 @@
 <template>
-  <div id="component-container">
+  <div id="notebooks-view-container">
     <Logout/>
-    <p>User ID : {{this.uid}}</p>
-    <div class="notebooks-container">
-      <div class="notebook box" v-for="(notebook,index) in notebooks" :key="index">
-        <router-link :to="{path:'posts/'+ notebook.notebookID}" append>
-          <p class="notebook-title">{{notebook.notebookAlias}}</p>
+
+      <div class="notebooks-container">
+        <router-link v-for="(notebook,index) in notebooks" :key="index"
+                     :to="{path:'posts/'+ notebook.notebookID}" 
+                     append
+                     class=" notebook dot-box">
+          {{notebook.notebookAlias}}
         </router-link>
       </div>
-    </div>
-
-    <div class="new-notebook">
-      <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
-      <button v-on:click="addNewNotebook">+ New Notebook</button>
-    </div>
+   
+      <div class="new-notebook">
+        <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
+        <button v-on:click="addNewNotebook">+ New Notebook</button>
+      </div>
   </div>
 </template>
 
@@ -127,12 +128,9 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
-@import "src/assets/scss/variables.scss";
-@import "src/assets/scss/common.scss";
+// <style lang="scss" scoped>
 
-
-#component-container {
+#notebooks-view-container {
   background-color: $background-color
 }
 
@@ -149,21 +147,16 @@ export default {
   height: 60px;
   margin: 15px;
   padding: 50px;
-  display: flex;
+  display: flex; //this centers the text
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: white;
-  background-image: url("../assets/images/dot.png");
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .notebook:hover {
   box-shadow: 0px 0px 0px white;
-}
-
-.notebook-title{
-  text-transform: uppercase;
-  font-weight: bold;
 }
 
 .new-notebook {
