@@ -1,6 +1,6 @@
 <template>
   <div class="mood-graph">
-    <div class="loading-spinner" v-if="allPosts.length === 0"></div>
+    <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
     <div id="chart"></div>
   </div>
 </template>
@@ -65,7 +65,7 @@ export default {
           type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
           isNavigable: false, // default: false
           height: 180,
-          colors: ["#743ee2"],
+          colors: ["#3a8bbb"],
           axisOptions: {
             xIsSeries: true // default: false
           },
@@ -88,38 +88,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-/* x axis */
-.frappe-chart .x.axis  .line-vertical {
+
+.line-horizontal, .line-vertical {
     display: none;
 }
 
-/* y axis */
-.frappe-chart .y.axis .line-horizontal {
-    display: none;
-}
-
-//Loading spinner animation css
-.loading-spinner {
-    width: 75px;
-    height: 75px;
-    margin: 0;
-    background: transparent;
-    border-top: 4px solid #03A9F4;
-    border-right: 4px solid transparent;
-    border-radius: 50%;
-    -webkit-animation: 1s spin linear infinite;
-    animation: 1s spin linear infinite;
-    margin: 0 auto;
-}     
-@keyframes spin {
-    from {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    to {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
-}
 
 </style>
