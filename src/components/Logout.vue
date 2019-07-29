@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="logout"> 
+  <button id="logout-button" v-on:click="logout"> 
     <router-link to="/login">Log Out </router-link>
   </button>
 </template>
