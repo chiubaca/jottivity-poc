@@ -1,12 +1,5 @@
 <template>
-  <div>
-
-    <div id="nav">
-        <router-link to="/notebooks">Notebooks</router-link> | 
-        <router-link to="/about">About</router-link> |
-        <router-link to="/login">Login</router-link>
-    </div>
-        
+  <div>        
     <header> 
       <img alt="pen logo" src="@/assets/images/logo.svg">
       <div>
@@ -15,7 +8,6 @@
         <h3>v0.4.0</h3>
       </div>
     </header>
-
   </div>  
 </template>
 
