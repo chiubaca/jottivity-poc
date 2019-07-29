@@ -13,8 +13,8 @@
 
                 <label class="tag-label" 
                        :for="tagObject.description">
-                        {{tagObject.description}} 
-                        </label>
+                  {{tagObject.description}} 
+                </label>
 
               </div>
             </div>
@@ -116,11 +116,9 @@ input[type=checkbox]  {
   padding: 5px
 }
 
-
 .tag-label:hover {
     background:rgba(255, 192, 203, 0.404) 
 }
-
 
 input[type=checkbox]:checked + label{
     background:rgba(192, 193, 255, 0.404) 
