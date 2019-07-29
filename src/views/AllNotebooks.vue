@@ -1,7 +1,7 @@
 <template>
   <div id="notebooks-view-container">
-    <Logout/>
-
+    <BurgerMenu/>
+    <CustomHeader/>
       <div class="notebooks-container">
         <router-link v-for="(notebook,index) in notebooks" :key="index"
                      :to="{path:'posts/'+ notebook.notebookID}" 
@@ -19,7 +19,8 @@
 </template>
 
 <script>
-import Logout from "@/components/Logout.vue";
+import CustomHeader from '@/components/CustomHeader.vue'
+import BurgerMenu from "@/components/BurgerMenu.vue";
 import { HTTP } from "@/httpCommon";
 import getDate from "@/mixins/getDate";
 import notebook from "@/components/notebook.json";
@@ -29,7 +30,8 @@ import "firebase/auth";
 export default {
   name: "AllNotebooks",
   components: {
-    Logout
+    BurgerMenu,
+    CustomHeader
   },
   mixins: [getDate],
   data() {
