@@ -1,11 +1,12 @@
 <template>
 
   <div>
-    <transition name="fade">
+    <transition name="slide">
       <nav v-if="show">
         <div class="nav-items">
             <router-link to="/notebooks">📒 Notebooks</router-link>
             <router-link to="/about">📋 About</router-link>
+            <span>⚙️ Settings</span>
         </div>
 
         <Logout/>
@@ -58,18 +59,16 @@ input[type=checkbox]  {
   position: fixed;
   width: 40px;
   height:40px;
+  background-color: white;
+  border-radius: 0px 0px 10px 0px;
 }
 
 #hamburger-button:hover{
-  background-color: white;
+  background-color: grey;
   border-radius: 0px 0px 10px 0px;
 }
 
-#hamburger-button {
-  background-color: white;
-  border-radius: 0px 0px 10px 0px;
-}
-
+// https://codepen.io/YusukeNakaya/pen/mQQPQO
 .line {
   fill: none;
   stroke:black;
@@ -111,20 +110,37 @@ input[type=checkbox]  {
 }
 
 nav {
-  margin:0px;
-  padding:0px;
-  border:0px;
-  background: grey;
-  width:270px;
+  background: $background-color;
+  box-shadow: 0px 2px 5px 1px #7d7d7d;
+  width:250px;
   height:100vh;
   position: fixed;
 }
 
-.nav-items{
+.nav-items {
   display:flex;
   flex-direction: column;
   padding-top:60px;
-  margin-left:25px;
+  border-bottom: 1px solid #d6d6d6;
+}
+
+.nav-items:after{
+  bottom: 25% 
+}
+
+.nav-items *{
+  padding: 20px 20px 20px 35px;
+}
+
+.nav-items *:hover{
+  background-color: #c5c5c5;
+}
+
+#bottom-divider{
+  border-bottom: 2px solid #f51c40;
+  position: absolute;
+  top: 50%;
+  bottom: 0;
 }
 
 #logout-button{
@@ -138,11 +154,15 @@ position:absolute;
   bottom:0;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.slide-leave-active,
+.slide-enter-active {
+  transition: .1s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+.slide-enter {
+  transform: translate(-100%, 0);
+}
+.slide-leave-to {
+  transform: translate(-100%, 0);
 }
 
 </style>
