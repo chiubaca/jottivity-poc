@@ -1,8 +1,6 @@
 <template>
   <div id="posts-view-container">
 
-    <Logout/>
-    
     <MoodGraph class="mood-graph dot-box"
                :class="fixGraph"
                :allPosts="posts"/>
@@ -24,7 +22,6 @@
 <script>
 import Post from "@/components/Post.vue";
 import AddNewPost from "@/components/AddNewPost.vue";
-import Logout from "@/components/Logout.vue";
 import MoodGraph from "@/components/MoodGraph.vue";
 import {HTTP} from '@/httpCommon'
 import firebase from "firebase/app";
@@ -35,7 +32,6 @@ export default {
   components: {
     Post,
     AddNewPost,
-    Logout,
     MoodGraph
   },
   data() {

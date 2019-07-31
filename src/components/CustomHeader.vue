@@ -1,44 +1,46 @@
 <template>
-  <div>
-
-    <div id="nav">
-        <router-link to="/notebooks">Notebooks</router-link> | 
-        <router-link to="/about">About</router-link> |
-        <router-link to="/login">Login</router-link>
-    </div>
-        
+  <div>        
     <header> 
       <img alt="pen logo" src="@/assets/images/logo.svg">
       <div>
-        <h1>Jottivity.</h1>
+        <h1 id="title">      
+          Jottivity.
+        </h1>
         <h2>Jot your thoughts, mood &amp; productivity</h2>
-        <h3>v0.4.0</h3>
       </div>
     </header>
-
   </div>  
 </template>
 
 <script>
-
-
 export default {
   name: "CustomHeader"
 };
 </script>
 
-
 <style scoped>
+
+#title{
+  font-size:35px
+}
 
 header{
   display:flex;
   align-items: center;
-  border-bottom: 5px solid;  
+  justify-content: center;
+  border-bottom: 5px solid;
+  padding: 10px 0px 10px 0px;  
 }
 
-header img{
-  height:100px;
+img{
+  height:60px;
   padding: 0 10px 0 20px
+}
+
+header div{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 </style>
