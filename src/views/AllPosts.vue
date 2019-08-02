@@ -1,6 +1,7 @@
 <template>
   <div id="posts-view-container">
-
+    <BurgerMenu/>
+    <CustomHeader/>
     <MoodGraph class="mood-graph dot-box"
                :class="fixGraph"
                :allPosts="posts"/>
@@ -20,6 +21,8 @@
 </template>
 
 <script>
+import CustomHeader from '@/components/CustomHeader.vue'
+import BurgerMenu from "@/components/BurgerMenu.vue";
 import Post from "@/components/Post.vue";
 import AddNewPost from "@/components/AddNewPost.vue";
 import MoodGraph from "@/components/MoodGraph.vue";
@@ -32,7 +35,9 @@ export default {
   components: {
     Post,
     AddNewPost,
-    MoodGraph
+    MoodGraph,
+    BurgerMenu,
+    CustomHeader
   },
   data() {
     return {
@@ -92,11 +97,11 @@ export default {
     var top = this.scrollY,
         left =this.scrollX;
         
-    if(top > 337){
+    if(top > 130){
       
       vue.fixGraph = "fix-graph"
     }
-    if(top < 337){
+    if(top < 130){
       vue.fixGraph = ""
     }
     }, false);
@@ -132,13 +137,17 @@ export default {
 
 }
 
-
  #add-new-post-btn{
   position: fixed;
   left: 87%;
   top: 90%;
 }
 
-#add-new-post-btn:hover{
+#hamburger-button{
+  z-index:2;
+}
+
+nav {
+   z-index:900;
 }
 </style>

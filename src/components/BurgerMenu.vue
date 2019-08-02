@@ -92,6 +92,7 @@ input[type=checkbox]  {
   height:40px;
   background-color: white;
   border-radius: 0px 0px 10px 0px;
+  z-index: 2;
 }
 
 #hamburger-button:hover{
@@ -156,6 +157,7 @@ nav {
   width:250px;
   height:100vh;
   position: fixed;
+  z-index: 1;
 }
 
 .nav-items {
