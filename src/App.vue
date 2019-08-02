@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 
 html {
-  color: $primary-font-color;
+  color: $primary-dark-font-color;
   background-color: $background-color;
   font-family: $main-font-stack;
   -webkit-font-smoothing: antialiased;

@@ -1,3 +1,5 @@
+@import 'variables';
+
 // CSS Normalise ***
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -19,6 +21,12 @@ time, mark, audio, video {
 html {
     font-size: 62.5%;
 }
+
+a:link{color:inherit}
+a:active{color:inherit}
+a:visited{color:inherit}
+a:hover{color:inherit}
+
 //***//
 
 // Fonts ***
@@ -35,12 +43,12 @@ html {
     font-size:1.0em
 }
 
-.white{
+.light-text{
     color: white
 }
 
-.black{
-    color: black
+.dark-text{
+    color: $primary-dark-font-color
 }
 
 // ***

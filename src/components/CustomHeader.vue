@@ -36,11 +36,11 @@ export default {
 .logo svg {
     width: 90px;
     height: 90px;
-    stroke: $primary-font-color;
+    stroke: $primary-dark-font-color;
     stroke-width: 0.9;
     stroke-linecap: round;
     stroke-linejoin: round;
-    // fill: yellow
+    fill: white
 }
 
 #title{
