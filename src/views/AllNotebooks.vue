@@ -2,7 +2,7 @@
   <div id="notebooks-view-container">
     <BurgerMenu/>
     <CustomHeader/>
-      <div class="notebooks-container">
+      <div class="notebooks-container medium-text">
         <router-link v-for="(notebook,index) in notebooks" :key="index"
                      :to="{path:'posts/'+ notebook.notebookID}" 
                      append
