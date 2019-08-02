@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <div class="medium-text">
     <transition name="slide">
       <nav v-if="show">
         <div class="nav-items">
