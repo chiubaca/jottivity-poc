@@ -2,10 +2,12 @@
   <div>        
     <header> 
       <div class="logo">
-        
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="featherIconTitle">
-          <title id="featherIconTitle">Feather</title>
-          <path d="M5.12634 17C5.04271 17.6571 5 18.325 5 19V21M5.12634 17C6.03384 9.86861 11.7594 4 20 4L19 8H16L17 10L15 12H11L13 14L12 16H8L5.12634 17Z"></path>
+    
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-labelledby="penIconTitle">
+          <title id="penIconTitle">Pen</title>
+          <path d="M14 17.584C15.7659 16.8124 17 15.0503 17 13C17 9 12 3 12 3C12 3 7 9 7 13C7 15.0503 8.2341 16.8124 10 17.584V21H14V17.584Z"></path>
+          <path d="M12 3V11"></path>
+          <circle cx="12" cy="12" r="1"></circle>
         </svg>
 
       </div>
@@ -40,7 +42,13 @@ export default {
     stroke-width: 0.9;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill: white
+    fill: mistyrose;
+    transform: rotate(180deg);
+    margin: -15px;
+}
+
+.logo svg:hover{
+  fill:gold;
 }
 
 #title{
