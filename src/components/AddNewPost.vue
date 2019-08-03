@@ -157,7 +157,7 @@ export default {
 
 #add-new-post-btn:hover{
 
-  background-color: grey;
+  background-color: silver;
   border-radius: 50%;
 
 }

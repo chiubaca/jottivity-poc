@@ -42,13 +42,13 @@ export default {
     stroke-width: 0.9;
     stroke-linecap: round;
     stroke-linejoin: round;
-    fill: mistyrose;
+    fill: white;
     transform: rotate(180deg);
     margin: -15px;
 }
 
 .logo svg:hover{
-  fill:gold;
+  fill:silver;
 }
 
 #title{

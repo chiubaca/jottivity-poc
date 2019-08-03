@@ -96,7 +96,7 @@ input[type=checkbox]  {
 }
 
 #hamburger-button:hover{
-  background-color: grey;
+  background-color: silver;
   border-radius: 0px 0px 10px 0px;
 }
 
@@ -185,7 +185,7 @@ nav {
 }
 
 .nav-items *:hover{
-  background-color: #c5c5c5;
+  background-color: silver;
 }
 
 #bottom-divider{
