@@ -3,10 +3,10 @@
   <!-- TODO: this should be button element -->
   <div id="add-new-post-btn" 
        v-on:click="showNewPostModal = !showNewPostModal">   
-       <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-       <circle cx="25" cy="25" r="25" fill="#9A1E1E"/>
-       <path d="M15 25.5L14.9212 24.0021C14.1092 24.0448 13.4791 24.7266 13.5005 25.5394C13.5219 26.3522 14.1869 27 15 27V25.5ZM35.5 25.5L35.5 27C36.3284 27 37 26.3284 37 25.5C37 24.6716 36.3284 24 35.5 24V25.5ZM24 35C24 35.8284 24.6716 36.5 25.5 36.5C26.3284 36.5 27 35.8284 27 35H24ZM27 15C27 14.1716 26.3284 13.5 25.5 13.5C24.6716 13.5 24 14.1716 24 15H27ZM15 27H25.5V24H15V27ZM25.5 27H35.5V24H25.5V27ZM27 35V25.5H24V35H27ZM27 25.5V15H24V25.5H27ZM27 35V15H24V35H27ZM15.0788 26.9979C16.4515 26.9257 33.4392 27 35.5 27L35.5 24C33.5607 24 16.3985 23.9243 14.9212 24.0021L15.0788 26.9979Z" fill="white"/>
-       </svg>
+      <svg role="img" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="-2 -2 28 28" aria-labelledby="editIconTitle">
+        <title id="editIconTitle">Add New Post</title>
+        <path d="M18.4142136 4.41421356L19.5857864 5.58578644C20.366835 6.36683502 20.366835 7.63316498 19.5857864 8.41421356L8 20 4 20 4 16 15.5857864 4.41421356C16.366835 3.63316498 17.633165 3.63316498 18.4142136 4.41421356zM14 6L18 10"></path>
+      </svg>
   </div>
 
   <div class="new-post-wrapper"
@@ -18,7 +18,6 @@
         <textarea v-focus id="new-post-title" v-model="postObject.title" placeholder="Title"> </textarea>
         <textarea id="new-post-content" v-model="postObject.contents" rows="10" placeholder="How was your day?"></textarea>  
         
-        //TODO: better UI UX here
         <div>
           Overall Score: {{sentiment.score}} <br/>
           Comparative Score: {{sentiment.comparative}} <br/>
@@ -136,9 +135,33 @@ export default {
 <style  lang="scss" scoped>
 @import "src/assets/scss/buttons.scss";
 
+#add-new-post-btn { 
+  border-radius: 50%;
+  color: black;
+  border: solid;
+  border-width: 1px;
+  background-color: white;
+  
+    svg {
+      width: 50px;
+      height: 50px;
+      stroke: #000;
+      stroke-width: 1.0;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      color: #000;
+    } 
+
+}
+
+#add-new-post-btn:hover{
+  background-color: silver;
+  border-radius: 50%;
+}
+
 .new-post-wrapper{
   position: fixed;
-  padding: 2em;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -149,7 +172,7 @@ export default {
 .new-post-wrapper .container {
   background-color: #fff;
   box-shadow: 0px 0px 13px #504c4c8c;
-   position: fixed;
+  position: fixed;
   padding: 2em;
   left: 50%;
   top: 50%;
