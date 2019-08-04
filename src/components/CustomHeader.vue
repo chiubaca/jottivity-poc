@@ -36,15 +36,15 @@ export default {
 
 <style lang="scss" scoped>
 .logo svg {
-    width: 90px;
-    height: 90px;
+    width: 65px;
+    height: 65px;
     stroke: $primary-dark-font-color;
     stroke-width: 0.9;
     stroke-linecap: round;
     stroke-linejoin: round;
     fill: white;
     transform: rotate(180deg);
-    margin: -15px;
+    margin: -10px;
 }
 
 .logo svg:hover{
@@ -79,8 +79,5 @@ header div{
   flex-direction: column;
   align-self: center;
 }
-
-
-
 
 </style>
