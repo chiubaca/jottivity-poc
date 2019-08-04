@@ -137,17 +137,14 @@ export default {
 
 }
 
- #add-new-post-btn{
+#add-new-post-btn{
   position: fixed;
-  left: 87%;
-  top: 90%;
+  right: 15px;
+  bottom: 15px;
 }
 
 #hamburger-button{
   z-index:2;
 }
 
-nav {
-   z-index:900;
-}
 </style>

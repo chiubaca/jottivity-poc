@@ -139,7 +139,7 @@ export default {
   border-radius: 50%;
   color: black;
   border: solid;
-  border-width: 1.5px;
+  border-width: 1px;
   background-color: white;
   
     svg {
@@ -156,15 +156,12 @@ export default {
 }
 
 #add-new-post-btn:hover{
-
   background-color: silver;
   border-radius: 50%;
-
 }
 
 .new-post-wrapper{
   position: fixed;
-  padding: 2em;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -175,7 +172,7 @@ export default {
 .new-post-wrapper .container {
   background-color: #fff;
   box-shadow: 0px 0px 13px #504c4c8c;
-   position: fixed;
+  position: fixed;
   padding: 2em;
   left: 50%;
   top: 50%;
