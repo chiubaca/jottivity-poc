@@ -1,71 +1,65 @@
 <template>
   <div class="mood-graph">
-    <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
     
-      <div id=chart-container>
-        <canvas id="myChart"></canvas>
-      </div>
-    
+
+    <div id="chart-container">
+      <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
+      <canvas id="myChart"></canvas>
+    </div>
   </div>
 </template>
 
 <script>
-
-import Charts from 'chart.js';
+import Chart from "chart.js";
+import "chartjs-plugin-zoom";
 
 export default {
   name: "MoodGraph",
   props: ["allPosts"],
   mixins: [],
   data() {
-    return {
-    
-    };
+    return {};
   },
-  methods: {
-  },
-  computed:{
+  methods: {},
+  computed: {
     //Extracts all date object from allPosts and returns an array of dates from all post props
     allDates() {
       let dateRange = [];
-      this.allPosts.forEach((post) => {
+      this.allPosts.forEach(post => {
         dateRange.push(new Date(post.date));
         // this.dateRange.push(new Date(post.date))
       });
-      return dateRange
+      return dateRange;
     },
     allSentimentScores() {
       let sentimentScores = [];
-      this.allPosts.forEach((post) => {
+      this.allPosts.forEach(post => {
         sentimentScores.push(post.sentiment.comparative.toPrecision(2));
       });
-      return sentimentScores
-    },
+      return sentimentScores;
+    }
   },
   watch: {
     allPosts: function(val, oldVal) {
       // console.log("hello from date watcher", val)
       if (val.length === 0) {
         console.warn("No Data");
-        
-      } else if (val.length > 0) {    
+      } else if (val.length > 0) {
         ///CHARTJS
-        let ctx = document.getElementById('myChart');
-        ctx.height = 200;
-        var myChart = new Charts(ctx, {
-          type: 'line',
+        let ctx = document.getElementById("myChart");
+
+        var myChart = new Chart(ctx, {
+          type: "line",
           data: {
             labels: this.allDates,
-            datasets: [{
-              data: this.allSentimentScores,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-              ],
-              borderWidth: 1
-            }]
+            datasets: [
+              {
+                data: this.allSentimentScores,
+                backgroundColor: ["rgba(255, 99, 132, 0.2)"],
+                borderColor: ["rgba(255, 99, 132, 1)"],
+                borderWidth: 1
+              }
+            ]
           },
           options: {
             responsive: true,
@@ -82,18 +76,49 @@ export default {
               display: false
             },
             scales: {
-              yAxes: [{
-                ticks: {
-                  beginAtZero: true,
+              yAxes: [
+                {
+                  ticks: {
+                    beginAtZero: true
+                  }
                 }
-              }],
-              xAxes: [{
-                type:'time',
-                ticks:{
-                  source:'auto'
+              ],
+              xAxes: [
+                {
+                  type: "time",
+                  ticks: {
+                    source: "auto"
+                  }
                 }
-              }]
-
+              ]
+            },
+            pan: {
+              enabled: true,
+              mode: 'x',
+              rangeMin: {
+				// Format of min pan range depends on scale type
+				x: null,
+				y: null
+			},
+			rangeMax: {
+				// Format of max pan range depends on scale type
+				x: null,
+				y: null
+			},
+            },
+            zoom: {
+              enabled: true,
+              mode: 'x',
+              rangeMin: {
+				// Format of min pan range depends on scale type
+				x: null,
+				y: null
+			},
+			rangeMax: {
+				// Format of max pan range depends on scale type
+				x: null,
+				y: null
+			},
             }
           }
         });
@@ -107,16 +132,16 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss">
-
-.line-horizontal, .line-vertical {
-    display: none;
+.line-horizontal,
+.line-vertical {
+  display: none;
 }
 
-#chart-container{
-  width:100%;
-  height:200px;
-  margin: 0 auto;
-  overflow-x: scroll;
+#chart-container {
+  width: 100%;
+  height: 200px;
+  margin: 0 auto; 
 }
+
 
 </style>
