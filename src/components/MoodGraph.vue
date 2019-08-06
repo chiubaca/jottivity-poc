@@ -29,7 +29,7 @@ export default {
     allDates() {
       let dateRange = [];
       this.allPosts.forEach((post) => {
-        dateRange.push(new Date(post.date).toLocaleDateString());
+        dateRange.push(new Date(post.date));
         // this.dateRange.push(new Date(post.date))
       });
       return dateRange
@@ -49,7 +49,6 @@ export default {
         console.warn("No Data");
         
       } else if (val.length > 0) {    
-
         ///CHARTJS
         let ctx = document.getElementById('myChart');
         ctx.height = 200;
@@ -71,6 +70,14 @@ export default {
           options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+              padding: {
+                left: 0,
+                right: 50,
+                top: 0,
+                bottom: 0
+              }
+            },
             legend: {
               display: false
             },
@@ -81,8 +88,10 @@ export default {
                 }
               }],
               xAxes: [{
-                autoSkip: true,
-                 minRotation: 180,
+                type:'time',
+                ticks:{
+                  source:'auto'
+                }
               }]
 
             }
@@ -107,6 +116,7 @@ export default {
   width:100vh;
   height:280px;
   margin: 0 auto;
+  // overflow-x: scroll;
 }
 
 </style>
