@@ -1,13 +1,18 @@
 <template>
   <div class="mood-graph">
-    <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
-    <div id="chart"></div>
+
+    <div id=graph-container>
+      <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
+      <div id="graphdiv"></div>
+    </div>
+    
   </div>
 </template>
 
 <script>
 import { Chart } from "frappe-charts/dist/frappe-charts.esm.js";
 import "frappe-charts/dist/frappe-charts.min.css";
+import Dygraph from 'dygraphs';
 
 export default {
   name: "MoodGraph",
@@ -32,12 +37,28 @@ export default {
     };
   },
   methods: {
+    //data transformation to covert dates array and sentiment array into 
+    //data structure which is compatible with dygraphs.
+    dyGraphData(datasetA, datasetB){
+      let outputDygraphsArray = [];
+
+      // datasetA.forEach((i) => {
+      //   console.log(i)
+      // })
+
+      for(let i = 0; i < datasetA.length; i++ ){
+        // console.log(i)
+        outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]) ] )
+      }
+      // console.log(outputDygraphsArray);
+      return outputDygraphsArray
+    }
   },
   computed:{
     allDates() {
       let dateRange = [];
       this.allPosts.forEach((post) => {
-        dateRange.push(new Date(post.date).toLocaleDateString());
+        dateRange.push(post.date);
         // this.dateRange.push(new Date(post.date))
       });
       return dateRange
@@ -48,7 +69,7 @@ export default {
         sentimentScores.push(post.sentiment.comparative.toPrecision(2));
       });
       return sentimentScores
-    },
+    }
   },
   watch: {
     allPosts: function(val, oldVal) {
@@ -57,28 +78,21 @@ export default {
         console.warn("No Data");
         
       } else if (val.length > 0) {
+  
 
-        this.chart = new Chart("#chart", {
-          // or a DOM element,
-          // new Chart() in case of ES6 module with above usage
-          data: this.graphData,
-          type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-          isNavigable: false, // default: false
-          height: 180,
-          colors: ["#3a8bbb"],
-          axisOptions: {
-            xIsSeries: true // default: false
-          },
-          lineOptions: {
-            heatline: 1, // default: 0
-            regionFill: 1, // default: 0
-            hideDots: 1, // default: 0
-          }
-        });
+      // DYGRAPHS
+      console.log( "dygraphs data", this.dyGraphData(this.allDates, this.allSentimentScores))
+       new Dygraph(
+        // containing div
+        document.getElementById("graphdiv"),
+          this.dyGraphData(this.allDates, this.allSentimentScores),
+            {
+              drawPoints:true,
+              labels: [ "date", "mood" ]
+            }
+          );
 
-        //Set Data to graph data object
-        this.graphData.datasets[0].values = this.allSentimentScores;
-        this.graphData.labels =  this.allDates;       
+      ///////////
       }
     }
   },
@@ -91,6 +105,15 @@ export default {
 
 .line-horizontal, .line-vertical {
     display: none;
+}
+
+#graph-container{
+  width:100%;
+  
+  #graphdiv  {
+    width:100%;
+
+  }
 }
 
 
