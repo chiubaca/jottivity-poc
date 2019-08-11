@@ -72,23 +72,13 @@ export default {
               labels: [ "date", "mood" ],
               color:"black",
               plotter:smoothPlotter,
+              animatedZooms:true,
+          
             }
           );
       }
     }
-  },
-    ready: function () {
-    console.log("ready event")
-    window.addEventListener('resize', (event)=>{
-      console.log(event)
-    })
-  },
-  beforeDestroy: function () {
-    window.removeEventListener('resize', event=>{
-      console.log("destroy resize event listen")
-    })
-  },
-  mounted() {}
+  }
 };
 </script>
 
