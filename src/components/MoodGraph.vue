@@ -1,7 +1,8 @@
 <template>
   <div class="mood-graph">
     <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
-    <div id="graphdiv"></div> 
+    <div id="graphdiv"></div>
+
   </div>
 </template>
 
@@ -56,7 +57,6 @@ export default {
   },
   watch: {
     allPosts: function(val, oldVal) {
-      console.log("checking data")
       // check to see if there is any data to plot onto the graph.
       if (val.length === 0) {
         console.warn("No Data");
@@ -73,7 +73,13 @@ export default {
               color:"black",
               plotter:smoothPlotter,
               animatedZooms:true,
-          
+              rightGap:40,
+              axes:{
+                 y2: {
+                         drawGrid: true,
+                         independentTicks: true
+                     }
+              }
             }
           );
       }
@@ -83,7 +89,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 
 .line-horizontal, .line-vertical {
     display: none;
