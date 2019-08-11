@@ -1,17 +1,11 @@
 <template>
   <div class="mood-graph">
-
-    <div id=graph-container>
-      <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
-      <div id="graphdiv"></div>
-    </div>
-    
+    <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
+    <div id="graphdiv"></div> 
   </div>
 </template>
 
 <script>
-import { Chart } from "frappe-charts/dist/frappe-charts.esm.js";
-import "frappe-charts/dist/frappe-charts.min.css";
 import Dygraph from 'dygraphs';
 
 export default {
@@ -20,20 +14,7 @@ export default {
   mixins: [],
   data() {
     return {
-      chart: {},
-      graphData: {
-        labels: [0,0], //placeholder data, gets overiden in the watcher
-        datasets: [{
-            name: "Mood Score",
-            type: "line",
-            values: [0,0]
-          }],
-        yMarkers: [{
-          label: "Neutral",
-          value:0,
-          options: { labelPos: 'right' } // default: 'right'
-        }]
-      },
+      
     };
   },
   methods: {
@@ -73,28 +54,37 @@ export default {
   },
   watch: {
     allPosts: function(val, oldVal) {
-      // console.log("hello from date watcher", val)
+      console.log("checking data")
+      // check to see if there is any data to plot onto the graph.
       if (val.length === 0) {
         console.warn("No Data");
-        
-      } else if (val.length > 0) {
-  
+      } 
+      //if so instantiate Dygraphs.
+      else if (val.length > 0) {
 
-      // DYGRAPHS
-      console.log( "dygraphs data", this.dyGraphData(this.allDates, this.allSentimentScores))
-       new Dygraph(
-        // containing div
+      new Dygraph(
         document.getElementById("graphdiv"),
           this.dyGraphData(this.allDates, this.allSentimentScores),
+            //Dygraph config goes into this object
             {
               drawPoints:true,
-              labels: [ "date", "mood" ]
+              labels: [ "date", "mood" ],
+              width: "100%"
             }
           );
-
-      ///////////
       }
     }
+  },
+    ready: function () {
+    console.log("ready event")
+    window.addEventListener('resize', (event)=>{
+      console.log(event)
+    })
+  },
+  beforeDestroy: function () {
+    window.removeEventListener('resize', event=>{
+      console.log("destroy resize event listen")
+    })
   },
   mounted() {}
 };
@@ -107,14 +97,11 @@ export default {
     display: none;
 }
 
-#graph-container{
+
+#graphdiv {
   width:100%;
-  
-  #graphdiv  {
-    width:100%;
+  height:180px;
 
-  }
 }
-
 
 </style>
