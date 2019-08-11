@@ -2,7 +2,7 @@
   <div id="posts-view-container">
     <BurgerMenu/>
     <CustomHeader/>
-    <MoodGraph class="mood-graph dot-box"
+    <MoodGraph class="dot-box"
                :class="fixGraph"
                :allPosts="posts"/>
     <!-- Im not happy with this hacky fix, Witout it, the posts element shift
@@ -133,7 +133,7 @@ export default {
   top: 0px;
   width: 100%;
   left:0px ;
-    border-radius: 0px 0px 10px 10px;
+  border-radius: 0px 0px 10px 10px;
 
 }
 
