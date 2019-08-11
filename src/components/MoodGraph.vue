@@ -7,6 +7,8 @@
 
 <script>
 import Dygraph from 'dygraphs';
+import 'dygraphs/src/extras/smooth-plotter.js';
+
 
 export default {
   name: "MoodGraph",
@@ -67,9 +69,9 @@ export default {
           this.dyGraphData(this.allDates, this.allSentimentScores),
             //Dygraph config goes into this object
             {
-              drawPoints:true,
               labels: [ "date", "mood" ],
-              width: "100%"
+              color:"black",
+              plotter:smoothPlotter,
             }
           );
       }
