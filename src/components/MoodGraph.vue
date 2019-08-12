@@ -10,6 +10,7 @@ import Dygraph from 'dygraphs';
 import 'dygraphs/src/extras/smooth-plotter.js';
 
 
+
 export default {
   name: "MoodGraph",
   props: ["allPosts"],
@@ -23,6 +24,7 @@ export default {
         plotter:smoothPlotter,
         animatedZooms:true,
         rightGap:40,
+        // dateWindow:[d.setDate(d.getDate() - 30),d.getTime()  ]
         }
       }
   },
@@ -53,7 +55,6 @@ export default {
       let dateRange = [];
       this.allPosts.forEach((post) => {
         dateRange.push(post.date);
-        // this.dateRange.push(new Date(post.date))
       });
       return dateRange;
     },
@@ -77,13 +78,24 @@ export default {
         console.warn("No Data");
       }
       else if (val.length > 0) {
-      //if so instantiate Dygraphs.   
-      this.chart = new Dygraph(
-        document.getElementById("graphdiv"),
-        this.dyGraphData(this.allDates, this.allSentimentScores),
-        this.chartOptions
-      );
+        //if so instantiate Dygraphs.   
+        this.chart = new Dygraph(
+          document.getElementById("graphdiv"),
+          this.dyGraphData(this.allDates, this.allSentimentScores),
+          this.chartOptions
+        );
       }
+
+      //Shows last 30 days on chart by default
+      //TODO: split some code out to make this easier to test 
+      let latestDate = this.chart.xAxisRange()[1];
+      let prevDate = new Date(latestDate);
+
+      this.chart.updateOptions({
+          //minus 30 days from date - https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
+          dateWindow: [prevDate.setDate(prevDate.getDate() - 30), latestDate]
+      })
+
     }
   }
 };
