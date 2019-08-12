@@ -45,6 +45,10 @@ export default {
     }
   },
   computed:{
+    /**
+     * 
+     * @return {array} An array of all dates from the allPost prop
+     */
     allDates() {
       let dateRange = [];
       this.allPosts.forEach((post) => {
@@ -53,6 +57,11 @@ export default {
       });
       return dateRange;
     },
+    /**
+     * 
+     * @return {array} An array of all sentiment scores for each post 
+     *                 from the allPost prop
+     */
     allSentimentScores() {
       let sentimentScores = [];
       this.allPosts.forEach((post) => {
@@ -66,10 +75,9 @@ export default {
       // check to see if there is any data to plot onto the graph.
       if (val.length === 0) {
         console.warn("No Data");
-      } 
-      //if so instantiate Dygraphs.
+      }
       else if (val.length > 0) {
-
+      //if so instantiate Dygraphs.   
       this.chart = new Dygraph(
         document.getElementById("graphdiv"),
         this.dyGraphData(this.allDates, this.allSentimentScores),
@@ -82,10 +90,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.line-horizontal, .line-vertical {
-    display: none;
-}
 
 #graphdiv {
   width:100%;
