@@ -2,7 +2,6 @@
   <div class="mood-graph">
     <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
     <div id="graphdiv"></div>
-
   </div>
 </template>
 
@@ -17,25 +16,32 @@ export default {
   mixins: [],
   data() {
     return {
-      
-    };
+      chart:{},
+      chartOptions:{
+        labels: [ "Date", "Mood Score" ],
+        color:"black",
+        plotter:smoothPlotter,
+        animatedZooms:true,
+        rightGap:40,
+        }
+      }
   },
   methods: {
-    //data transformation to covert dates array and sentiment array into 
-    //data structure which is compatible with dygraphs.
+   /**
+   * this will transform two arrays into a 
+   * data structure required for Dygraphs
+   *
+   * @param {array} datasetA - An array used for the y axis
+   * @param {array} datasetB - An array used for the x axis
+   * @return {array} An array of arrays with data in the format required for Dygraphs
+   *
+   */
     dyGraphData(datasetA, datasetB){
       let outputDygraphsArray = [];
-
-      // datasetA.forEach((i) => {
-      //   console.log(i)
-      // })
-
       for(let i = 0; i < datasetA.length; i++ ){
-        // console.log(i)
         outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]) ] )
       }
-      // console.log(outputDygraphsArray);
-      return outputDygraphsArray
+      return outputDygraphsArray;
     }
   },
   computed:{
@@ -45,14 +51,14 @@ export default {
         dateRange.push(post.date);
         // this.dateRange.push(new Date(post.date))
       });
-      return dateRange
+      return dateRange;
     },
     allSentimentScores() {
       let sentimentScores = [];
       this.allPosts.forEach((post) => {
         sentimentScores.push(post.sentiment.comparative.toPrecision(2));
       });
-      return sentimentScores
+      return sentimentScores;
     }
   },
   watch: {
@@ -64,42 +70,26 @@ export default {
       //if so instantiate Dygraphs.
       else if (val.length > 0) {
 
-      new Dygraph(
+      this.chart = new Dygraph(
         document.getElementById("graphdiv"),
-          this.dyGraphData(this.allDates, this.allSentimentScores),
-            //Dygraph config goes into this object
-            {
-              labels: [ "date", "mood" ],
-              color:"black",
-              plotter:smoothPlotter,
-              animatedZooms:true,
-              rightGap:40,
-              axes:{
-                 y2: {
-                         drawGrid: true,
-                         independentTicks: true
-                     }
-              }
-            }
-          );
+        this.dyGraphData(this.allDates, this.allSentimentScores),
+        this.chartOptions
+      );
       }
     }
   }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
 .line-horizontal, .line-vertical {
     display: none;
 }
 
-
 #graphdiv {
   width:100%;
   height:180px;
-
 }
 
 </style>
