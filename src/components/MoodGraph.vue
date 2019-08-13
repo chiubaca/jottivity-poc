@@ -19,9 +19,20 @@ export default {
     return {
       chart:{},
       chartOptions:{
-        labels: [ "Date", "Mood Score" ],
-        color:"black",
-        plotter:smoothPlotter,
+        labels: [ "Date", "Mood Score", "Mood Dots" ], 
+        series:{
+          "Mood Score":{
+            plotter:smoothPlotter,
+            color:"black",
+          },
+          "Mood Dots":{
+            strokeWidth: 0,
+            color:"black",
+            drawPoints: true,
+          }
+        },
+        
+        
         animatedZooms:true,
         rightGap:40,
         // dateWindow:[d.setDate(d.getDate() - 30),d.getTime()  ]
@@ -41,7 +52,7 @@ export default {
     dyGraphData(datasetA, datasetB){
       let outputDygraphsArray = [];
       for(let i = 0; i < datasetA.length; i++ ){
-        outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]) ] )
+        outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]),parseFloat(datasetB[i]) ] )
       }
       return outputDygraphsArray;
     }
