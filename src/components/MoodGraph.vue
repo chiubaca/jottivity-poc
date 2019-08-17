@@ -2,6 +2,9 @@
   <div class="mood-graph">
     <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
     <div id="graphdiv"></div>
+          <button v-on:click="zoom(7)">One Week</button>
+          <button v-on:click="zoom(31)">1 Month</button>
+          <button v-on:click="zoom(186)">6 Month</button>
   </div>
 </template>
 
@@ -38,11 +41,12 @@ export default {
                 ctx.fill();
             }
          
-          },
+          }
         },     
         animatedZooms:true,
         rightGap:40,
-        }
+        },
+        
       }
   },
   methods: {
@@ -63,6 +67,14 @@ export default {
         outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]),parseFloat(datasetB[i]) ] )
       }
       return outputDygraphsArray;
+    },
+    zoom(days){
+      console.log(this.chart.xAxisRange())
+      let latestDate = this.chart.xAxisRange()[1];
+      let prevDate = new Date(latestDate);
+
+      this.chart.updateOptions({dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestDate]});
+     
     }
   },
   computed:{
@@ -113,8 +125,8 @@ export default {
       this.chart.updateOptions({
           //minus 30 days from date - https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
           dateWindow: [prevDate.setDate(prevDate.getDate() - 30), latestDate],
-          panEdgeFraction:0.1,
-      })
+          panEdgeFraction:0.1
+      });
 
     }
   }
