@@ -9,8 +9,6 @@
 import Dygraph from 'dygraphs';
 import 'dygraphs/src/extras/smooth-plotter.js';
 
-
-
 export default {
   name: "MoodGraph",
   props: ["allPosts"],
@@ -31,25 +29,19 @@ export default {
             color:"black",
             drawPoints: true,
             // highlightCircleSize: 8,
-
-          drawPointCallback:function(g, seriesName, ctx, cx, cy, color, radius){
-              // This give more control over the look and feel of the dots
-              ctx.fillStyle = "#0000005c";
-              ctx.beginPath();
-              ctx.arc(cx, cy, radius, Math.PI * 2, false);
-              ctx.closePath();
-              ctx.fill();
-          }
+            drawPointCallback:function(g, seriesName, ctx, cx, cy, color, radius){
+                // This give more control over the look and feel of the dots
+                ctx.fillStyle = "#0000005c";
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, Math.PI * 2, false);
+                ctx.closePath();
+                ctx.fill();
+            }
          
           },
-
-         
-        },
-        
-        
+        },     
         animatedZooms:true,
         rightGap:40,
-        // dateWindow:[d.setDate(d.getDate() - 30),d.getTime()  ]
         }
       }
   },
@@ -66,6 +58,8 @@ export default {
     dyGraphData(datasetA, datasetB){
       let outputDygraphsArray = [];
       for(let i = 0; i < datasetA.length; i++ ){
+        //we push in three data sets because the third dataset is used to show points
+        //this is workaround to show points and have smooth lines
         outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]),parseFloat(datasetB[i]) ] )
       }
       return outputDygraphsArray;
