@@ -27,9 +27,23 @@ export default {
           },
           "Mood Dots":{
             strokeWidth: 0,
+            pointSize:2.5,
             color:"black",
             drawPoints: true,
+            // highlightCircleSize: 8,
+
+          drawPointCallback:function(g, seriesName, ctx, cx, cy, color, radius){
+              // This give more control over the look and feel of the dots
+              ctx.fillStyle = "#0000005c";
+              ctx.beginPath();
+              ctx.arc(cx, cy, radius, Math.PI * 2, false);
+              ctx.closePath();
+              ctx.fill();
           }
+         
+          },
+
+         
         },
         
         
@@ -104,7 +118,8 @@ export default {
 
       this.chart.updateOptions({
           //minus 30 days from date - https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
-          dateWindow: [prevDate.setDate(prevDate.getDate() - 30), latestDate]
+          dateWindow: [prevDate.setDate(prevDate.getDate() - 30), latestDate],
+          panEdgeFraction:0.1,
       })
 
     }
