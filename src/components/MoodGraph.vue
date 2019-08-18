@@ -75,10 +75,10 @@ export default {
      * TODO: Smooth animations - http://dygraphs.com/tests/link-interaction.html#
      */
     zoom(days){
-      let latestDate = this.chart.xAxisRange()[1];
-      let prevDate = new Date(latestDate);
+      let latestPostDate = new Date(this.allDates[this.allDates.length - 1])
+      let prevDate = new Date(latestPostDate);
       this.chart.updateOptions({
-        dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestDate],
+        dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestPostDate],
         });
     },
 
