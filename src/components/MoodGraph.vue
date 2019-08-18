@@ -68,14 +68,20 @@ export default {
       }
       return outputDygraphsArray;
     },
+     /**
+     * this will redraw chart to a new range relative to last plot on the chart
+     *
+     * @param {integer} days - number of days relative to last plot
+     * TODO: Smooth animations - http://dygraphs.com/tests/link-interaction.html#
+     */
     zoom(days){
-      console.log(this.chart.xAxisRange())
       let latestDate = this.chart.xAxisRange()[1];
       let prevDate = new Date(latestDate);
+      this.chart.updateOptions({
+        dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestDate],
+        });
+    },
 
-      this.chart.updateOptions({dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestDate]});
-     
-    }
   },
   computed:{
     /**
