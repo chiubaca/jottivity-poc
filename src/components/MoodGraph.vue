@@ -2,9 +2,13 @@
   <div class="mood-graph">
     <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
     <div id="graphdiv"></div>
-          <button v-on:click="zoom(7)">One Week</button>
-          <button v-on:click="zoom(31)">1 Month</button>
-          <button v-on:click="zoom(186)">6 Month</button>
+
+    <div id=zoom-to-button-container>
+      <button v-on:click="zoom(7)">1 Week</button>
+      <button v-on:click="zoom(31)">1 Month</button>
+      <button v-on:click="zoom(90)">3 Month</button>
+    </div>
+              
   </div>
 </template>
 
@@ -144,6 +148,11 @@ export default {
 #graphdiv {
   width:100%;
   height:180px;
+}
+
+#zoom-to-button-container{
+  display:flex;
+  justify-content: center;
 }
 
 </style>
