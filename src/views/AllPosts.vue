@@ -2,12 +2,28 @@
   <div id="posts-view-container">
     <BurgerMenu/>
     <CustomHeader/>
+    <div class="graph-container" :class="fixGraph">
+
     <MoodGraph class="dot-box"
-               :class="fixGraph"
-               :allPosts="posts"/>
+             
+              :allPosts="posts"/>
+
+    <div id="toggle-show-graph">
+            
+            <div v-if="isGraphHidden"
+                    v-on:click="toggleHideMoodGraph">
+              🔽
+            </div>
+
+            <div v-else
+                    v-on:click="toggleHideMoodGraph">
+              🔼
+            </div>
+    </div>
+    </div>
     <!-- Im not happy with this hacky fix, Witout it, the posts element shift
          straight up when the graph element becomes fixed, need a better way solve this -->
-    <div v-if="fixGraph === 'fix-graph'" id="hack"> you should never see this...</div>
+    <!-- <div v-if="isGraphHidden" id="hack"> you should never see this...</div> -->
 
     <AddNewPost v-on:new-post="handleNewPost" 
                 v-bind:tags="tags"
@@ -44,7 +60,8 @@ export default {
       uid: "",
       posts: [],
       tags: {},
-      fixGraph:""
+      fixGraph:"",
+      isGraphHidden:false
     };
   },
   methods: {
@@ -73,36 +90,35 @@ export default {
     },
     handleNewPost(newPost) {
       this.posts.push(newPost);
+    },
+    toggleHideMoodGraph(){
+      let moodGraph = document.getElementsByClassName("mood-graph");
+      moodGraph[0].hidden = !moodGraph[0].hidden;
+      
+      this.isGraphHidden = !this.isGraphHidden;
+      console.log(moodGraph[0]);
     }
   },
-  computed: {
-    toggleShow() {
-      return true;
-    },
-    
-  },
-  watch: {},
   created() {
-    //TODO: Seems kinda hacky, is there a better way to do this?
-    let vue = this;
+    let moodGraph = document.getElementsByClassName("mood-graph");
     //get user id for the session, store in state
     this.uid = localStorage.getItem("UserID");
     localStorage.setItem("NotebookID", this.$route.params.id);
-    // console.log(localStorage.getItem("UserID"))
+
     //get data from db
     this.getAllPosts();
     
-    //We fix the graph after 348 scrolled down
-    window.addEventListener("scroll", function(event) {
-    var top = this.scrollY,
-        left =this.scrollX;
+    //Scroll then fix the graph when it hits the top of the page
+    window.addEventListener("scroll",  (event) => {
+
+    let top = event.pageY;
         
-    if(top > 130){
-      
-      vue.fixGraph = "fix-graph"
+    if (top > 98) {
+      this.fixGraph = "fix-graph";
     }
-    if(top < 130){
-      vue.fixGraph = ""
+    if (top < 98) {
+      // this.toggleHideMoodGraph();
+      this.fixGraph = "";
     }
     }, false);
 
@@ -124,8 +140,14 @@ export default {
   align-items: center;
 }
 
-#hack{
-  height:180px
+// #hack{
+//   height:237px
+// }
+
+.graph-container{
+  display: flex;
+  flex-direction: column
+
 }
 
 .fix-graph {
@@ -146,5 +168,10 @@ export default {
 #hamburger-button{
   z-index:2;
 }
+
+#toggle-show-graph { 
+  text-align: center
+}
+
 
 </style>
