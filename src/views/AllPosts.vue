@@ -12,12 +12,12 @@
             
             <div v-if="isGraphHidden"
                     v-on:click="toggleHideMoodGraph">
-              🔽
+              📈
             </div>
 
             <div v-else
                     v-on:click="toggleHideMoodGraph">
-              🔼
+              🙈
             </div>
     </div>
     </div>
@@ -170,7 +170,24 @@ export default {
 }
 
 #toggle-show-graph { 
-  text-align: center
+  display: flex;
+  justify-content: end;
+  padding-right: 21px;
+  margin: -5px;
+
+  div {
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    font-size: 15px;
+  }
+
+  div:hover{
+    background: silver
+  }
+
 }
 
 
