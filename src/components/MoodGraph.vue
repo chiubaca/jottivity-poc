@@ -4,10 +4,23 @@
     <div id="graphdiv"></div>
 
     <div id=zoom-to-button-container>
-      <button v-on:click="zoom(7)">1 Week</button>
-      <button v-on:click="zoom(31)">1 Month</button>
-      <button v-on:click="zoom(90)">3 Month</button>
+      <input  type="radio" name="zoom-to" id="1-week" v-on:click="zoom(7)">
+      <label for="1-week">1 Week</label>
+
+      <input  type="radio" name="zoom-to" id="2-weeks" v-on:click="zoom(14)">
+      <label for="2-weeks">2 Weeks</label>
+
+      <input  type="radio" name="zoom-to" id="1-month" checked="checked" v-on:click="zoom(31)">
+      <label for="1-month">1 Month</label>
+
+      <input  type="radio" name="zoom-to" id="3-months" v-on:click="zoom(90)">
+      <label for="3-months">3 Months</label>
+
+      <input  type="radio" name="zoom-to" id="6-months" v-on:click="zoom(180)">
+      <label for="6-months">6 Months</label>
     </div>
+
+
               
   </div>
 </template>
@@ -153,6 +166,28 @@ export default {
 #zoom-to-button-container{
   display:flex;
   justify-content: center;
+  
+  //hide radio buttons
+  [type="radio"]{
+     position: absolute;
+    visibility: hidden;
+  }
+
+   [type="radio"]:checked + label {
+     border-bottom-style: solid;
+    border-width:5px
+  }
+
+  label{
+    // background: blue;
+    cursor: pointer;
+    padding:10px;
+  }
+
+  label:hover{
+    border-bottom-style: solid;
+    border-width:5px
+  }
 }
 
 </style>
