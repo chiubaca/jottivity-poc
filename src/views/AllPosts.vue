@@ -2,12 +2,15 @@
   <div id="posts-view-container">
     <BurgerMenu/>
     <CustomHeader/>
-    <div class="graph-container" :class="fixGraph">
 
     <MoodGraph class="dot-box"
-             
+              :class="fixGraph"
               :allPosts="posts"/>
 
+
+    <!-- Im not happy with this hacky fix, Witout it, the posts element shift
+         straight up when the graph element becomes fixed, need a better way solve this -->
+    <!-- <div v-if="isGraphHidden" id="hack"> you should never see this...</div> -->
     <div id="toggle-show-graph">
             
             <div v-if="isGraphHidden"
@@ -20,10 +23,6 @@
               🙈
             </div>
     </div>
-    </div>
-    <!-- Im not happy with this hacky fix, Witout it, the posts element shift
-         straight up when the graph element becomes fixed, need a better way solve this -->
-    <!-- <div v-if="isGraphHidden" id="hack"> you should never see this...</div> -->
 
     <AddNewPost v-on:new-post="handleNewPost" 
                 v-bind:tags="tags"
@@ -140,15 +139,6 @@ export default {
   align-items: center;
 }
 
-// #hack{
-//   height:237px
-// }
-
-.graph-container{
-  display: flex;
-  flex-direction: column
-
-}
 
 .fix-graph {
   position: fixed;
@@ -170,10 +160,9 @@ export default {
 }
 
 #toggle-show-graph { 
-  display: flex;
-  justify-content: end;
-  padding-right: 21px;
-  margin: -5px;
+  position: fixed;
+  right: 15px;
+  bottom: 80px;
 
   div {
     background: white;
