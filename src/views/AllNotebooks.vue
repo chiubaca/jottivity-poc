@@ -2,13 +2,19 @@
   <div id="notebooks-view-container">
     <BurgerMenu/>
     <CustomHeader/>
-      <div class="notebooks-container medium-text dark-text">
-        <router-link v-for="(notebook,index) in notebooks" :key="index"
-                     :to="{path:'posts/'+ notebook.notebookID}" 
-                     append
-                     class=" notebook dot-box">
-          {{notebook.notebookAlias}}
-        </router-link>
+      <div class="all-notebooks-container medium-text dark-text">
+
+        <div v-for="(notebook,index) in notebooks" :key="index"
+             class="notebook-container dot-box">
+
+          <router-link :to="{path:'posts/'+ notebook.notebookID}" 
+                       append>
+            {{notebook.notebookAlias}}
+          </router-link>
+          
+          <div class="options">...</div>
+
+        </div>
       </div>
    
       <div class="new-notebook">
@@ -136,7 +142,7 @@ export default {
   background-color: $background-color
 }
 
-.notebooks-container {
+.all-notebooks-container {
   display: flex;
   flex-direction: row; /* easily reverse with column-reverse*/
   justify-content: center;
@@ -148,21 +154,38 @@ export default {
 
 }
 
-.notebook {
+.notebook-container {
   width: 300px;
-  height: 60px;
+  height: 170px;
   margin: 15px;
-  padding: 50px;
-  display: flex; //this centers the text
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-transform:capitalize;
+  // padding: 50px;
+  display: grid;
+  grid-template-areas: 
+    ".  .  ."
+    ". name ."
+    ". . option";
+    grid-template-columns: 1fr 1fr 1fr;
+  a {
+    grid-area: name;
+    place-self: center stretch;
+    text-transform:capitalize;
+  }
+
+  .options{
+    grid-area: option;
+    justify-self: end;
+    top: 30px;
+    right:10px;
+    position: relative;
+    cursor: pointer;
+  }
 }
 
-.notebook:hover {
+.notebook-container:hover {
   box-shadow: 0px 0px 0px white;
 }
+
+
 
 .new-notebook {
 
