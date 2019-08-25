@@ -1,13 +1,33 @@
 <template>
   <div class="mood-graph">
     <div class="blue-loading-spinner" v-if="allPosts.length === 0"></div>
-    <div id="chart"></div>
+    <div id="graphdiv"></div>
+
+    <div id=zoom-to-button-container>
+      <input  type="radio" name="zoom-to" id="1-week" v-on:click="zoom(7)">
+      <label for="1-week">1 Week</label>
+
+      <input  type="radio" name="zoom-to" id="2-weeks" v-on:click="zoom(14)">
+      <label for="2-weeks">2 Weeks</label>
+
+      <input  type="radio" name="zoom-to" id="1-month" checked="checked" v-on:click="zoom(31)">
+      <label for="1-month">1 Month</label>
+
+      <input  type="radio" name="zoom-to" id="3-months" v-on:click="zoom(90)">
+      <label for="3-months">3 Months</label>
+
+      <input  type="radio" name="zoom-to" id="6-months" v-on:click="zoom(180)">
+      <label for="6-months">6 Months</label>
+    </div>
+
+
+              
   </div>
 </template>
 
 <script>
-import { Chart } from "frappe-charts/dist/frappe-charts.esm.js";
-import "frappe-charts/dist/frappe-charts.min.css";
+import Dygraph from 'dygraphs';
+import 'dygraphs/src/extras/smooth-plotter.js';
 
 export default {
   name: "MoodGraph",
@@ -15,83 +35,159 @@ export default {
   mixins: [],
   data() {
     return {
-      chart: {},
-      graphData: {
-        labels: [0,0], //placeholder data, gets overiden in the watcher
-        datasets: [{
-            name: "Mood Score",
-            type: "line",
-            values: [0,0]
-          }],
-        yMarkers: [{
-          label: "Neutral",
-          value:0,
-          options: { labelPos: 'right' } // default: 'right'
-        }]
-      },
-    };
+      chart:{},
+      chartOptions:{
+        labels: [ "Date", "Mood Score", "Mood Dots" ], 
+        series:{
+          "Mood Score":{
+            plotter:smoothPlotter,
+            color:"black",
+          },
+          "Mood Dots":{
+            strokeWidth: 0,
+            pointSize:2.5,
+            color:"black",
+            drawPoints: true,
+            // highlightCircleSize: 8,
+            drawPointCallback:function(g, seriesName, ctx, cx, cy, color, radius){
+                // This give more control over the look and feel of the dots
+                ctx.fillStyle = "#0000005c";
+                ctx.beginPath();
+                ctx.arc(cx, cy, radius, Math.PI * 2, false);
+                ctx.closePath();
+                ctx.fill();
+            }
+         
+          }
+        },     
+        animatedZooms:true,
+        rightGap:40,
+        },
+        
+      }
   },
   methods: {
+   /**
+   * this will transform two arrays into a 
+   * data structure required for Dygraphs
+   *
+   * @param {array} datasetA - An array used for the y axis
+   * @param {array} datasetB - An array used for the x axis
+   * @return {array} An array of arrays with data in the format required for Dygraphs
+   *
+   */
+    dyGraphData(datasetA, datasetB){
+      let outputDygraphsArray = [];
+      for(let i = 0; i < datasetA.length; i++ ){
+        //we push in three data sets because the third dataset is used to show points
+        //this is workaround to show points and have smooth lines
+        outputDygraphsArray.push([ new Date(datasetA[i]), parseFloat(datasetB[i]),parseFloat(datasetB[i]) ] )
+      }
+      return outputDygraphsArray;
+    },
+     /**
+     * this will redraw chart to a new range relative to last plot on the chart
+     *
+     * @param {integer} days - number of days relative to last plot
+     * TODO: Smooth animations - http://dygraphs.com/tests/link-interaction.html#
+     */
+    zoom(days){
+      let latestPostDate = new Date(this.allDates[this.allDates.length - 1])
+      let prevDate = new Date(latestPostDate);
+      this.chart.updateOptions({
+        dateWindow: [prevDate.setDate(prevDate.getDate() - days), latestPostDate],
+        });
+    },
+
   },
   computed:{
+    /**
+     * 
+     * @return {array} An array of all dates from the allPost prop
+     */
     allDates() {
       let dateRange = [];
       this.allPosts.forEach((post) => {
-        dateRange.push(new Date(post.date).toLocaleDateString());
-        // this.dateRange.push(new Date(post.date))
+        dateRange.push(post.date);
       });
-      return dateRange
+      return dateRange;
     },
+    /**
+     * 
+     * @return {array} An array of all sentiment scores for each post 
+     *                 from the allPost prop
+     */
     allSentimentScores() {
       let sentimentScores = [];
       this.allPosts.forEach((post) => {
         sentimentScores.push(post.sentiment.comparative.toPrecision(2));
       });
-      return sentimentScores
-    },
+      return sentimentScores;
+    }
   },
   watch: {
     allPosts: function(val, oldVal) {
-      // console.log("hello from date watcher", val)
+      // check to see if there is any data to plot onto the graph.
       if (val.length === 0) {
         console.warn("No Data");
-        
-      } else if (val.length > 0) {
-
-        this.chart = new Chart("#chart", {
-          // or a DOM element,
-          // new Chart() in case of ES6 module with above usage
-          data: this.graphData,
-          type: "line", // or 'bar', 'line', 'scatter', 'pie', 'percentage'
-          isNavigable: false, // default: false
-          height: 180,
-          colors: ["#3a8bbb"],
-          axisOptions: {
-            xIsSeries: true // default: false
-          },
-          lineOptions: {
-            heatline: 1, // default: 0
-            regionFill: 1, // default: 0
-            hideDots: 1, // default: 0
-          }
-        });
-
-        //Set Data to graph data object
-        this.graphData.datasets[0].values = this.allSentimentScores;
-        this.graphData.labels =  this.allDates;       
       }
+      else if (val.length > 0) {
+        //if so instantiate Dygraphs.   
+        this.chart = new Dygraph(
+          document.getElementById("graphdiv"),
+          this.dyGraphData(this.allDates, this.allSentimentScores),
+          this.chartOptions
+        );
+      }
+
+      //Shows last 30 days on chart by default
+      //TODO: split some code out to make this easier to test 
+      let latestDate = this.chart.xAxisRange()[1];
+      let prevDate = new Date(latestDate);
+
+      this.chart.updateOptions({
+          //minus 30 days from date - https://stackoverflow.com/questions/1296358/subtract-days-from-a-date-in-javascript
+          dateWindow: [prevDate.setDate(prevDate.getDate() - 30), latestDate],
+          panEdgeFraction:0.1
+      });
+
     }
-  },
-  mounted() {}
+  }
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss">
+<style lang="scss" scoped>
 
-.line-horizontal, .line-vertical {
-    display: none;
+#graphdiv {
+  width:100%;
+  height:180px;
 }
 
+#zoom-to-button-container{
+  display:flex;
+  justify-content: center;
+  
+  //hide radio buttons
+  [type="radio"]{
+     position: absolute;
+    visibility: hidden;
+  }
+
+   [type="radio"]:checked + label {
+     border-bottom-style: solid;
+    border-width:5px
+  }
+
+  label{
+    // background: blue;
+    cursor: pointer;
+    padding:10px;
+  }
+
+  label:hover{
+    border-bottom-style: solid;
+    border-width:5px
+  }
+}
 
 </style>

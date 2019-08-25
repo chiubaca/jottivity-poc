@@ -42,7 +42,7 @@
 
         <Logout/>
 
-        <span class="version-num">🔧 Version 0.4.1</span>
+        <span class="version-num">🔧 Version 0.4.2</span>
 
       </nav>
     </transition>

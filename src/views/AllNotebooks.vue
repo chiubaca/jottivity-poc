@@ -157,8 +157,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
-  text-transform: uppercase;
-  font-weight: bold;
+  text-transform:capitalize;
 }
 
 .notebook:hover {
@@ -166,9 +165,7 @@ export default {
 }
 
 .new-notebook {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   color: #2c3e50;
   box-shadow: 0px 0px 13px #7d7d7d;
   width: 200px;
