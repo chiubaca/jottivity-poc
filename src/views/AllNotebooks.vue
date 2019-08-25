@@ -2,21 +2,14 @@
   <div id="notebooks-view-container">
     <BurgerMenu/>
     <CustomHeader/>
+
       <div class="all-notebooks-container medium-text dark-text">
 
-        <div v-for="(notebook,index) in notebooks" :key="index"
-             class="notebook-container dot-box">
-
-          <router-link :to="{path:'posts/'+ notebook.notebookID}" 
-                       append>
-            {{notebook.notebookAlias}}
-          </router-link>
-          
-          <div class="options">...</div>
-
-        </div>
+        <NotebookCard v-for="(notebook,index) in notebooks" 
+                      :key="index"
+                      v-bind:notebook="notebook"/>
       </div>
-   
+       
       <div class="new-notebook">
         <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
         <button v-on:click="addNewNotebook">+ New Notebook</button>
@@ -27,6 +20,7 @@
 <script>
 import CustomHeader from '@/components/CustomHeader.vue'
 import BurgerMenu from "@/components/BurgerMenu.vue";
+import NotebookCard from "@/components/NotebookCard.vue"
 import { HTTP } from "@/httpCommon";
 import getDate from "@/mixins/getDate";
 import notebook from "@/components/notebook.json";
@@ -37,7 +31,8 @@ export default {
   name: "AllNotebooks",
   components: {
     BurgerMenu,
-    CustomHeader
+    CustomHeader,
+    NotebookCard
   },
   mixins: [getDate],
   data() {
@@ -153,38 +148,6 @@ export default {
   }
 
 }
-
-.notebook-container {
-  width: 300px;
-  height: 170px;
-  margin: 15px;
-  // padding: 50px;
-  display: grid;
-  grid-template-areas: 
-    ".  .  ."
-    ". name ."
-    ". . option";
-    grid-template-columns: 1fr 1fr 1fr;
-  a {
-    grid-area: name;
-    place-self: center stretch;
-    text-transform:capitalize;
-  }
-
-  .options{
-    grid-area: option;
-    justify-self: end;
-    top: 30px;
-    right:10px;
-    position: relative;
-    cursor: pointer;
-  }
-}
-
-.notebook-container:hover {
-  box-shadow: 0px 0px 0px white;
-}
-
 
 
 .new-notebook {
