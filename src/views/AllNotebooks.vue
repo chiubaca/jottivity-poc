@@ -7,7 +7,8 @@
 
         <NotebookCard v-for="(notebook,index) in notebooks" 
                       :key="index"
-                      v-bind:notebook="notebook"/>
+                      :index="index"
+                      :notebook="notebook"/>
       </div>
        
       <div class="new-notebook">
