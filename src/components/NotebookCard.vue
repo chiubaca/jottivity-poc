@@ -20,6 +20,11 @@
 </template>
 
 <script>
+import {HTTP} from '@/httpCommon';
+import firebase from 'firebase/app';
+
+let uid;
+
 export default {
   name: "NotebookCard",
   props: ["notebook", "index"],
@@ -34,14 +39,37 @@ export default {
     deleteNotebook(notebookObject){
       if (confirm(`Are you sure you want to delete notebook "${notebookObject.notebookAlias}"?`)) {
          console.log("deleted notebook ID ", notebookObject.notebookID)
+         console.log("user ID" , uid)
+
+         //Send the new notebook to db
+      firebase
+        .auth()
+        .currentUser.getIdToken()
+        .then(token => {
+          HTTP({
+            method: "delete",
+            url: `users/${uid}/notebooks/${notebookObject.notebookID}.json?auth=${token}`,
+          })
+            .then(response => {
+              alert(`You've deleted the notebook : ${response.status}`);
+            })
+            .catch(function(error) {
+              alert("something went wrong", Error(error));
+            });
+        });
+
+
         } else {
           console.log("did not delete anything")
       } 
     }
+  },
+  created() {
+    uid = localStorage.getItem("UserID");   
   }
 };
 </script>
-
+n
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 //button styling reset
