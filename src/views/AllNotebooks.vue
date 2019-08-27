@@ -5,7 +5,8 @@
 
       <div class="all-notebooks-container medium-text dark-text">
 
-        <NotebookCard v-for="(notebook,index) in notebooks" 
+        <NotebookCard v-for="(notebook,index) in notebooks"
+                      v-on:deleted-notebook="handleDeleteNotebook"  
                       :key="index"
                       :index="index"
                       :notebook="notebook"/>
@@ -114,6 +115,10 @@ export default {
             }
           });
         });
+    },
+    handleDeleteNotebook(index){
+      console.log("Deletenotebook Event", index)
+      this.notebooks.splice(index,1)
     }
   },
   computed: {
