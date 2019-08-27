@@ -1,20 +1,27 @@
 <template>
-  <div class="notebook-container dot-box">
+  <div class="notebook-container dot-box"
+        v-on:keyup.esc="resetModals">
     <router-link :to="{path:'posts/'+ notebook.notebookID}" 
                  append>{{notebook.notebookAlias}}</router-link>
-
     <button class="options"
-            v-on:click="togglePopup(index)">
+            v-on:click="showOptionsModal=!showOptionsModal">
             <span>...</span>
     </button>
 
-    <div class="optionsPopup"> 
+    <div v-if="showOptionsModal" class="optionsPopup dot-box"> 
       <ul>
-        <li>Rename</li>
-        <li v-on:click="deleteNotebook(notebook)">Delete</li>
+        <!-- TODO:Enable renameing of notebooks
+          <li v-on:click="showRenameModal=!showRenameModal">Rename</li> -->
+        <li v-on:click="deleteNotebook(notebook,index)">Delete</li>
       </ul>
     </div>
 
+
+      <input v-focus 
+             v-if="showRenameModal" 
+             class="rename-modal dot-box" 
+             type="text"  
+             :placeholder="notebook.notebookAlias"/> 
     
   </div>
 </template>
@@ -29,40 +36,47 @@ export default {
   name: "NotebookCard",
   props: ["notebook", "index"],
   data() {
-    return {};
+    return {
+      showRenameModal:false,
+      showOptionsModal:false,
+    };
   },
   methods:{
-    togglePopup(index){
-      let popup = document.getElementsByClassName("optionsPopup");
-      popup[index].classList.toggle("show");  
-    },
-    deleteNotebook(notebookObject){
-      if (confirm(`Are you sure you want to delete notebook "${notebookObject.notebookAlias}"?`)) {
-         console.log("deleted notebook ID ", notebookObject.notebookID)
-         console.log("user ID" , uid)
 
-         //Send the new notebook to db
-      firebase
-        .auth()
-        .currentUser.getIdToken()
-        .then(token => {
-          HTTP({
-            method: "delete",
-            url: `users/${uid}/notebooks/${notebookObject.notebookID}.json?auth=${token}`,
-          })
-            .then(response => {
-              alert(`You've deleted the notebook : ${response.status}`);
-            })
-            .catch(function(error) {
-              alert("something went wrong", Error(error));
-            });
-        });
+  deleteNotebook(notebookObject, index){
+    if (confirm(`Are you sure you want to delete notebook "${notebookObject.notebookAlias}"?| index ${index}`)) {
 
 
-        } else {
-          console.log("did not delete anything")
-      } 
-    }
+        //Send the new notebook to db
+    firebase.auth().currentUser.getIdToken()
+      .then(token => {
+        HTTP({
+          method: "delete",
+          url: `users/${uid}/notebooks/${notebookObject.notebookID}.json?auth=${token}`,
+        })
+      .then(response => {
+        console.log(`You've deleted the notebook : ${response.status}`);
+        this.$emit('deleted-notebook', index);
+      })
+      .catch(function(error) {
+        alert("something went wrong", Error(error));
+        console.log(Error(error))
+      });
+    });
+
+
+      } else {
+        console.log("did not delete anything")
+    } 
+  },
+  resetModals(){
+    this.showRenameModal = false;
+    this.showOptionsModal = false;
+  },
+  toggleRenameModal(){
+    this.showRenameModal = !this.showRenameModal;
+    // this.showOptionsModal = false;
+  }
   },
   created() {
     uid = localStorage.getItem("UserID");   
@@ -123,7 +137,7 @@ button.options{
 }
 
 .optionsPopup {
-  visibility: hidden;
+  // visibility: hidden;
   background:#00000063;
   border-radius: 7px;
   margin:5px;
@@ -140,9 +154,15 @@ button.options{
 
 }
 
-.optionsPopup.show{
-    visibility:visible;
-    opacity: 1;
+
+input.rename-modal{
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 2;
+    border: none;
+    font: inherit;
+    text-align: center;
+    padding:25px;
 
   }
 
