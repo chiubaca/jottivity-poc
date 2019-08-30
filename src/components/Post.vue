@@ -27,7 +27,7 @@
         <ul>
         <!-- TODO:Enable renameing of notebooks
           <li v-on:click="showRenameModal=!showRenameModal">Rename</li> -->
-        <li v-on:click="deletePost(postData)">Delete</li>
+        <li v-on:click="deletePost(postData, index)">Delete</li>
       </ul>
       </div>
 
@@ -39,9 +39,14 @@
 
 <script>
 import PostModal from "./PostModal.vue";
+import {HTTP} from '@/httpCommon';
+import firebase from 'firebase/app';
+
+let uid, notebookID;
+
 export default {
   name: "Post",
-  props: ["postData"],
+  props: ["postData", "index"],
   components: {
     PostModal
   },
@@ -56,10 +61,25 @@ export default {
     closeModal() {
       this.showPostContent = false
     },
-    deletePost(postData){
-      if (confirm(`Are you sure you want to delete post ${postData.title}`)) {
-
-        console.log("we delete the post")
+    deletePost(postData, index){
+      if (confirm(`Are you sure you want to delete post "${postData.title}"` )) {
+        // delete the post
+        firebase.auth().currentUser.getIdToken()
+          .then(token => {
+            HTTP({
+              method: "delete",
+              url: `users/${uid}/notebooks/${notebookID}/posts/${postData.postID}/.json?auth=${token}`,
+            })
+          .then(response => {
+            console.log(`You've deleted the post : ${response.status}`);
+            this.showOptionsModal = false;
+            this.$emit('deleted-post', index);
+          })
+          .catch(function(error) {
+            alert("something went wrong", Error(error));
+            console.log(Error(error))
+          });
+        });        
 
         } else {
           console.log("did not delete anything")
@@ -70,6 +90,8 @@ export default {
 
   },
   created() {
+    uid = localStorage.getItem("UserID");
+    notebookID = localStorage.getItem("NotebookID");     
   }
 };
 </script>
