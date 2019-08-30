@@ -16,6 +16,23 @@
     <PostModal v-bind:modalState="showPostContent" 
                v-bind:postData="postData" 
                v-on:closeModal="closeModal" />
+
+    <div class="post-footer">
+      <button class="options"
+              v-on:click="showOptionsModal=!showOptionsModal">
+            <span>...</span>
+      </button>
+
+      <div v-if=showOptionsModal class="options-modal dot-box">
+        <ul>
+        <!-- TODO:Enable renameing of notebooks
+          <li v-on:click="showRenameModal=!showRenameModal">Rename</li> -->
+        <li v-on:click="deletePost(postData)">Delete</li>
+      </ul>
+      </div>
+
+    </div>
+      
     
   </div>
 </template>
@@ -31,13 +48,23 @@ export default {
   data() {
     return {
       posts: [],
-      showPostContent: false
+      showPostContent: false,
+      showOptionsModal:false
     };
   },
   methods: {
     closeModal() {
       this.showPostContent = false
-    }
+    },
+    deletePost(postData){
+      if (confirm(`Are you sure you want to delete post ${postData.title}`)) {
+
+        console.log("we delete the post")
+
+        } else {
+          console.log("did not delete anything")
+      } 
+  },
   },
   computed: {
 
@@ -61,5 +88,68 @@ export default {
 .post:hover {
   box-shadow: 0px 0px 0px white;
 }
+
+.post-footer {
+  position: relative;
+  height: 10px;
+  
+  button.options { 
+    //button styling reset
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+
+    right:10px;
+    bottom:0px;
+    position: absolute;
+    width:20px;
+    height:20px;
+    border-radius: 50%;
+
+    span{
+      bottom: 5px;
+      position: relative;
+    }
+
+  }
+
+  button.options:hover{
+    background:#00000063;
+  }
+
+  .options-modal{
+    height: 60px;
+    width: 110px;
+    right:10px;
+    bottom:45px;
+    position: absolute;
+    background:#00000063;
+
+     //list styling rest 
+    li {
+      list-style-type: none;
+      padding:7px;
+      cursor:pointer;
+    }
+
+    li:hover{
+    background: #00000025;
+    border-radius: 7px;
+    margin:7px;
+    padding:0px;
+  }
+    
+
+  }
+
+}
+
+
+
+
 
 </style>
