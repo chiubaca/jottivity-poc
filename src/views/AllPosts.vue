@@ -128,6 +128,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
+
 #posts-view-container{
   margin:0;
   background-color: $background-color
@@ -146,7 +147,7 @@ export default {
   width: 100%;
   left:0px ;
   border-radius: 0px 0px 10px 10px;
-
+  z-index: 1;
 }
 
 #add-new-post-btn{
@@ -155,9 +156,6 @@ export default {
   bottom: 15px;
 }
 
-#hamburger-button{
-  z-index:2;
-}
 
 #toggle-show-graph { 
   position: fixed;
