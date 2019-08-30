@@ -47,7 +47,7 @@ export default {
     if (confirm(`Are you sure you want to delete notebook "${notebookObject.notebookAlias}"?| index ${index}`)) {
 
 
-        //Send the new notebook to db
+    //delete the notebook
     firebase.auth().currentUser.getIdToken()
       .then(token => {
         HTTP({
