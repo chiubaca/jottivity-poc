@@ -1,26 +1,26 @@
 <template>
-  <div id="component-container">
-    <Logout/>
-    <p>User ID : {{this.uid}}</p>
-    <div class="notebooks-container">
-      <div class="notebook" v-for="(notebook,index) in notebooks" :key="index">
-        <router-link :to="{path:'posts/'+ notebook.notebookID}" append>
-          <p>Notebook ID: {{notebook.notebookID}}</p>
-          <p>Notebook Name: {{notebook.notebookAlias}}</p>
-          <p>Date Created: {{notebook.dateCreated}}</p>
+  <div id="notebooks-view-container">
+    <BurgerMenu/>
+    <CustomHeader/>
+      <div class="notebooks-container medium-text dark-text">
+        <router-link v-for="(notebook,index) in notebooks" :key="index"
+                     :to="{path:'posts/'+ notebook.notebookID}" 
+                     append
+                     class=" notebook dot-box">
+          {{notebook.notebookAlias}}
         </router-link>
       </div>
-    </div>
-
-    <div class="new-notebook">
-      <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
-      <button v-on:click="addNewNotebook">+ New Notebook</button>
-    </div>
+   
+      <div class="new-notebook">
+        <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
+        <button v-on:click="addNewNotebook">+ New Notebook</button>
+      </div>
   </div>
 </template>
 
 <script>
-import Logout from "@/components/Logout.vue";
+import CustomHeader from '@/components/CustomHeader.vue'
+import BurgerMenu from "@/components/BurgerMenu.vue";
 import { HTTP } from "@/httpCommon";
 import getDate from "@/mixins/getDate";
 import notebook from "@/components/notebook.json";
@@ -30,7 +30,8 @@ import "firebase/auth";
 export default {
   name: "AllNotebooks",
   components: {
-    Logout
+    BurgerMenu,
+    CustomHeader
   },
   mixins: [getDate],
   data() {
@@ -129,9 +130,10 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-#component-container {
-  background-image: url("../assets/images/note_bg.png");
+// <style lang="scss" scoped>
+
+#notebooks-view-container {
+  background-color: $background-color
 }
 
 .notebooks-container {
@@ -140,33 +142,30 @@ export default {
   justify-content: center;
   text-align: center;
   flex-wrap: wrap;
+  a {
+    text-decoration:none;  
+  }
+
 }
 
 .notebook {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  box-shadow: 0px 0px 13px #7d7d7d;
-  border-radius: 10px;
   width: 300px;
   height: 60px;
   margin: 15px;
   padding: 50px;
-  display: flex;
+  display: flex; //this centers the text
   justify-content: center;
   align-items: center;
   text-align: center;
+  text-transform:capitalize;
 }
 
 .notebook:hover {
-  box-shadow: 0px 0px 6px #7d7d7d;
+  box-shadow: 0px 0px 0px white;
 }
 
 .new-notebook {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   color: #2c3e50;
   box-shadow: 0px 0px 13px #7d7d7d;
   width: 200px;

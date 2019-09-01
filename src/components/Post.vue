@@ -1,5 +1,5 @@
 <template>
-  <div class="post" >
+  <div class="post dot-box" >
     <span>{{postData.date}}</span>
     <h1 v-on:click="showPostContent=true"> {{postData.title}} </h1>
 
@@ -48,21 +48,18 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style lang="scss" scoped>
+// @import "src/assets/scss/variables.scss";
+// @import "src/assets/scss/common.scss";
+
 .post {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  box-shadow: 0px 0px 13px #7d7d7d;
   width: 75%;
   margin: 15px;
   padding: 5px;
-  border-radius: 10px
 }
 
 .post:hover {
-  box-shadow: 0px 0px 6px #7d7d7d;
+  box-shadow: 0px 0px 0px white;
 }
 
 </style>

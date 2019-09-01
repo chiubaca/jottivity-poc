@@ -9,5 +9,14 @@ module.exports = {
         webpackBundleAnalyzer: {
         openAnalyzer: false
             }
+    },
+    css:{
+        loaderOptions:{
+            sass:{
+                data:`@import "@/assets/scss/common.scss";
+                      @import "@/assets/scss/variables.scss";
+                     `
+            }
+        }
     }
 };
