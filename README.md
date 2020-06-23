@@ -1,7 +1,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b6ea1e40-90a2-4d5b-b539-4987cf053cf2/deploy-status)](https://app.netlify.com/sites/jottivity/deploys)
 
 # 🖋️ Jottivity 
-A journal app to optimise your mood, productivity and life.
+Proof-of-concept journaling app to analyse and track your mood. I'm rewriting this over here 👉 https://github.com/chiubaca/jottivity.
 
 ## Project setup
 
