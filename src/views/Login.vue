@@ -28,8 +28,9 @@ export default {
     logIn() {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password)
       .then((userCredential) => {
-        let userID = userCredential.user.X.O
-        alert(`You've logged in! User ID: ${userID}`)
+        console.log(userCredential)
+        // let userID = userCredential.us
+        alert(`You've logged in!`)
         //redirect to another page once signed in
         this.$router.push({path:'notebooks'})
       },
