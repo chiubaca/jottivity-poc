@@ -2,15 +2,16 @@
   <div id="notebooks-view-container">
     <BurgerMenu/>
     <CustomHeader/>
-      <div class="notebooks-container medium-text dark-text">
-        <router-link v-for="(notebook,index) in notebooks" :key="index"
-                     :to="{path:'posts/'+ notebook.notebookID}" 
-                     append
-                     class=" notebook dot-box">
-          {{notebook.notebookAlias}}
-        </router-link>
+
+      <div class="all-notebooks-container medium-text dark-text">
+
+        <NotebookCard v-for="(notebook,index) in notebooks"
+                      v-on:deleted-notebook="handleDeleteNotebook"  
+                      :key="index"
+                      :index="index"
+                      :notebook="notebook"/>
       </div>
-   
+       
       <div class="new-notebook">
         <textarea id="new-notebook-name" v-model="newNotebookName" placeholder="Notebook Name"></textarea>
         <button v-on:click="addNewNotebook">+ New Notebook</button>
@@ -21,6 +22,7 @@
 <script>
 import CustomHeader from '@/components/CustomHeader.vue'
 import BurgerMenu from "@/components/BurgerMenu.vue";
+import NotebookCard from "@/components/NotebookCard.vue"
 import { HTTP } from "@/httpCommon";
 import getDate from "@/mixins/getDate";
 import notebook from "@/components/notebook.json";
@@ -31,7 +33,8 @@ export default {
   name: "AllNotebooks",
   components: {
     BurgerMenu,
-    CustomHeader
+    CustomHeader,
+    NotebookCard
   },
   mixins: [getDate],
   data() {
@@ -112,6 +115,10 @@ export default {
             }
           });
         });
+    },
+    handleDeleteNotebook(index){
+      console.log("Deletenotebook Event", index)
+      this.notebooks.splice(index,1)
     }
   },
   computed: {
@@ -136,7 +143,7 @@ export default {
   background-color: $background-color
 }
 
-.notebooks-container {
+.all-notebooks-container {
   display: flex;
   flex-direction: row; /* easily reverse with column-reverse*/
   justify-content: center;
@@ -148,21 +155,6 @@ export default {
 
 }
 
-.notebook {
-  width: 300px;
-  height: 60px;
-  margin: 15px;
-  padding: 50px;
-  display: flex; //this centers the text
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  text-transform:capitalize;
-}
-
-.notebook:hover {
-  box-shadow: 0px 0px 0px white;
-}
 
 .new-notebook {
 

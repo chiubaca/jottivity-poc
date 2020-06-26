@@ -7,10 +7,6 @@
               :class="fixGraph"
               :allPosts="posts"/>
 
-
-    <!-- Im not happy with this hacky fix, Witout it, the posts element shift
-         straight up when the graph element becomes fixed, need a better way solve this -->
-    <!-- <div v-if="isGraphHidden" id="hack"> you should never see this...</div> -->
     <div id="toggle-show-graph">
             
             <div v-if="isGraphHidden"
@@ -30,7 +26,11 @@
     </AddNewPost>
 
     <div class="all-posts">
-      <Post v-for="(post,index) in posts" :key="index" v-bind:post-data="post"/>
+      <Post v-for="(post,index) in posts"
+            v-on:deleted-post="handleDeletePost"   
+            :key="index" 
+            :index="index"
+            :post-data="post"/>
     </div>
   </div>
 </template>
@@ -90,6 +90,9 @@ export default {
     handleNewPost(newPost) {
       this.posts.push(newPost);
     },
+    handleDeletePost(index){
+      this.posts.splice(index,1)
+    },
     toggleHideMoodGraph(){
       let moodGraph = document.getElementsByClassName("mood-graph");
       moodGraph[0].hidden = !moodGraph[0].hidden;
@@ -128,6 +131,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
+
 #posts-view-container{
   margin:0;
   background-color: $background-color
@@ -146,7 +150,7 @@ export default {
   width: 100%;
   left:0px ;
   border-radius: 0px 0px 10px 10px;
-
+  z-index: 1;
 }
 
 #add-new-post-btn{
@@ -155,9 +159,6 @@ export default {
   bottom: 15px;
 }
 
-#hamburger-button{
-  z-index:2;
-}
 
 #toggle-show-graph { 
   position: fixed;
@@ -178,6 +179,4 @@ export default {
   }
 
 }
-
-
 </style>

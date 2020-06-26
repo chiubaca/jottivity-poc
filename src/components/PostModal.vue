@@ -62,6 +62,7 @@ export default {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 .modal-container .modal-contents {

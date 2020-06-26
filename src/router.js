@@ -12,10 +12,6 @@ const router = new Router({
   // mode: 'history',
   base: process.env.BASE_URL,
   routes: [
-    // {
-    //   path: '*', //any invalid paths will get redirected to posts
-    //   redirect: '/about',
-    // },
     {
       path: '/', 
       redirect: '/notebooks',
